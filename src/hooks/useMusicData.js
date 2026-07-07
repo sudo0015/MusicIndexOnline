@@ -1,4 +1,4 @@
-import musicData from '../../public/data/music.json'
+import musicData from '../data/music.json'
 
 const data = musicData || []
 

@@ -26,9 +26,7 @@ const searchInputSx = (theme) => ({
     },
   },
   '& .MuiInputBase-input::placeholder': {
-    color: theme.palette.mode === 'dark'
-      ? 'rgba(255,255,255,0.45)'
-      : theme.palette.primary.contrastText + 'AA',
+    color: theme.palette.primary.contrastText,
     opacity: 1,
   },
 })
@@ -180,7 +178,10 @@ function Layout({ children, searchTerm, onSearchChange }) {
                   <InputAdornment position="end">
                     <span
                       className="mdi mdi-magnify"
-                      style={{ color: theme.palette.secondary.main }}
+                      style={{
+                        color: theme.palette.primary.contrastText,
+                        fontSize: '1.15rem',
+                      }}
                     />
                   </InputAdornment>
                 ),

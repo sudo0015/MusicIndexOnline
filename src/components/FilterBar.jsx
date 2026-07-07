@@ -48,33 +48,57 @@ function FilterBar({
         variant="contained"
         color="primary"
         onClick={(e) => setMenuAnchor(e.currentTarget)}
-        startIcon={<span className="mdi mdi-filter" />}
-        endIcon={<span className="mdi mdi-chevron-down" />}
+        startIcon={<span className="mdi mdi-filter-menu" />}
         sx={{
           borderRadius: '6px',
-          py: 0.8,
-          px: 1.5,
+          py: { xs: 0, sm: 0.8 },
+          px: { xs: 0, sm: 1.5 },
+          minWidth: { xs: 40, sm: 'auto' },
+          width: { xs: 40, sm: 'auto' },
+          height: { xs: 40, sm: 'auto' },
           fontFamily: '"EB Garamond", serif',
           fontSize: '0.95rem',
           textTransform: 'none',
           whiteSpace: 'nowrap',
           boxShadow: 'none',
           '&:hover': { boxShadow: 'none' },
+          '& .MuiButton-startIcon': { mr: { xs: 0, sm: 0.5 }, ml: { xs: 0, sm: -0.25 } },
         }}
       >
-        Filters
+        <Box component="span" sx={{ display: { xs: 'none', sm: 'inline' } }}>
+          Filters
+          {hasFilters && (
+            <Box
+              component="span"
+              sx={{
+                ml: 1,
+                px: 1,
+                minWidth: 20,
+                textAlign: 'center',
+                bgcolor: (t) => t.palette.primary.contrastText,
+                color: 'primary.main',
+                borderRadius: 9999,
+                fontSize: 11,
+                lineHeight: 1.6,
+              }}
+            >
+              {activeFilterCount}
+            </Box>
+          )}
+        </Box>
         {hasFilters && (
           <Box
             component="span"
             sx={{
-              ml: 1,
-              px: 1,
-              minWidth: 20,
+              display: { xs: 'inline-flex', sm: 'none' },
+              ml: 0.5,
+              px: 0.8,
+              minWidth: 18,
               textAlign: 'center',
               bgcolor: (t) => t.palette.primary.contrastText,
               color: 'primary.main',
               borderRadius: 9999,
-              fontSize: 11,
+              fontSize: 10,
               lineHeight: 1.6,
             }}
           >
@@ -90,17 +114,23 @@ function FilterBar({
         startIcon={<span className={`mdi ${isDark ? 'mdi-weather-sunny' : 'mdi-weather-night'}`} />}
         sx={{
           borderRadius: '6px',
-          py: 0.8,
-          px: 1.5,
+          py: { xs: 0, sm: 0.8 },
+          px: { xs: 0, sm: 1.5 },
+          minWidth: { xs: 40, sm: 'auto' },
+          width: { xs: 40, sm: 'auto' },
+          height: { xs: 40, sm: 'auto' },
           fontFamily: '"EB Garamond", serif',
           fontSize: '0.95rem',
           textTransform: 'none',
           whiteSpace: 'nowrap',
           boxShadow: 'none',
           '&:hover': { boxShadow: 'none' },
+          '& .MuiButton-startIcon': { mr: { xs: 0, sm: 0.5 }, ml: { xs: 0, sm: -0.25 } },
         }}
       >
-        {isDark ? 'Light' : 'Dark'}
+        <Box component="span" sx={{ display: { xs: 'none', sm: 'inline' } }}>
+          {isDark ? 'Light' : 'Dark'}
+        </Box>
       </Button>
       <Menu
         anchorEl={menuAnchor}

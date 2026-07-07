@@ -1,5 +1,5 @@
 import React from 'react'
-import { TextField, InputAdornment, Paper } from '@mui/material'
+import { TextField, InputAdornment, Paper, Box } from '@mui/material'
 
 function SearchBar({ value, onChange }) {
   return (
@@ -14,10 +14,10 @@ function SearchBar({ value, onChange }) {
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">
-              <span className="mdi mdi-magnify" style={{ color: 'rgba(0, 0, 0, 0.54)' }} />
+              <Box component="span" className="mdi mdi-magnify" sx={{ color: 'text.secondary', fontSize: '1.25rem', lineHeight: 1 }} />
             </InputAdornment>
           ),
-          sx: { bgcolor: 'white' }
+          sx: { bgcolor: 'background.paper' }
         }}
       />
     </Paper>
