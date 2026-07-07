@@ -14,6 +14,7 @@ import {
 function FilterBar({
   composers,
   genres,
+  periods,
   filters,
   onFilterChange,
   countText = '',
@@ -28,16 +29,16 @@ function FilterBar({
   }
 
   const clearFilters = () => {
-    onFilterChange({ composer: '', genre: '' })
+    onFilterChange({ composer: '', genre: '', period: '' })
   }
 
   const activeFilterCount =
-    (filters.composer ? 1 : 0) + (filters.genre ? 1 : 0)
+    (filters.composer ? 1 : 0) + (filters.genre ? 1 : 0) + (filters.period ? 1 : 0)
   const hasFilters = activeFilterCount > 0
 
   return (
     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-      <Typography variant="body2" color="text.secondary" sx={{ flexShrink: 0 }}>
+      <Typography variant="h6" color="text.secondary" sx={{ flexShrink: 0, fontFamily: '"EB Garamond", serif', fontWeight: 500, fontSize: '1.05rem' }}>
         {countText}
       </Typography>
 
@@ -123,7 +124,7 @@ function FilterBar({
               ))}
             </Select>
           </FormControl>
-          <FormControl fullWidth size="small">
+          <FormControl fullWidth size="small" sx={{ mb: 1 }}>
             <InputLabel id="genre-filter-label">Genre</InputLabel>
             <Select
               labelId="genre-filter-label"
@@ -134,6 +135,20 @@ function FilterBar({
               <MenuItem value="">All genres</MenuItem>
               {genres.map((g) => (
                 <MenuItem key={g} value={g}>{g}</MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          <FormControl fullWidth size="small">
+            <InputLabel id="period-filter-label">Period</InputLabel>
+            <Select
+              labelId="period-filter-label"
+              value={filters.period}
+              label="Period"
+              onChange={handleChange('period')}
+            >
+              <MenuItem value="">All periods</MenuItem>
+              {periods.map((p) => (
+                <MenuItem key={p} value={p}>{p}</MenuItem>
               ))}
             </Select>
           </FormControl>

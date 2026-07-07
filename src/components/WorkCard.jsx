@@ -19,7 +19,8 @@ function WorkCard({ work }) {
                 size="small" 
                 color="primary"
               />
-              {work.genre && <Chip label={work.genre} size="small" variant="outlined" />}
+              {work.genre && <Chip label={work.genre} size="small" color="secondary" variant="outlined" />}
+              {work.period && <Chip label={work.period} size="small" variant="outlined" />}
             </Box>
           </Box>
           {work.movements && work.movements.length > 0 && (

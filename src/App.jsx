@@ -11,7 +11,7 @@ const ITEMS_PER_PAGE = 20
 function App({ onToggleTheme, themeMode }) {
   const { data, loading, error } = useMusicData()
   const [searchTerm, setSearchTerm] = useState('')
-  const [filters, setFilters] = useState({ composer: '', genre: '' })
+  const [filters, setFilters] = useState({ composer: '', genre: '', period: '' })
   const [page, setPage] = useState(1)
 
   const filteredData = useMemo(() => filterWorks(data, searchTerm, filters), [data, searchTerm, filters])
@@ -27,6 +27,7 @@ function App({ onToggleTheme, themeMode }) {
 
   const allComposers = [...new Set(data.map(w => w.composerShort))].sort()
   const allGenres = [...new Set(data.filter(w => w.genre).map(w => w.genre))].sort()
+  const allPeriods = [...new Set(data.filter(w => w.period).map(w => w.period))].sort()
 
   return (
     <Layout searchTerm={searchTerm} onSearchChange={setSearchTerm}>
@@ -40,6 +41,7 @@ function App({ onToggleTheme, themeMode }) {
         <FilterBar
           composers={allComposers}
           genres={allGenres}
+          periods={allPeriods}
           filters={filters}
           onFilterChange={setFilters}
           countText={countText}

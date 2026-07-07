@@ -8,6 +8,7 @@ export function filterWorks(data, searchTerm, filters) {
       if (work.composerShort.toLowerCase().includes(term)) return true
       if (work.title.toLowerCase().includes(term)) return true
       if (work.op && work.op.toLowerCase().includes(term)) return true
+      if (work.period && work.period.toLowerCase().includes(term)) return true
       if (work.movements && work.movements.some(m => m.toLowerCase().includes(term))) return true
       return false
     })
@@ -21,6 +22,10 @@ export function filterWorks(data, searchTerm, filters) {
     result = result.filter(work => work.genre === filters.genre)
   }
 
+  if (filters.period) {
+    result = result.filter(work => work.period === filters.period)
+  }
+
   return result
 }
 
@@ -30,4 +35,8 @@ export function getAllComposers(data) {
 
 export function getAllGenres(data) {
   return [...new Set(data.filter(w => w.genre).map(w => w.genre))].sort()
+}
+
+export function getAllPeriods(data) {
+  return [...new Set(data.filter(w => w.period).map(w => w.period))].sort()
 }
