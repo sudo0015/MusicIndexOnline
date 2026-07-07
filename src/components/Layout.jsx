@@ -1,20 +1,37 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { AppBar, Toolbar, Typography, Container, Box, TextField, InputAdornment, IconButton, Slide, Fade, useTheme, useMediaQuery } from '@mui/material'
 
-const searchInputSx = {
+const searchInputSx = (theme) => ({
   width: '100%',
   maxWidth: '320px',
   '& .MuiOutlinedInput-root': {
-    bgcolor: 'rgba(255,255,255,0.15)',
-    color: '#fff',
+    bgcolor: theme.palette.mode === 'dark'
+      ? 'rgba(255,255,255,0.08)'
+      : 'rgba(255,255,255,0.20)',
+    color: theme.palette.primary.contrastText,
     borderRadius: '9999px',
-    '& fieldset': { borderColor: 'rgba(255,255,255,0.35)' },
-    '&:hover fieldset': { borderColor: 'rgba(255,255,255,0.7)' },
-    '&.Mui-focused fieldset': { borderColor: '#fff' }
+    '& fieldset': {
+      borderColor: theme.palette.mode === 'dark'
+        ? 'rgba(255,255,255,0.20)'
+        : theme.palette.primary.contrastText + '55',
+    },
+    '&:hover fieldset': {
+      borderColor: theme.palette.mode === 'dark'
+        ? 'rgba(255,255,255,0.40)'
+        : theme.palette.primary.contrastText + 'BB',
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: theme.palette.secondary.main,
+      borderWidth: '2px',
+    },
   },
-  '& .MuiInputBase-input::placeholder': { color: 'rgba(255,255,255,0.7)', opacity: 1 },
-  '& svg': { color: '#fff' }
-}
+  '& .MuiInputBase-input::placeholder': {
+    color: theme.palette.mode === 'dark'
+      ? 'rgba(255,255,255,0.45)'
+      : theme.palette.primary.contrastText + 'AA',
+    opacity: 1,
+  },
+})
 
 function Layout({ children, searchTerm, onSearchChange }) {
   const theme = useTheme()
@@ -79,14 +96,29 @@ function Layout({ children, searchTerm, onSearchChange }) {
 
   return (
     <Box sx={{ minHeight: '100vh' }}>
-      <AppBar position="sticky" color="primary" sx={{ top: 0, zIndex: 1100 }}>
+      <AppBar position="sticky" sx={{ top: 0, zIndex: 1100, bgcolor: theme.palette.mode === 'dark' ? '#9E6B47' : '#8C5D3E' }}>
         <Toolbar sx={{ overflow: 'hidden' }}>
           <Box sx={{ mr: 2, display: 'inline-flex', alignItems: 'center', flexShrink: 0 }}>
-            <span className="mdi mdi-music" style={{ color: '#fff', fontSize: '1.5rem' }} />
+            <span
+              className="mdi mdi-music"
+              style={{ color: theme.palette.primary.contrastText, fontSize: '1.5rem' }}
+            />
           </Box>
 
           <Fade in={showTitle} unmountOnExit>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1, fontWeight: 'bold', fontFamily: 'Merchant, serif', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{
+                flexGrow: 1,
+                fontWeight: 700,
+                fontFamily: '"Playfair Display", "EB Garamond", Georgia, serif',
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                color: 'primary.contrastText',
+              }}
+            >
               Music Index Online
             </Typography>
           </Fade>
@@ -97,7 +129,10 @@ function Layout({ children, searchTerm, onSearchChange }) {
                 <>
                   {!showTitle && <Box sx={{ flexGrow: 1 }} />}
                   <IconButton color="inherit" onClick={handleSearchToggle} sx={{ flexShrink: 0 }}>
-                    <span className="mdi mdi-magnify" style={{ color: '#fff', fontSize: '1.5rem' }} />
+                    <span
+                      className="mdi mdi-magnify"
+                      style={{ color: theme.palette.primary.contrastText, fontSize: '1.5rem' }}
+                    />
                   </IconButton>
                 </>
               )}
@@ -111,22 +146,24 @@ function Layout({ children, searchTerm, onSearchChange }) {
                     inputRef={searchInputRef}
                     onBlur={handleSearchBlur}
                     autoFocus
-                    sx={searchInputSx}
+                    sx={searchInputSx(theme)}
                     InputProps={{
                       endAdornment: (
                         <InputAdornment position="end">
-                          <IconButton size="small" onClick={handleSearchToggle} sx={{ color: '#fff', p: 0.5 }}>
+                          <IconButton
+                            size="small"
+                            onClick={handleSearchToggle}
+                            sx={{ color: theme.palette.primary.contrastText, p: 0.5 }}
+                          >
                             <span className="mdi mdi-close" style={{ fontSize: '1.1rem' }} />
                           </IconButton>
                         </InputAdornment>
-                      )
+                      ),
                     }}
                   />
                 </Box>
               </Slide>
-              {showSearchInput && (
-                <Box sx={{ width: 40, flexShrink: 0 }} />
-              )}
+              {showSearchInput && <Box sx={{ width: 40, flexShrink: 0 }} />}
             </>
           ) : (
             <TextField
@@ -136,14 +173,17 @@ function Layout({ children, searchTerm, onSearchChange }) {
               size="small"
               sx={{
                 width: { xs: '55%', sm: '40%', md: '320px' },
-                ...searchInputSx
+                ...searchInputSx(theme),
               }}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <span className="mdi mdi-magnify" style={{ color: '#fff' }} />
+                    <span
+                      className="mdi mdi-magnify"
+                      style={{ color: theme.palette.secondary.main }}
+                    />
                   </InputAdornment>
-                )
+                ),
               }}
             />
           )}

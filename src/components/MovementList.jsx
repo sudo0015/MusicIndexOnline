@@ -17,7 +17,7 @@ function MovementList({ movements }) {
           <ListItem key={index} divider={index < movements.length - 1}>
             <ListItemText 
               primary={`${index + 1}. ${movement}`}
-              primaryTypographyProps={{ variant: 'body1', fontFamily: 'Merchant, serif' }}
+              primaryTypographyProps={{ variant: 'body1', fontFamily: '"EB Garamond", "Times New Roman", Georgia, serif' }}
             />
           </ListItem>
         ))}

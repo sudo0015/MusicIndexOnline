@@ -10,7 +10,7 @@ function WorkCard({ work }) {
       <CardContent>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <Box sx={{ flex: 1 }}>
-            <Typography variant="h6" component="div" gutterBottom sx={{ fontWeight: 700, fontFamily: 'Merchant, serif' }}>
+            <Typography variant="h6" component="div" gutterBottom sx={{ fontWeight: 700, fontFamily: '"Playfair Display", "EB Garamond", Georgia, serif' }}>
               {work.title}
             </Typography>
             <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', mb: 1 }}>

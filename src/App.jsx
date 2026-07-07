@@ -8,7 +8,7 @@ import { filterWorks } from './utils/search'
 
 const ITEMS_PER_PAGE = 20
 
-function App() {
+function App({ onToggleTheme, themeMode }) {
   const { data, loading, error } = useMusicData()
   const [searchTerm, setSearchTerm] = useState('')
   const [filters, setFilters] = useState({ composer: '', genre: '' })
@@ -43,6 +43,8 @@ function App() {
           filters={filters}
           onFilterChange={setFilters}
           countText={countText}
+          onToggleTheme={onToggleTheme}
+          themeMode={themeMode}
         />
       </Paper>
 

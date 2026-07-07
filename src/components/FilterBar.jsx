@@ -16,9 +16,12 @@ function FilterBar({
   genres,
   filters,
   onFilterChange,
-  countText = ''
+  countText = '',
+  onToggleTheme,
+  themeMode,
 }) {
   const [menuAnchor, setMenuAnchor] = useState(null)
+  const isDark = themeMode === 'dark'
 
   const handleChange = (field) => (event) => {
     onFilterChange({ ...filters, [field]: event.target.value })
@@ -41,12 +44,22 @@ function FilterBar({
       <Box sx={{ flex: 1 }} />
 
       <Button
-        size="small"
-        variant="outlined"
+        variant="contained"
+        color="primary"
         onClick={(e) => setMenuAnchor(e.currentTarget)}
         startIcon={<span className="mdi mdi-filter" />}
         endIcon={<span className="mdi mdi-chevron-down" />}
-        sx={{ whiteSpace: 'nowrap', textTransform: 'none' }}
+        sx={{
+          borderRadius: '6px',
+          py: 0.8,
+          px: 1.5,
+          fontFamily: '"EB Garamond", serif',
+          fontSize: '0.95rem',
+          textTransform: 'none',
+          whiteSpace: 'nowrap',
+          boxShadow: 'none',
+          '&:hover': { boxShadow: 'none' },
+        }}
       >
         Filters
         {hasFilters && (
@@ -57,16 +70,36 @@ function FilterBar({
               px: 1,
               minWidth: 20,
               textAlign: 'center',
-              bgcolor: 'primary.main',
-              color: 'primary.contrastText',
+              bgcolor: (t) => t.palette.primary.contrastText,
+              color: 'primary.main',
               borderRadius: 9999,
               fontSize: 11,
-              lineHeight: 1.6
+              lineHeight: 1.6,
             }}
           >
             {activeFilterCount}
           </Box>
         )}
+      </Button>
+
+      <Button
+        variant="contained"
+        color="secondary"
+        onClick={onToggleTheme}
+        startIcon={<span className={`mdi ${isDark ? 'mdi-weather-sunny' : 'mdi-weather-night'}`} />}
+        sx={{
+          borderRadius: '6px',
+          py: 0.8,
+          px: 1.5,
+          fontFamily: '"EB Garamond", serif',
+          fontSize: '0.95rem',
+          textTransform: 'none',
+          whiteSpace: 'nowrap',
+          boxShadow: 'none',
+          '&:hover': { boxShadow: 'none' },
+        }}
+      >
+        {isDark ? 'Light' : 'Dark'}
       </Button>
       <Menu
         anchorEl={menuAnchor}
