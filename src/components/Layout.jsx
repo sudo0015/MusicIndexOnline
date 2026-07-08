@@ -93,6 +93,10 @@ function Layout({ children, searchTerm, onSearchChange }) {
 
   const showTitle = !isVeryCompact && (!isCompact || !showSearchInput) && !titleHidden
 
+  const handleLogoClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   return (
     <Box sx={{ minHeight: '100vh' }}>
       <AppBar position="sticky" sx={{ top: 0, zIndex: 1100, bgcolor: theme.palette.mode === 'dark' ? '#9E6B47' : '#8C5D3E' }}>
@@ -101,7 +105,8 @@ function Layout({ children, searchTerm, onSearchChange }) {
             <img
               src={musicLogo}
               alt="Music Logo"
-              style={{ width: '2.25rem', height: '2.25rem', display: 'block' }}
+              onClick={handleLogoClick}
+              style={{ width: '2.25rem', height: '2.25rem', display: 'block', cursor: 'pointer' }}
             />
           </Box>
 

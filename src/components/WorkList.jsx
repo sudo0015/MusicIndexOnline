@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useEffect, useRef } from 'react'
 import { Box, Typography, Pagination } from '@mui/material'
 import WorkCard from './WorkCard'
 import { filterWorks } from '../utils/search'
@@ -8,6 +8,14 @@ const DEFAULT_ITEMS_PER_PAGE = 20
 function WorkList({ data, searchTerm, filters, page, onPageChange, itemsPerPage, onCopyText }) {
   const localPage = page || 1
   const perPage = itemsPerPage || DEFAULT_ITEMS_PER_PAGE
+  const prevPageRef = useRef(localPage)
+
+  useEffect(() => {
+    if (prevPageRef.current !== localPage) {
+      prevPageRef.current = localPage
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }, [localPage])
 
   const filteredData = useMemo(() => {
     const result = filterWorks(data, searchTerm, filters)
