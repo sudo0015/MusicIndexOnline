@@ -3,7 +3,10 @@ import {
   Box,
   Typography,
   Button,
-  Menu,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
   MenuItem,
   FormControl,
   InputLabel,
@@ -21,7 +24,7 @@ function FilterBar({
   onToggleTheme,
   themeMode,
 }) {
-  const [menuAnchor, setMenuAnchor] = useState(null)
+  const [dialogOpen, setDialogOpen] = useState(false)
   const isDark = themeMode === 'dark'
 
   const handleChange = (field) => (event) => {
@@ -47,7 +50,7 @@ function FilterBar({
       <Button
         variant="contained"
         color="primary"
-        onClick={(e) => setMenuAnchor(e.currentTarget)}
+        onClick={() => setDialogOpen(true)}
         startIcon={<span className="mdi mdi-filter-menu" />}
         sx={{
           borderRadius: '6px',
@@ -115,71 +118,111 @@ function FilterBar({
           {isDark ? 'Light' : 'Dark'}
         </Box>
       </Button>
-      <Menu
-        anchorEl={menuAnchor}
-        open={Boolean(menuAnchor)}
-        onClose={() => setMenuAnchor(null)}
-        PaperProps={{ sx: { minWidth: 280, p: 1 } }}
-        MenuListProps={{ dense: true }}
+      <Dialog
+        open={dialogOpen}
+        onClose={() => setDialogOpen(false)}
+        aria-labelledby="filter-dialog-title"
+        sx={{
+          backdropFilter: 'blur(8px)',
+          '& .MuiBackdrop-root': {
+            backgroundColor: 'rgba(0, 0, 0, 0.45)',
+            backdropFilter: 'blur(8px)',
+          },
+        }}
+        PaperProps={{
+          sx: {
+            minWidth: 340,
+            maxWidth: '90vw',
+            borderRadius: 2,
+          },
+        }}
       >
-        <Box sx={{ px: 1, pb: 1 }}>
-          <FormControl fullWidth size="small" sx={{ mb: 1 }}>
-            <InputLabel id="composer-filter-label">Composer</InputLabel>
-            <Select
-              labelId="composer-filter-label"
-              value={filters.composer}
-              label="Composer"
-              onChange={handleChange('composer')}
-            >
-              <MenuItem value="">All composers</MenuItem>
-              {composers.map((c) => (
-                <MenuItem key={c} value={c}>{c}</MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-          <FormControl fullWidth size="small" sx={{ mb: 1 }}>
-            <InputLabel id="genre-filter-label">Genre</InputLabel>
-            <Select
-              labelId="genre-filter-label"
-              value={filters.genre}
-              label="Genre"
-              onChange={handleChange('genre')}
-            >
-              <MenuItem value="">All genres</MenuItem>
-              {genres.map((g) => (
-                <MenuItem key={g} value={g}>{g}</MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-          <FormControl fullWidth size="small">
-            <InputLabel id="period-filter-label">Period</InputLabel>
-            <Select
-              labelId="period-filter-label"
-              value={filters.period}
-              label="Period"
-              onChange={handleChange('period')}
-            >
-              <MenuItem value="">All periods</MenuItem>
-              {periods.map((p) => (
-                <MenuItem key={p} value={p}>{p}</MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </Box>
-
-        {hasFilters && (
-          <>
-            <Divider sx={{ my: 0.5 }} />
-            <MenuItem
-              onClick={clearFilters}
-              sx={{ justifyContent: 'center', color: 'primary.main', gap: 1 }}
-            >
-              <span className="mdi mdi-restore" style={{ fontSize: '1.1rem' }} />
-              Reset filter
-            </MenuItem>
-          </>
-        )}
-      </Menu>
+        <DialogTitle
+          id="filter-dialog-title"
+          sx={{
+            pb: 1,
+            fontFamily: '"EB Garamond", serif',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: 2,
+          }}
+        >
+          <Box component="span">Filters</Box>
+          <Button
+            onClick={clearFilters}
+            disabled={!hasFilters}
+            color="primary"
+            startIcon={<span className="mdi mdi-restore" style={{ fontSize: '1.1rem' }} />}
+            sx={{
+              fontFamily: '"EB Garamond", serif',
+              textTransform: 'none',
+              fontSize: '0.95rem',
+              py: 0.5,
+            }}
+          >
+            Reset filter
+          </Button>
+        </DialogTitle>
+        <Divider />
+        <DialogContent sx={{ pt: 2 }}>
+          <Box sx={{ minWidth: 300 }}>
+            <FormControl fullWidth size="small" sx={{ mb: 1.5 }}>
+              <InputLabel id="composer-filter-label">Composer</InputLabel>
+              <Select
+                labelId="composer-filter-label"
+                value={filters.composer}
+                label="Composer"
+                onChange={handleChange('composer')}
+              >
+                <MenuItem value="">All composers</MenuItem>
+                {composers.map((c) => (
+                  <MenuItem key={c} value={c}>{c}</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+            <FormControl fullWidth size="small" sx={{ mb: 1.5 }}>
+              <InputLabel id="genre-filter-label">Genre</InputLabel>
+              <Select
+                labelId="genre-filter-label"
+                value={filters.genre}
+                label="Genre"
+                onChange={handleChange('genre')}
+              >
+                <MenuItem value="">All genres</MenuItem>
+                {genres.map((g) => (
+                  <MenuItem key={g} value={g}>{g}</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+            <FormControl fullWidth size="small">
+              <InputLabel id="period-filter-label">Period</InputLabel>
+              <Select
+                labelId="period-filter-label"
+                value={filters.period}
+                label="Period"
+                onChange={handleChange('period')}
+              >
+                <MenuItem value="">All periods</MenuItem>
+                {periods.map((p) => (
+                  <MenuItem key={p} value={p}>{p}</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Box>
+        </DialogContent>
+        <Divider />
+        <DialogActions sx={{ px: 2, py: 1.5 }}>
+          <Button
+            onClick={() => setDialogOpen(false)}
+            variant="contained"
+            color="primary"
+            sx={{ fontFamily: '"EB Garamond", serif', textTransform: 'none', fontSize: '0.95rem', borderRadius: '6px', boxShadow: 'none' }}
+          >
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Box>
   )
 }
