@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback } from 'react'
+import React, { useState, useMemo, useCallback, useRef, useEffect } from 'react'
 import { Box, CircularProgress, Alert, Paper, Snackbar, Typography } from '@mui/material'
 import Layout from './components/Layout'
 import FilterBar from './components/FilterBar'
@@ -26,12 +26,33 @@ function App({ onToggleTheme, themeMode }) {
   const countText = total > 0 ? `${startIndex + 1}-${endIndex} of ${total} works` : `${total} works`
 
   const [snackbarOpen, setSnackbarOpen] = useState(false)
+  const snackbarTimerRef = useRef(null)
 
-  const showCopied = useCallback(() => {
-    setSnackbarOpen(true)
+  useEffect(() => {
+    return () => {
+      if (snackbarTimerRef.current) {
+        clearTimeout(snackbarTimerRef.current)
+      }
+    }
   }, [])
 
-  const handleSnackbarClose = () => {
+  const showCopied = useCallback(() => {
+    if (snackbarTimerRef.current) {
+      clearTimeout(snackbarTimerRef.current)
+    }
+    setSnackbarOpen(true)
+    snackbarTimerRef.current = setTimeout(() => {
+      setSnackbarOpen(false)
+      snackbarTimerRef.current = null
+    }, 1500)
+  }, [])
+
+  const handleSnackbarClose = (event, reason) => {
+    if (reason === 'clickaway') return
+    if (snackbarTimerRef.current) {
+      clearTimeout(snackbarTimerRef.current)
+      snackbarTimerRef.current = null
+    }
     setSnackbarOpen(false)
   }
 
@@ -78,11 +99,11 @@ function App({ onToggleTheme, themeMode }) {
 
       <Snackbar
         open={snackbarOpen}
-        autoHideDuration={1500}
         onClose={handleSnackbarClose}
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
       >
         <Box
+          onClick={(e) => e.stopPropagation()}
           sx={{
             display: 'flex',
             alignItems: 'center',

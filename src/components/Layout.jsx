@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { AppBar, Toolbar, Typography, Container, Box, TextField, InputAdornment, IconButton, Slide, Fade, useTheme, useMediaQuery } from '@mui/material'
+import musicLogo from '../assets/icon.svg'
 
 const searchInputSx = (theme) => ({
   width: '100%',
@@ -97,9 +98,10 @@ function Layout({ children, searchTerm, onSearchChange }) {
       <AppBar position="sticky" sx={{ top: 0, zIndex: 1100, bgcolor: theme.palette.mode === 'dark' ? '#9E6B47' : '#8C5D3E' }}>
         <Toolbar sx={{ overflow: 'hidden' }}>
           <Box sx={{ mr: 2, display: 'inline-flex', alignItems: 'center', flexShrink: 0 }}>
-            <span
-              className="mdi mdi-music"
-              style={{ color: theme.palette.primary.contrastText, fontSize: '1.5rem' }}
+            <img
+              src={musicLogo}
+              alt="Music Logo"
+              style={{ width: '2.25rem', height: '2.25rem', display: 'block' }}
             />
           </Box>
 
