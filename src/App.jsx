@@ -1,5 +1,5 @@
-import React, { useState, useMemo } from 'react'
-import { Box, CircularProgress, Alert, Paper } from '@mui/material'
+import React, { useState, useMemo, useCallback } from 'react'
+import { Box, CircularProgress, Alert, Paper, Snackbar, Typography } from '@mui/material'
 import Layout from './components/Layout'
 import FilterBar from './components/FilterBar'
 import WorkList from './components/WorkList'
@@ -24,6 +24,16 @@ function App({ onToggleTheme, themeMode }) {
   const startIndex = (page - 1) * ITEMS_PER_PAGE
   const endIndex = Math.min(startIndex + ITEMS_PER_PAGE, total)
   const countText = total > 0 ? `${startIndex + 1}-${endIndex} of ${total} works` : `${total} works`
+
+  const [snackbarOpen, setSnackbarOpen] = useState(false)
+
+  const showCopied = useCallback(() => {
+    setSnackbarOpen(true)
+  }, [])
+
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false)
+  }
 
   const allComposers = [...new Set(data.map(w => w.composerShort))].sort()
   const allGenres = [...new Set(data.filter(w => w.genre).map(w => w.genre))].sort()
@@ -62,8 +72,33 @@ function App({ onToggleTheme, themeMode }) {
           page={page}
           onPageChange={setPage}
           itemsPerPage={ITEMS_PER_PAGE}
+          onCopyText={showCopied}
         />
       )}
+
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={1500}
+        onClose={handleSnackbarClose}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+      >
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 1,
+            bgcolor: 'success.main',
+            color: 'success.contrastText',
+            px: 2,
+            py: 1,
+            borderRadius: 1,
+            boxShadow: 3,
+          }}
+        >
+          <Box component="span" className="mdi mdi-check-circle-outline" sx={{ fontSize: '1.25rem', lineHeight: 1 }} />
+          <Typography variant="body2" sx={{ fontWeight: 500 }}>Copied</Typography>
+        </Box>
+      </Snackbar>
     </Layout>
   )
 }

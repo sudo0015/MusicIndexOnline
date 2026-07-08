@@ -5,7 +5,7 @@ import { filterWorks } from '../utils/search'
 
 const DEFAULT_ITEMS_PER_PAGE = 20
 
-function WorkList({ data, searchTerm, filters, page, onPageChange, itemsPerPage }) {
+function WorkList({ data, searchTerm, filters, page, onPageChange, itemsPerPage, onCopyText }) {
   const localPage = page || 1
   const perPage = itemsPerPage || DEFAULT_ITEMS_PER_PAGE
 
@@ -32,7 +32,11 @@ function WorkList({ data, searchTerm, filters, page, onPageChange, itemsPerPage 
   return (
     <Box>
       {currentPageData.map((work, index) => (
-        <WorkCard key={`${work.composer}-${work.title}-${index}`} work={work} />
+        <WorkCard
+          key={`${work.composer}-${work.title}-${index}`}
+          work={work}
+          onCopyText={onCopyText}
+        />
       ))}
 
       {totalPages > 1 && (

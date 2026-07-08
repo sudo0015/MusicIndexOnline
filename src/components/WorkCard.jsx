@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Card, CardContent, Typography, Box, Chip, IconButton, Collapse } from '@mui/material'
 import MovementList from './MovementList'
 
-function WorkCard({ work }) {
+function WorkCard({ work, onCopyText }) {
   const [expanded, setExpanded] = useState(false)
 
   const hasMovements = work.movements && work.movements.length > 0
@@ -10,6 +10,29 @@ function WorkCard({ work }) {
   const handleToggle = () => {
     if (hasMovements) {
       setExpanded(!expanded)
+    }
+  }
+
+  const copyToClipboard = async (event, text) => {
+    event.stopPropagation()
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(text)
+      } else {
+        const textarea = document.createElement('textarea')
+        textarea.value = text
+        textarea.style.position = 'fixed'
+        textarea.style.opacity = '0'
+        document.body.appendChild(textarea)
+        textarea.select()
+        document.execCommand('copy')
+        document.body.removeChild(textarea)
+      }
+      if (onCopyText) {
+        onCopyText(text)
+      }
+    } catch (err) {
+      console.error('Failed to copy:', err)
     }
   }
 
@@ -29,17 +52,49 @@ function WorkCard({ work }) {
       <CardContent>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <Box sx={{ flex: 1 }}>
-            <Typography variant="h6" component="div" gutterBottom sx={{ fontWeight: 700, fontFamily: '"Playfair Display", "EB Garamond", Georgia, serif' }}>
+            <Typography
+              variant="h6"
+              component="span"
+              onClick={(e) => copyToClipboard(e, work.title)}
+              sx={{
+                display: 'inline-block',
+                fontWeight: 700,
+                fontFamily: '"Playfair Display", "EB Garamond", Georgia, serif',
+                cursor: 'pointer',
+                transition: 'opacity 0.15s ease',
+                '&:hover': { opacity: 0.7 },
+                mb: 1,
+              }}
+            >
               {work.title}
             </Typography>
             <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', mb: 1 }}>
-              <Chip 
-                label={work.composer} 
-                size="small" 
+              <Chip
+                label={work.composer}
+                size="small"
                 color="primary"
+                onClick={(e) => copyToClipboard(e, work.composer)}
+                sx={{ cursor: 'pointer' }}
               />
-              {work.genre && <Chip label={work.genre} size="small" color="secondary" variant="outlined" />}
-              {work.period && <Chip label={work.period} size="small" variant="outlined" />}
+              {work.genre && (
+                <Chip
+                  label={work.genre}
+                  size="small"
+                  color="secondary"
+                  variant="outlined"
+                  onClick={(e) => copyToClipboard(e, work.genre)}
+                  sx={{ cursor: 'pointer' }}
+                />
+              )}
+              {work.period && (
+                <Chip
+                  label={work.period}
+                  size="small"
+                  variant="outlined"
+                  onClick={(e) => copyToClipboard(e, work.period)}
+                  sx={{ cursor: 'pointer' }}
+                />
+              )}
             </Box>
           </Box>
           {hasMovements && (
@@ -59,7 +114,7 @@ function WorkCard({ work }) {
       </CardContent>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent sx={{ pt: 0 }}>
-          <MovementList movements={work.movements} />
+          <MovementList movements={work.movements} onCopyText={onCopyText} />
         </CardContent>
       </Collapse>
     </Card>
