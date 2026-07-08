@@ -51,7 +51,7 @@ function FilterBar({
         variant="contained"
         color="primary"
         onClick={() => setDialogOpen(true)}
-        startIcon={<span className="mdi mdi-filter-menu" />}
+        startIcon={<span className="mdi mdi-filter" />}
         sx={{
           borderRadius: '6px',
           py: { xs: 0, sm: 0.8 },
@@ -133,11 +133,11 @@ function FilterBar({
           sx: {
             minWidth: 340,
             maxWidth: '90vw',
-            minHeight: { xs: '90vh', sm: 'auto' },
             maxHeight: '90vh',
             display: 'flex',
             flexDirection: 'column',
-            borderRadius: 2,
+            borderRadius: { xs: 2, sm: 2 },
+            '&.MuiPaper-rounded': { borderRadius: 2 },
           },
         }}
       >
