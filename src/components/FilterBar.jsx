@@ -136,8 +136,8 @@ function FilterBar({
             maxHeight: '90vh',
             display: 'flex',
             flexDirection: 'column',
-            borderRadius: { xs: 2, sm: 2 },
-            '&.MuiPaper-rounded': { borderRadius: 2 },
+            borderRadius: 2,
+            overflow: 'hidden',
           },
         }}
       >
@@ -152,7 +152,7 @@ function FilterBar({
             gap: 2,
           }}
         >
-          <Box component="span">Filters</Box>
+          <Box component="span">Filter</Box>
           <Button
             onClick={clearFilters}
             disabled={!hasFilters}
