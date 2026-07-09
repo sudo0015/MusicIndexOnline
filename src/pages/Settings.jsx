@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
     Box,
@@ -15,6 +15,10 @@ import {
     Switch,
     Button,
     IconButton,
+    Dialog,
+    DialogTitle,
+    DialogContent,
+    DialogActions,
     useMediaQuery,
     useTheme,
 } from '@mui/material'
@@ -25,6 +29,7 @@ function Settings({ themeMode, onSetThemeMode, fontSizeScale, onSetFontSizeScale
     const navigate = useNavigate()
     const theme = useTheme()
     const isCompact = useMediaQuery('(max-width:480px)')
+    const [donateDialogOpen, setDonateDialogOpen] = useState(false)
     const handleThemeChange = (event, next) => {
         if (next && onSetThemeMode) {
             onSetThemeMode(next)
@@ -446,7 +451,8 @@ function Settings({ themeMode, onSetThemeMode, fontSizeScale, onSetFontSizeScale
                                     textTransform: 'none',
                                     fontSize: '0.95rem',
                                     borderRadius: 2,
-                                    ...(isCompact && { minWidth: 40, minHeight: 40, p: 0 }),
+                                    width: isCompact ? 40 : 120,
+                                    ...(isCompact && { minHeight: 40, p: 0 }),
                                 }}
                             >
                                 {isCompact ? (
@@ -457,7 +463,120 @@ function Settings({ themeMode, onSetThemeMode, fontSizeScale, onSetFontSizeScale
                             </Button>
                         </Box>
                     </CardContent>
+                    <Divider />
+                    <CardContent>
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'space-between',
+                                gap: 2,
+                            }}
+                        >
+                            <Box sx={{ minWidth: 0 }}>
+                                <Typography
+                                    variant="subtitle1"
+                                    sx={{
+                                        fontFamily: '"EB Garamond", Georgia, serif',
+                                        fontWeight: 600,
+                                        fontSize: '1.15rem',
+                                    }}
+                                >
+                                    Support
+                                </Typography>
+                                <Typography
+                                    variant="body2"
+                                    color="text.secondary"
+                                    sx={{ fontFamily: '"EB Garamond", Georgia, serif', mt: 0.5 }}
+                                >
+                                    Support the project and its growing database
+                                </Typography>
+                            </Box>
+                            <Button
+                                variant="outlined"
+                                size="small"
+                                startIcon={!isCompact ? <span className="mdi mdi-heart-outline" /> : undefined}
+                                onClick={() => setDonateDialogOpen(true)}
+                                sx={{
+                                    fontFamily: '"EB Garamond", serif',
+                                    textTransform: 'none',
+                                    fontSize: '0.95rem',
+                                    borderRadius: 2,
+                                    width: isCompact ? 40 : 120,
+                                    ...(isCompact && { minHeight: 40, p: 0 }),
+                                }}
+                            >
+                                {isCompact ? (
+                                    <span className="mdi mdi-heart-outline" />
+                                ) : (
+                                    'Donate'
+                                )}
+                            </Button>
+                        </Box>
+                    </CardContent>
                 </Card>
+
+                <Dialog
+                    open={donateDialogOpen}
+                    onClose={() => setDonateDialogOpen(false)}
+                    aria-labelledby="donate-dialog-title"
+                    sx={{
+                        backdropFilter: 'blur(8px)',
+                        '& .MuiBackdrop-root': {
+                            backgroundColor: 'rgba(0, 0, 0, 0.45)',
+                            backdropFilter: 'blur(8px)',
+                        },
+                    }}
+                    PaperProps={{
+                        sx: {
+                            width: 420,
+                            maxWidth: '100vw',
+                            maxHeight: '100vh',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            borderRadius: 2,
+                            overflow: 'hidden',
+                        },
+                    }}
+                >
+                    <DialogTitle
+                        id="donate-dialog-title"
+                        sx={{
+                            pb: 1,
+                            fontFamily: '"EB Garamond", serif',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: 2,
+                        }}
+                    >
+                        <Box component="span" sx={{ display: 'flex', alignItems: 'center', gap: 1.25 }}>
+                            <span className="mdi mdi-heart-outline" style={{ fontSize: '1.25rem' }} />
+                            Support
+                        </Box>
+                    </DialogTitle>
+                    <Divider />
+                    <DialogContent sx={{ pt: 2, pb: 2, flex: 1, overflowY: 'auto' }}>
+                        <Box sx={{ textAlign: 'center' }}>
+                            <style>{`.pp-NXS959MKBRYHG{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;}`}</style>
+                            <form action="https://www.paypal.com/ncp/payment/NXS959MKBRYHG" method="post" target="_blank" style={{ display: 'inline-grid', justifyItems: 'center', alignContent: 'start', gap: '0.5rem' }}>
+                                <input className="pp-NXS959MKBRYHG" type="submit" value="Donate" />
+                                <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
+                                <section style={{ fontSize: '0.75rem' }}> Powered by: <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style={{ height: '0.875rem', verticalAlign: 'middle' }} /></section>
+                            </form>
+                        </Box>
+                    </DialogContent>
+                    <Divider />
+                    <DialogActions sx={{ px: 2, py: 1.5 }}>
+                        <Button
+                            onClick={() => setDonateDialogOpen(false)}
+                            variant="contained"
+                            color="primary"
+                            sx={{ fontFamily: '"EB Garamond", serif', textTransform: 'none', fontSize: '0.95rem', borderRadius: '6px', boxShadow: 'none' }}
+                        >
+                            Close
+                        </Button>
+                    </DialogActions>
+                </Dialog>
             </Box>
         </Layout>
     )
