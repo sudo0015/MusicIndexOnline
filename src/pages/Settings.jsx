@@ -24,12 +24,16 @@ import {
 } from '@mui/material'
 import Layout from '../components/Layout'
 import musicLogo from '../assets/icon.svg'
+import paypalIcon from '../assets/paypal.svg'
+import alipayIcon from '../assets/alipay.svg'
+import alipayQrcode from '../assets/alipay_qrcode.svg'
 
 function Settings({ themeMode, onSetThemeMode, fontSizeScale, onSetFontSizeScale, clickCopyEnabled, onSetClickCopyEnabled, itemsPerPage, onSetItemsPerPage }) {
     const navigate = useNavigate()
     const theme = useTheme()
     const isCompact = useMediaQuery('(max-width:480px)')
     const [donateDialogOpen, setDonateDialogOpen] = useState(false)
+    const [showAlipayQr, setShowAlipayQr] = useState(false)
     const handleThemeChange = (event, next) => {
         if (next && onSetThemeMode) {
             onSetThemeMode(next)
@@ -452,7 +456,12 @@ function Settings({ themeMode, onSetThemeMode, fontSizeScale, onSetFontSizeScale
                                     fontSize: '0.95rem',
                                     borderRadius: 2,
                                     width: isCompact ? 40 : 120,
-                                    ...(isCompact && { minHeight: 40, p: 0 }),
+                                    ...(isCompact && {
+                                        aspectRatio: '1 / 1',
+                                        height: 40,
+                                        minWidth: 40,
+                                        p: 0,
+                                    }),
                                 }}
                             >
                                 {isCompact ? (
@@ -503,7 +512,12 @@ function Settings({ themeMode, onSetThemeMode, fontSizeScale, onSetFontSizeScale
                                     fontSize: '0.95rem',
                                     borderRadius: 2,
                                     width: isCompact ? 40 : 120,
-                                    ...(isCompact && { minHeight: 40, p: 0 }),
+                                    ...(isCompact && {
+                                        aspectRatio: '1 / 1',
+                                        height: 40,
+                                        minWidth: 40,
+                                        p: 0,
+                                    }),
                                 }}
                             >
                                 {isCompact ? (
@@ -555,23 +569,115 @@ function Settings({ themeMode, onSetThemeMode, fontSizeScale, onSetFontSizeScale
                         </Box>
                     </DialogTitle>
                     <Divider />
-                    <DialogContent sx={{ pt: 2, pb: 2, flex: 1, overflowY: 'auto' }}>
-                        <Box sx={{ textAlign: 'center' }}>
-                            <style>{`.pp-NXS959MKBRYHG{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;}`}</style>
-                            <form action="https://www.paypal.com/ncp/payment/NXS959MKBRYHG" method="post" target="_blank" style={{ display: 'inline-grid', justifyItems: 'center', alignContent: 'start', gap: '0.5rem' }}>
-                                <input className="pp-NXS959MKBRYHG" type="submit" value="Donate" />
-                                <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
-                                <section style={{ fontSize: '0.75rem' }}> Powered by: <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style={{ height: '0.875rem', verticalAlign: 'middle' }} /></section>
-                            </form>
+                    <DialogContent sx={{ pt: 3, pb: 3, flex: 1, overflowY: 'auto' }}>
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                gap: 2,
+                                flexWrap: 'wrap',
+                            }}
+                        >
+                            <Button
+                                component="a"
+                                href="https://www.paypal.com/ncp/payment/NXS959MKBRYHG"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                variant="outlined"
+                                aria-label="Donate via PayPal"
+                                sx={{
+                                    width: 88,
+                                    height: 88,
+                                    minWidth: 0,
+                                    borderRadius: 3,
+                                    borderColor: 'divider',
+                                    overflow: 'hidden',
+                                    p: 0,
+                                    '&:hover': {
+                                        borderColor: 'primary.main',
+                                        bgcolor: 'action.hover',
+                                    },
+                                    '& .MuiButton-startIcon, & .MuiButton-endIcon': {
+                                        display: 'none',
+                                    },
+                                }}
+                            >
+                                <Box
+                                    component="img"
+                                    src={paypalIcon}
+                                    alt="PayPal"
+                                    sx={{
+                                        width: '100%',
+                                        height: '100%',
+                                        objectFit: 'cover',
+                                        display: 'block',
+                                    }}
+                                />
+                            </Button>
+                            <Button
+                                variant="outlined"
+                                aria-label={showAlipayQr ? 'Hide Alipay QR code' : 'Donate via Alipay'}
+                                onClick={() => setShowAlipayQr((v) => !v)}
+                                sx={{
+                                    width: 88,
+                                    height: 88,
+                                    minWidth: 0,
+                                    borderRadius: 3,
+                                    borderColor: 'divider',
+                                    overflow: 'hidden',
+                                    p: 0,
+                                    '&:hover': {
+                                        borderColor: 'primary.main',
+                                        bgcolor: 'action.hover',
+                                    },
+                                    '& .MuiButton-startIcon, & .MuiButton-endIcon': {
+                                        display: 'none',
+                                    },
+                                }}
+                            >
+                                <Box
+                                    component="img"
+                                    src={showAlipayQr ? alipayQrcode : alipayIcon}
+                                    alt={showAlipayQr ? 'Alipay QR code' : 'Alipay'}
+                                    sx={{
+                                        width: '100%',
+                                        height: '100%',
+                                        objectFit: 'cover',
+                                        display: 'block',
+                                    }}
+                                />
+                            </Button>
                         </Box>
                     </DialogContent>
                     <Divider />
-                    <DialogActions sx={{ px: 2, py: 1.5 }}>
+                    <DialogActions sx={{ px: 2, py: 1.5, gap: 1, justifyContent: 'flex-end' }}>
+                        <Button
+                            onClick={() => navigate('/support')}
+                            variant="contained"
+                            color="primary"
+                            sx={{
+                                fontFamily: '"EB Garamond", serif',
+                                textTransform: 'none',
+                                fontSize: '0.95rem',
+                                borderRadius: '6px',
+                                boxShadow: 'none',
+                            }}
+                        >
+                            Supported
+                        </Button>
                         <Button
                             onClick={() => setDonateDialogOpen(false)}
                             variant="contained"
-                            color="primary"
-                            sx={{ fontFamily: '"EB Garamond", serif', textTransform: 'none', fontSize: '0.95rem', borderRadius: '6px', boxShadow: 'none' }}
+                            color="secondary"
+                            sx={{
+                                fontFamily: '"EB Garamond", serif',
+                                textTransform: 'none',
+                                fontSize: '0.95rem',
+                                borderRadius: '6px',
+                                boxShadow: 'none',
+                                color: '#fff !important',
+                            }}
                         >
                             Close
                         </Button>

@@ -51,6 +51,10 @@ function Layout({ children, searchTerm, onSearchChange }) {
   const onSettings = location.pathname === '/settings' || location.pathname === '/readme' || location.pathname === '/support'
 
   useEffect(() => {
+    window.scrollTo({ top: 0, left: 0 })
+  }, [location.pathname, location.search, location.hash])
+
+  useEffect(() => {
     setBackButtonVisible(onSettings)
   }, [onSettings])
 
