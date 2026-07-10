@@ -23,6 +23,13 @@ const bodySx = {
   mb: 1,
 }
 
+const h3Sx = {
+  fontFamily: '"Playfair Display", "EB Garamond", Georgia, serif',
+  fontWeight: 600,
+  mt: 2,
+  mb: 1,
+}
+
 const linkSx = {
   fontFamily: '"EB Garamond", Georgia, serif',
   fontWeight: 600,
@@ -80,27 +87,36 @@ function Readme() {
         </Typography>
 
         <Typography variant="body1" sx={bodySx}>
-          Music Index Online is a searchable, open-source catalog of classical music works.
-          It indexes compositions by composer, title, opus number, genre, and period, with
-          detailed movement listings — all presented through an elegant, distraction-free interface.
+          Music Index Online is a searchable, open-source catalog of classical music works. It indexes compositions by composer, title, opus number, genre, and period, with detailed movement listings — all presented through an elegant, distraction-free interface.
         </Typography>
 
         <Typography variant="body1" sx={bodySx}>
-          Whether you're a performer checking a program, a listener discovering new repertoire,
-          or a researcher cataloging works, Music Index Online makes it easy to find and copy the
-          information you need.
+          Whether you're a performer checking a program, a listener discovering new repertoire, or a researcher cataloging works, Music Index Online makes it easy to find and copy the information you need.
         </Typography>
 
         <Typography variant="body1" sx={bodySx}>
-          <strong>Visit:</strong>{' '}
+          <strong>Website:</strong>{' '}
           <Link
-            href="https://sudo0015.github.io/MusicIndexOnline/"
+            href="https://musicindexonline.github.io/"
             target="_blank"
             rel="noopener noreferrer"
             underline="hover"
             sx={linkSx}
           >
-            https://sudo0015.github.io/MusicIndexOnline/
+            https://musicindexonline.github.io/
+          </Link>
+        </Typography>
+
+        <Typography variant="body1" sx={bodySx}>
+          <strong>GitHub Repository:</strong>{' '}
+          <Link
+            href="https://github.com/musicindexonline/musicindexonline.github.io/"
+            target="_blank"
+            rel="noopener noreferrer"
+            underline="hover"
+            sx={linkSx}
+          >
+            https://github.com/musicindexonline/musicindexonline.github.io/
           </Link>
         </Typography>
 
@@ -110,6 +126,9 @@ function Readme() {
           Features
         </Typography>
 
+        <Typography variant="h6" sx={h3Sx}>
+          Search &amp; Browse
+        </Typography>
         <Box component="ul" sx={{pl: 3, my: 1, '& li': {mb: 0.5}}}>
           <li>
             <Typography variant="body1" sx={bodySx}>
@@ -128,18 +147,126 @@ function Readme() {
           </li>
           <li>
             <Typography variant="body1" sx={bodySx}>
-              <strong>One-click copy</strong> — copy any composer, title, genre, or movement to your clipboard
+              <strong>Pagination</strong> — works are displayed in pages for easy navigation
             </Typography>
           </li>
           <li>
             <Typography variant="body1" sx={bodySx}>
-              <strong>Dark &amp; light themes</strong> — automatically adapts to your system preference, with manual
-              toggle
+              <strong>Expandable work cards</strong> — click to reveal/hide movement details
+            </Typography>
+          </li>
+        </Box>
+
+        <Typography variant="h6" sx={h3Sx}>
+          Copy &amp; Clipboard
+        </Typography>
+        <Box component="ul" sx={{pl: 3, my: 1, '& li': {mb: 0.5}}}>
+          <li>
+            <Typography variant="body1" sx={bodySx}>
+              <strong>Click copy</strong> — tap titles, composer tags, genre tags, period tags, or movement titles to copy text to clipboard
             </Typography>
           </li>
           <li>
             <Typography variant="body1" sx={bodySx}>
-              <strong>Responsive design</strong> — works beautifully on desktop, tablet, and mobile
+              <strong>Diverse copy rules</strong> — customize what gets copied when you click:
+            </Typography>
+            <Box component="ul" sx={{pl: 3, my: 1, '& li': {mb: 0.5}, listStyleType: 'disc'}}>
+              <li>
+                <Typography variant="body1" sx={bodySx}>
+                  <strong>Work title clicked:</strong> Work title / Composer &amp; Work title / Composer (Short) &amp; Work title
+                </Typography>
+              </li>
+              <li>
+                <Typography variant="body1" sx={bodySx}>
+                  <strong>Composer tag clicked:</strong> Composer / Composer (Short)
+                </Typography>
+              </li>
+              <li>
+                <Typography variant="body1" sx={bodySx}>
+                  <strong>Movement title clicked:</strong> Movement title / Work title &amp; Movement title / Composer, Work title &amp; Movement title / Composer (Short), Work title &amp; Movement title
+                </Typography>
+              </li>
+              <li>
+                <Typography variant="body1" sx={bodySx}>
+                  <strong>Copy button:</strong> Plain text / Cue code
+                </Typography>
+              </li>
+            </Box>
+          </li>
+        </Box>
+
+        <Typography variant="h6" sx={h3Sx}>
+          Appearance &amp; Customization
+        </Typography>
+        <Box component="ul" sx={{pl: 3, my: 1, '& li': {mb: 0.5}}}>
+          <li>
+            <Typography variant="body1" sx={bodySx}>
+              <strong>Dark &amp; light themes</strong> — automatically adapts to your system preference, with manual toggle
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body1" sx={bodySx}>
+              <strong>Adjustable text size</strong> — scale text from 50% to 200% to suit your reading preference
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body1" sx={bodySx}>
+              <strong>Works per page</strong> — set how many works display per page
+            </Typography>
+          </li>
+        </Box>
+
+        <Typography variant="h6" sx={h3Sx}>
+          Navigation &amp; Interaction
+        </Typography>
+        <Box component="ul" sx={{pl: 3, my: 1, '& li': {mb: 0.5}}}>
+          <li>
+            <Typography variant="body1" sx={bodySx}>
+              <strong>Click logo to scroll top</strong> — tap the logo in the navigation bar to smoothly return to the top of the page
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body1" sx={bodySx}>
+              <strong>Responsive design</strong> — works beautifully on desktop, tablet, and mobile devices
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body1" sx={bodySx}>
+              <strong>Smooth animations</strong> — polished transitions for search expansion, filtering, and card interactions
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body1" sx={bodySx}>
+              <strong>Back button</strong> — quickly return to the main catalog
+            </Typography>
+          </li>
+        </Box>
+
+        <Typography variant="h6" sx={h3Sx}>
+          Settings &amp; Support
+        </Typography>
+        <Box component="ul" sx={{pl: 3, my: 1, '& li': {mb: 0.5}}}>
+          <li>
+            <Typography variant="body1" sx={bodySx}>
+              <strong>Centralized settings page</strong> — manage all preferences in one place
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body1" sx={bodySx}>
+              <strong>README page</strong> — view project documentation within the website
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body1" sx={bodySx}>
+              <strong>Support the project</strong> — Like this project? Go to{' '}
+              <Link
+                href="https://musicindexonline.github.io/#/settings"
+                underline="hover"
+                sx={linkSx}
+              >
+                Settings &gt; Support
+              </Link>
+              {' to support ongoing development'}
             </Typography>
           </li>
         </Box>
@@ -151,10 +278,10 @@ function Readme() {
         </Typography>
 
         <Typography variant="body1" sx={bodySx}>
-          Found a bug, have a suggestion, or want to request a feature?
-          {' Feel free to '}
+          Found a bug, have a suggestion, or want to request a feature?{' '}
+          Feel free to{' '}
           <Link
-            href="https://github.com/sudo0015/MusicIndexOnline/issues"
+            href="https://github.com/musicindexonline/musicindexonline.github.io/issues"
             target="_blank"
             rel="noopener noreferrer"
             underline="hover"
