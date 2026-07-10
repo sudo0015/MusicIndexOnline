@@ -37,6 +37,19 @@ function WorkCard({ work, onCopyText, clickCopyEnabled, clickCopyRules, buildCop
     }
   }
 
+  const buildCopyButtonText = () => {
+    const rule = clickCopyRules && clickCopyRules.copyButton
+    const movements = work.movements || []
+    if (movements.length === 0) return ''
+    const lines = movements.map((m) => {
+      if (rule === 'cueCode') {
+        return `TITLE "${work.title}: ${m}"`
+      }
+      return `${work.title}: ${m}`
+    })
+    return lines.join('\n')
+  }
+
   return (
       <Card 
         sx={{ 
@@ -98,18 +111,39 @@ function WorkCard({ work, onCopyText, clickCopyEnabled, clickCopyRules, buildCop
               )}
             </Box>
           </Box>
+
           {hasMovements && (
-            <IconButton 
-              size="small"
-              onClick={(e) => { e.stopPropagation(); setExpanded(!expanded) }}
-              sx={{ flexShrink: 0, ml: 1 }}
-            >
-              <Box 
-                component="span" 
-                className={`mdi ${expanded ? 'mdi-chevron-up' : 'mdi-chevron-down'}`}
-                sx={{ fontSize: '1.5rem' }}
-              />
-            </IconButton>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, flexShrink: 0, ml: 1 }}>
+              {expanded && (
+                <IconButton
+                  size="small"
+                  onClick={(e) => copyToClipboard(e, buildCopyButtonText())}
+                  sx={{ width: 40, height: 40 }}
+                >
+                  <Box
+                    component="span"
+                    className="mdi mdi-content-copy"
+                    sx={{ fontSize: '1.1rem' }}
+                  />
+                </IconButton>
+              )}
+              <IconButton
+                size="small"
+                onClick={(e) => { e.stopPropagation(); setExpanded(!expanded) }}
+                sx={{ width: 40, height: 40 }}
+              >
+                <Box
+                  component="span"
+                  className="mdi mdi-chevron-down"
+                  sx={{
+                    fontSize: '1.5rem',
+                    display: 'inline-block',
+                    transform: expanded ? 'rotate(180deg)' : 'rotate(0deg)',
+                    transition: 'transform 0.3s ease'
+                  }}
+                />
+              </IconButton>
+            </Box>
           )}
         </Box>
       </CardContent>

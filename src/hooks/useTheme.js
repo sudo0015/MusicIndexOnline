@@ -49,6 +49,7 @@ export default function useTheme() {
             workTitle: 'workTitle',
             composerTag: 'composer',
             movementTitle: 'movementTitle',
+            copyButton: 'plainText',
         }
         try {
             const saved = localStorage.getItem('siteClickCopyRules')

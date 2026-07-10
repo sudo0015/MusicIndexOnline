@@ -371,52 +371,65 @@ function Settings({ themeMode, onSetThemeMode, fontSizeScale, onSetFontSizeScale
                                     }}
                                     aria-label="click copy"
                                 />
-                                <IconButton
-                                    size="small"
-                                    onClick={() => setClickCopyExpanded((v) => !v)}
-                                    aria-label={clickCopyExpanded ? 'collapse click copy rules' : 'expand click copy rules'}
-                                    aria-expanded={clickCopyExpanded}
-                                    sx={{ flexShrink: 0, ml: 1 }}
-                                >
-                                    <Box
-                                        component="span"
-                                        className={`mdi ${clickCopyExpanded ? 'mdi-chevron-up' : 'mdi-chevron-down'}`}
-                                        sx={{ fontSize: '1.5rem' }}
-                                    />
-                                </IconButton>
+                              <IconButton
+                                size="small"
+                                onClick={() => setClickCopyExpanded((v) => !v)}
+                                aria-label={clickCopyExpanded ? 'collapse click copy rules' : 'expand click copy rules'}
+                                aria-expanded={clickCopyExpanded}
+                                sx={{ flexShrink: 0, ml: 1 }}
+                              >
+                                <Box
+                                  component="span"
+                                  className="mdi mdi-chevron-down"
+                                  sx={{
+                                    fontSize: '1.5rem',
+                                    display: 'inline-block',
+                                    transform: clickCopyExpanded ? 'rotate(180deg)' : 'rotate(0deg)',
+                                    transition: 'transform 0.3s ease'
+                                  }}
+                                />
+                              </IconButton>
                             </Box>
                         </Box>
-                        {clickCopyExpanded && (
-                            <Box sx={{ mt: 3, pt: 3, borderTop: 1, borderColor: 'divider' }}>
-                                {[
-                                    {
-                                        key: 'workTitle',
-                                        label: 'Work title clicked',
-                                        options: [
-                                            { value: 'workTitle', label: 'Work title' },
-                                            { value: 'composerWorkTitle', label: 'Composer & Work title' },
-                                            { value: 'composerShortWorkTitle', label: 'Composer (Short) & Work title' },
-                                        ],
-                                    },
-                                    {
-                                        key: 'composerTag',
-                                        label: 'Composer tag clicked',
-                                        options: [
-                                            { value: 'composer', label: 'Composer' },
-                                            { value: 'composerShort', label: 'Composer (Short)' },
-                                        ],
-                                    },
-                                    {
-                                        key: 'movementTitle',
-                                        label: 'Movement title clicked',
-                                        options: [
-                                            { value: 'movementTitle', label: 'Movement title' },
-                                            { value: 'workTitleMovementTitle', label: 'Work title & Movement title' },
-                                            { value: 'composerWorkTitleMovementTitle', label: 'Composer, Work title & Movement title' },
-                                            { value: 'composerShortWorkTitleMovementTitle', label: 'Composer (Short), Work title & Movement title' },
-                                        ],
-                                    },
-                                ].map((rule) => (
+                      {clickCopyExpanded && (
+                        <Box sx={{ mt: 3, pt: 3, borderTop: 1, borderColor: 'divider' }}>
+                          {[
+                            {
+                              key: 'workTitle',
+                              label: 'Work title clicked',
+                              options: [
+                                { value: 'workTitle', label: 'Work title' },
+                                { value: 'composerWorkTitle', label: 'Composer & Work title' },
+                                { value: 'composerShortWorkTitle', label: 'Composer (Short) & Work title' },
+                              ],
+                            },
+                            {
+                              key: 'composerTag',
+                              label: 'Composer tag clicked',
+                              options: [
+                                { value: 'composer', label: 'Composer' },
+                                { value: 'composerShort', label: 'Composer (Short)' },
+                              ],
+                            },
+                            {
+                              key: 'movementTitle',
+                              label: 'Movement title clicked',
+                              options: [
+                                { value: 'movementTitle', label: 'Movement title' },
+                                { value: 'workTitleMovementTitle', label: 'Work title & Movement title' },
+                                { value: 'composerWorkTitleMovementTitle', label: 'Composer, Work title & Movement title' },
+                                { value: 'composerShortWorkTitleMovementTitle', label: 'Composer (Short), Work title & Movement title' },
+                              ],
+                            },
+                            {
+                              key: 'copyButton',
+                              label: 'Copy button clicked',
+                              options: [
+                                { value: 'plainText', label: 'Plain text' },
+                                { value: 'cueCode', label: 'Cue code' },
+                              ],
+                            },
+                          ].map((rule) => (
                                     <Box
                                         key={rule.key}
                                         sx={{
