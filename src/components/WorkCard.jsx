@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Card, CardContent, Typography, Box, Chip, IconButton, Collapse } from '@mui/material'
 import MovementList from './MovementList'
 
-function WorkCard({ work, onCopyText, clickCopyEnabled }) {
+function WorkCard({ work, onCopyText, clickCopyEnabled, clickCopyRules, buildCopyText }) {
   const [expanded, setExpanded] = useState(false)
 
   const hasMovements = work.movements && work.movements.length > 0
@@ -15,6 +15,7 @@ function WorkCard({ work, onCopyText, clickCopyEnabled }) {
 
   const copyToClipboard = async (event, text) => {
     event.stopPropagation()
+    if (!text) return
     try {
       if (navigator.clipboard && navigator.clipboard.writeText) {
         await navigator.clipboard.writeText(text)
@@ -55,7 +56,7 @@ function WorkCard({ work, onCopyText, clickCopyEnabled }) {
             <Typography
               variant="h6"
               component="span"
-              onClick={clickCopyEnabled ? (e) => copyToClipboard(e, work.title) : undefined}
+              onClick={clickCopyEnabled ? (e) => copyToClipboard(e, buildCopyText(clickCopyRules && clickCopyRules.workTitle, { work })) : undefined}
               sx={{
                 display: 'inline-block',
                 fontWeight: 700,
@@ -73,7 +74,7 @@ function WorkCard({ work, onCopyText, clickCopyEnabled }) {
                 label={work.composer}
                 size="small"
                 color="primary"
-                onClick={clickCopyEnabled ? (e) => copyToClipboard(e, work.composer) : undefined}
+                onClick={clickCopyEnabled ? (e) => copyToClipboard(e, buildCopyText(clickCopyRules && clickCopyRules.composerTag, { work })) : undefined}
                 sx={{ cursor: clickCopyEnabled ? 'pointer' : 'default' }}
               />
               {work.genre && (
@@ -114,7 +115,7 @@ function WorkCard({ work, onCopyText, clickCopyEnabled }) {
       </CardContent>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent sx={{ pt: 0 }}>
-          <MovementList movements={work.movements} onCopyText={onCopyText} clickCopyEnabled={clickCopyEnabled} />
+          <MovementList movements={work.movements} work={work} onCopyText={onCopyText} clickCopyEnabled={clickCopyEnabled} clickCopyRules={clickCopyRules} buildCopyText={buildCopyText} />
         </CardContent>
       </Collapse>
     </Card>

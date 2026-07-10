@@ -5,7 +5,7 @@ import { filterWorks } from '../utils/search'
 
 const DEFAULT_ITEMS_PER_PAGE = 20
 
-function WorkList({ data, searchTerm, filters, page, onPageChange, itemsPerPage, onCopyText, clickCopyEnabled }) {
+function WorkList({ data, searchTerm, filters, page, onPageChange, itemsPerPage, onCopyText, clickCopyEnabled, clickCopyRules, buildCopyText }) {
   const localPage = page || 1
   const perPage = itemsPerPage || DEFAULT_ITEMS_PER_PAGE
   const prevPageRef = useRef(localPage)
@@ -45,6 +45,8 @@ function WorkList({ data, searchTerm, filters, page, onPageChange, itemsPerPage,
           work={work}
           onCopyText={onCopyText}
           clickCopyEnabled={clickCopyEnabled}
+          clickCopyRules={clickCopyRules}
+          buildCopyText={buildCopyText}
         />
       ))}
 

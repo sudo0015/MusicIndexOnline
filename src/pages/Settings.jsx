@@ -28,12 +28,13 @@ import paypalIcon from '../assets/paypal.svg'
 import alipayIcon from '../assets/alipay.svg'
 import alipayQrcode from '../assets/alipay_qrcode.svg'
 
-function Settings({ themeMode, onSetThemeMode, fontSizeScale, onSetFontSizeScale, clickCopyEnabled, onSetClickCopyEnabled, itemsPerPage, onSetItemsPerPage }) {
+function Settings({ themeMode, onSetThemeMode, fontSizeScale, onSetFontSizeScale, clickCopyEnabled, onSetClickCopyEnabled, clickCopyRules, onSetClickCopyRules, itemsPerPage, onSetItemsPerPage }) {
     const navigate = useNavigate()
     const theme = useTheme()
     const isCompact = useMediaQuery('(max-width:480px)')
     const [donateDialogOpen, setDonateDialogOpen] = useState(false)
     const [showAlipayQr, setShowAlipayQr] = useState(false)
+    const [clickCopyExpanded, setClickCopyExpanded] = useState(false)
     const handleThemeChange = (event, next) => {
         if (next && onSetThemeMode) {
             onSetThemeMode(next)
@@ -241,45 +242,7 @@ function Settings({ themeMode, onSetThemeMode, fontSizeScale, onSetFontSizeScale
                                 gap: 2,
                             }}
                         >
-                            <Box sx={{ minWidth: 0 }}>
-                                <Typography
-                                    variant="subtitle1"
-                                    sx={{
-                                        fontFamily: '"EB Garamond", Georgia, serif',
-                                        fontWeight: 600,
-                                        fontSize: '1.15rem',
-                                    }}
-                                >
-                                    Click copy
-                                </Typography>
-                                <Typography
-                                    variant="body2"
-                                    color="text.secondary"
-                                    sx={{ fontFamily: '"EB Garamond", Georgia, serif', mt: 0.5 }}
-                                >
-                                    Tap title or tags to copy text
-                                </Typography>
-                            </Box>
-                            <Switch
-                                checked={clickCopyEnabled}
-                                onChange={(event) => {
-                                    if (onSetClickCopyEnabled) {
-                                        onSetClickCopyEnabled(event.target.checked)
-                                    }
-                                }}
-                                aria-label="click copy"
-                            />
-                        </Box>
-                        <Box
-                            sx={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'space-between',
-                                gap: 2,
-                                mt: 3,
-                            }}
-                        >
-                            <Box sx={{ minWidth: 0 }}>
+                            <Box sx={{ minWidth: 0, flex: 1 }}>
                                 <Typography
                                     variant="subtitle1"
                                     sx={{
@@ -370,6 +333,145 @@ function Settings({ themeMode, onSetThemeMode, fontSizeScale, onSetFontSizeScale
                                 </IconButton>
                             </Box>
                         </Box>
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'space-between',
+                                gap: 2,
+                                mt: 3,
+                            }}
+                        >
+                            <Box sx={{ minWidth: 0, flex: 1 }}>
+                                <Typography
+                                    variant="subtitle1"
+                                    sx={{
+                                        fontFamily: '"EB Garamond", Georgia, serif',
+                                        fontWeight: 600,
+                                        fontSize: '1.15rem',
+                                    }}
+                                >
+                                    Click copy
+                                </Typography>
+                                <Typography
+                                    variant="body2"
+                                    color="text.secondary"
+                                    sx={{ fontFamily: '"EB Garamond", Georgia, serif', mt: 0.5 }}
+                                >
+                                    Tap title or tags to copy text
+                                </Typography>
+                            </Box>
+                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexShrink: 0 }}>
+                                <Switch
+                                    checked={clickCopyEnabled}
+                                    onChange={(event) => {
+                                        if (onSetClickCopyEnabled) {
+                                            onSetClickCopyEnabled(event.target.checked)
+                                        }
+                                    }}
+                                    aria-label="click copy"
+                                />
+                                <IconButton
+                                    size="small"
+                                    onClick={() => setClickCopyExpanded((v) => !v)}
+                                    aria-label={clickCopyExpanded ? 'collapse click copy rules' : 'expand click copy rules'}
+                                    aria-expanded={clickCopyExpanded}
+                                    sx={{ flexShrink: 0, ml: 1 }}
+                                >
+                                    <Box
+                                        component="span"
+                                        className={`mdi ${clickCopyExpanded ? 'mdi-chevron-up' : 'mdi-chevron-down'}`}
+                                        sx={{ fontSize: '1.5rem' }}
+                                    />
+                                </IconButton>
+                            </Box>
+                        </Box>
+                        {clickCopyExpanded && (
+                            <Box sx={{ mt: 3, pt: 3, borderTop: 1, borderColor: 'divider' }}>
+                                {[
+                                    {
+                                        key: 'workTitle',
+                                        label: 'Work title clicked',
+                                        options: [
+                                            { value: 'workTitle', label: 'Work title' },
+                                            { value: 'composerWorkTitle', label: 'Composer & Work title' },
+                                            { value: 'composerShortWorkTitle', label: 'Composer (Short) & Work title' },
+                                        ],
+                                    },
+                                    {
+                                        key: 'composerTag',
+                                        label: 'Composer tag clicked',
+                                        options: [
+                                            { value: 'composer', label: 'Composer' },
+                                            { value: 'composerShort', label: 'Composer (Short)' },
+                                        ],
+                                    },
+                                    {
+                                        key: 'movementTitle',
+                                        label: 'Movement title clicked',
+                                        options: [
+                                            { value: 'movementTitle', label: 'Movement title' },
+                                            { value: 'workTitleMovementTitle', label: 'Work title & Movement title' },
+                                            { value: 'composerWorkTitleMovementTitle', label: 'Composer, Work title & Movement title' },
+                                            { value: 'composerShortWorkTitleMovementTitle', label: 'Composer (Short), Work title & Movement title' },
+                                        ],
+                                    },
+                                ].map((rule) => (
+                                    <Box
+                                        key={rule.key}
+                                        sx={{
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'space-between',
+                                            gap: 2,
+                                            mb: 2,
+                                            '&:last-child': { mb: 0 },
+                                        }}
+                                    >
+                                        <Typography
+                                            variant="body1"
+                                            sx={{
+                                                fontFamily: '"EB Garamond", Georgia, serif',
+                                                fontSize: '1rem',
+                                                minWidth: 0,
+                                                flexShrink: 0,
+                                            }}
+                                        >
+                                            {rule.label}
+                                        </Typography>
+                                        <FormControl
+                                            size="small"
+                                            disabled={!clickCopyEnabled}
+                                            sx={{ width: isCompact ? 90 : 180, flexShrink: 0 }}
+                                        >
+                                            <Select
+                                                value={clickCopyRules && clickCopyRules[rule.key] ? clickCopyRules[rule.key] : rule.options[0].value}
+                                                onChange={(event) => {
+                                                    if (onSetClickCopyRules) {
+                                                        onSetClickCopyRules({ [rule.key]: event.target.value })
+                                                    }
+                                                }}
+                                                aria-label={rule.label}
+                                                sx={{
+                                                    width: '100%',
+                                                    '& .MuiSelect-select': {
+                                                        overflow: 'hidden',
+                                                        textOverflow: 'ellipsis',
+                                                        whiteSpace: 'nowrap',
+                                                    },
+                                                }}
+                                            >
+                                                {rule.options.map((opt) => (
+                                                    <MenuItem key={opt.value} value={opt.value}>
+                                                        {opt.label}
+                                                    </MenuItem>
+                                                ))}
+                                            </Select>
+                                        </FormControl>
+                                    </Box>
+                                ))}
+                            </Box>
+                        )}
                     </CardContent>
                 </Card>
 

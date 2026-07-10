@@ -1,19 +1,19 @@
-import React, { useState, useMemo, useCallback, useRef, useEffect } from 'react'
-import { Box, CircularProgress, Alert, Paper, Snackbar, Typography } from '@mui/material'
+import React, {useState, useMemo, useCallback, useRef, useEffect} from 'react'
+import {Box, CircularProgress, Alert, Paper, Snackbar, Typography} from '@mui/material'
 import Layout from './components/Layout'
 import FilterBar from './components/FilterBar'
 import WorkList from './components/WorkList'
-import useMusicData, { composerMap } from './hooks/useMusicData'
-import { filterWorks } from './utils/search'
+import useMusicData, {composerMap} from './hooks/useMusicData'
+import {filterWorks} from './utils/search'
 
 function getComposerShort(composer) {
   return composerMap[composer] || composer
 }
 
-function App({ onToggleTheme, themeMode, clickCopyEnabled, itemsPerPage = 20 }) {
-  const { data, loading, error } = useMusicData()
+function App({onToggleTheme, themeMode, clickCopyEnabled, clickCopyRules, itemsPerPage = 20}) {
+  const {data, loading, error} = useMusicData()
   const [searchTerm, setSearchTerm] = useState('')
-  const [filters, setFilters] = useState({ composer: [], genre: [], period: [] })
+  const [filters, setFilters] = useState({composer: [], genre: [], period: []})
   const [page, setPage] = useState(1)
 
   const filteredData = useMemo(() => filterWorks(data, searchTerm, filters), [data, searchTerm, filters])
@@ -58,15 +58,59 @@ function App({ onToggleTheme, themeMode, clickCopyEnabled, itemsPerPage = 20 }) 
     setSnackbarOpen(false)
   }
 
+  const buildCopyText = useCallback((rule, context) => {
+    if (!rule || !context) return ''
+    const {work, movement} = context
+    const composerShort = getComposerShort(work.composer)
+
+    const keywordMap = {
+      workTitle: work.title,
+      composer: work.composer,
+      composerShort: composerShort,
+      movementTitle: movement,
+    }
+
+    const ruleToKeywords = {
+      workTitle: ['workTitle'],
+      composerWorkTitle: ['composer', 'workTitle'],
+      composerShortWorkTitle: ['composerShort', 'workTitle'],
+      composer: ['composer'],
+      composerShort: ['composerShort'],
+      movementTitle: ['movementTitle'],
+      workTitleMovementTitle: ['workTitle', 'movementTitle'],
+      composerWorkTitleMovementTitle: ['composer', 'workTitle', 'movementTitle'],
+      composerShortWorkTitleMovementTitle: ['composerShort', 'workTitle', 'movementTitle'],
+    }
+
+    const keywords = ruleToKeywords[rule] || []
+    const parts = keywords
+      .map((k) => keywordMap[k])
+      .filter((v) => v !== undefined && v !== null && v !== '')
+    return parts.join(': ')
+  }, [])
+
   const allComposers = [...new Set(data.map(w => getComposerShort(w.composer)))].sort()
   const allGenres = [...new Set(data.filter(w => w.genre).map(w => w.genre))].sort()
   const allPeriods = [...new Set(data.filter(w => w.period).map(w => w.period))].sort()
 
   return (
     <Layout searchTerm={searchTerm} onSearchChange={setSearchTerm}>
-      <Paper elevation={0} sx={{ mt: -3, mb: 2, pt: 3, pb: 2, border: 0, borderRadius: 0, position: 'sticky', top: { xs: '56px', sm: '64px' }, zIndex: 1000, bgcolor: 'transparent', backdropFilter: 'saturate(1.5) blur(14px)', WebkitBackdropFilter: 'saturate(1.5) blur(14px)' }}>
+      <Paper elevation={0} sx={{
+        mt: -3,
+        mb: 2,
+        pt: 3,
+        pb: 2,
+        border: 0,
+        borderRadius: 0,
+        position: 'sticky',
+        top: {xs: '56px', sm: '64px'},
+        zIndex: 1000,
+        bgcolor: 'transparent',
+        backdropFilter: 'saturate(1.5) blur(14px)',
+        WebkitBackdropFilter: 'saturate(1.5) blur(14px)'
+      }}>
         {error && (
-          <Alert severity="error" sx={{ mb: 2, mt: 1 }}>
+          <Alert severity="error" sx={{mb: 2, mt: 1}}>
             Failed to load data: {error.message}
           </Alert>
         )}
@@ -82,8 +126,8 @@ function App({ onToggleTheme, themeMode, clickCopyEnabled, itemsPerPage = 20 }) 
       </Paper>
 
       {loading ? (
-        <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
-          <CircularProgress />
+        <Box sx={{display: 'flex', justifyContent: 'center', mt: 4}}>
+          <CircularProgress/>
         </Box>
       ) : (
         <WorkList
@@ -95,13 +139,15 @@ function App({ onToggleTheme, themeMode, clickCopyEnabled, itemsPerPage = 20 }) 
           itemsPerPage={itemsPerPage}
           onCopyText={showCopied}
           clickCopyEnabled={clickCopyEnabled}
+          clickCopyRules={clickCopyRules}
+          buildCopyText={buildCopyText}
         />
       )}
 
       <Snackbar
         open={snackbarOpen}
         onClose={handleSnackbarClose}
-        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        anchorOrigin={{vertical: 'top', horizontal: 'center'}}
       >
         <Box
           onClick={(e) => e.stopPropagation()}
@@ -117,8 +163,9 @@ function App({ onToggleTheme, themeMode, clickCopyEnabled, itemsPerPage = 20 }) 
             boxShadow: 3,
           }}
         >
-          <Box component="span" className="mdi mdi-check-circle-outline" sx={{ fontSize: '1.25rem', lineHeight: 1 }} />
-          <Typography variant="body2" sx={{ fontWeight: 500 }}>Copied</Typography>
+          <Box component="span" className="mdi mdi-check-circle-outline"
+               sx={{fontSize: '1.25rem', lineHeight: 1}}/>
+          <Typography variant="body2" sx={{fontWeight: 500}}>Copied</Typography>
         </Box>
       </Snackbar>
     </Layout>

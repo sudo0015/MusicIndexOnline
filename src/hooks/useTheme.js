@@ -1,3 +1,4 @@
+// D:/MusicIndexOnline/src/hooks/useTheme.js
 import { useState, useEffect, useCallback } from 'react'
 
 export default function useTheme() {
@@ -43,9 +44,28 @@ export default function useTheme() {
         return 20
     }
 
+    const getInitialClickCopyRules = () => {
+        const defaults = {
+            workTitle: 'workTitle',
+            composerTag: 'composer',
+            movementTitle: 'movementTitle',
+        }
+        try {
+            const saved = localStorage.getItem('siteClickCopyRules')
+            if (saved) {
+                const parsed = JSON.parse(saved)
+                if (parsed && typeof parsed === 'object') {
+                    return { ...defaults, ...parsed }
+                }
+            }
+        } catch (e) {}
+        return defaults
+    }
+
     const [mode, setMode] = useState(getInitialMode)
     const [fontSizeScale, setFontSizeScale] = useState(getInitialFontSizeScale)
     const [clickCopyEnabled, setClickCopyEnabled] = useState(getInitialClickCopyEnabled)
+    const [clickCopyRules, setClickCopyRulesState] = useState(getInitialClickCopyRules)
     const [itemsPerPage, setItemsPerPage] = useState(getInitialItemsPerPage)
 
     useEffect(() => {
@@ -96,6 +116,12 @@ export default function useTheme() {
         }
     }, [])
 
+    useEffect(() => {
+        try {
+            localStorage.setItem('siteClickCopyRules', JSON.stringify(clickCopyRules))
+        } catch (e) {}
+    }, [clickCopyRules])
+
     const setThemeMode = useCallback((next) => {
         if (next !== 'light' && next !== 'dark') return
         try {
@@ -119,5 +145,22 @@ export default function useTheme() {
         setFontSizeScale(scale)
     }, [])
 
-    return { mode, toggleMode, setMode: setThemeMode, fontSizeScale, setFontSizeScale: setFontSize, clickCopyEnabled, setClickCopyEnabled, itemsPerPage, setItemsPerPage }
+    const setClickCopyRules = useCallback((next) => {
+        if (!next || typeof next !== 'object') return
+        setClickCopyRulesState((prev) => ({ ...prev, ...next }))
+    }, [])
+
+    return {
+        mode,
+        toggleMode,
+        setMode: setThemeMode,
+        fontSizeScale,
+        setFontSizeScale: setFontSize,
+        clickCopyEnabled,
+        setClickCopyEnabled,
+        clickCopyRules,
+        setClickCopyRules,
+        itemsPerPage,
+        setItemsPerPage,
+    }
 }

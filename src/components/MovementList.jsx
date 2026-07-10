@@ -1,7 +1,7 @@
 import React from 'react'
 import { List, ListItem, ListItemText, Paper, Typography, Box } from '@mui/material'
 
-function MovementList({ movements, onCopyText, clickCopyEnabled }) {
+function MovementList({ movements, work, onCopyText, clickCopyEnabled, clickCopyRules, buildCopyText }) {
   if (!movements || movements.length === 0) {
     return (
       <Typography variant="body2" color="text.secondary" sx={{ fontStyle: 'italic' }}>
@@ -16,12 +16,14 @@ function MovementList({ movements, onCopyText, clickCopyEnabled }) {
         {movements.map((movement, index) => {
           const handleClick = async (event) => {
             event.stopPropagation()
+            const text = buildCopyText(clickCopyRules && clickCopyRules.movementTitle, { work, movement })
+            if (!text) return
             try {
               if (navigator.clipboard && navigator.clipboard.writeText) {
-                await navigator.clipboard.writeText(movement)
+                await navigator.clipboard.writeText(text)
               } else {
                 const textarea = document.createElement('textarea')
-                textarea.value = movement
+                textarea.value = text
                 textarea.style.position = 'fixed'
                 textarea.style.opacity = '0'
                 document.body.appendChild(textarea)
@@ -29,7 +31,7 @@ function MovementList({ movements, onCopyText, clickCopyEnabled }) {
                 document.execCommand('copy')
                 document.body.removeChild(textarea)
               }
-              if (onCopyText) onCopyText(movement)
+              if (onCopyText) onCopyText(text)
             } catch (err) {
               console.error('Failed to copy:', err)
             }
