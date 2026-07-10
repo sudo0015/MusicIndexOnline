@@ -125,8 +125,16 @@ function Readme() {
   const tocBaseSx = {
     position: 'fixed',
     top: '100px',
-    right: '32px',
-    width: '220px',
+    right: {
+      xs: '8px',
+      sm: '16px',
+      md: '32px'
+    },
+    width: {
+      xs: 'calc(100vw - 16px)',
+      sm: '220px'
+    },
+    maxWidth: '220px',
     border: '1px solid',
     borderColor: 'divider',
     borderRadius: 2,
