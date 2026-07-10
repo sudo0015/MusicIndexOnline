@@ -1,5 +1,5 @@
 import React, {useState, useCallback, useRef, useEffect} from 'react'
-import {Box, Typography, Divider, Link, Collapse, Snackbar} from '@mui/material'
+import {Box, Typography, Divider, Link, Collapse, Snackbar, IconButton, Tooltip, Fade, useMediaQuery} from '@mui/material'
 import Layout from '../components/Layout'
 import TextBrowser from '../components/TextBrowser'
 
@@ -35,6 +35,19 @@ const linkSx = {
   fontWeight: 600,
 }
 
+const tocItems = [
+  { id: 'introduction', text: 'Introduction', level: 1 },
+  { id: 'features', text: 'Features', level: 1 },
+  { id: 'search-browse', text: 'Search & Browse', level: 2 },
+  { id: 'copy-clipboard', text: 'Copy & Clipboard', level: 2 },
+  { id: 'appearance-customization', text: 'Appearance & Customization', level: 2 },
+  { id: 'navigation-interaction', text: 'Navigation & Interaction', level: 2 },
+  { id: 'settings-support', text: 'Settings & Support', level: 2 },
+  { id: 'feedback', text: 'Feedback', level: 1 },
+  { id: 'license', text: 'License', level: 1 },
+  { id: 'credits', text: 'Credits', level: 1 },
+]
+
 const mitLicense = `MIT License
 
 Copyright (c) 2026 Music Index Online
@@ -48,7 +61,36 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 function Readme() {
   const [licenseOpen, setLicenseOpen] = useState(false)
   const [snackbarOpen, setSnackbarOpen] = useState(false)
+  const [tocOpen, setTocOpen] = useState(true)
+  const [showTocContent, setShowTocContent] = useState(true)
+  const isWideScreen = useMediaQuery('(min-width:1400px)')
   const snackbarTimerRef = useRef(null)
+  const tocRef = useRef(null)
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (tocRef.current && !tocRef.current.contains(event.target)) {
+        setTocOpen(false)
+      }
+    }
+    if (tocOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+      return () => document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [tocOpen])
+
+  useEffect(() => {
+    if (tocOpen) {
+      const timer = setTimeout(() => setShowTocContent(true), 200)
+      return () => clearTimeout(timer)
+    } else {
+      setShowTocContent(false)
+    }
+  }, [tocOpen])
+
+  useEffect(() => {
+    setTocOpen(isWideScreen)
+  }, [isWideScreen])
 
   useEffect(() => {
     return () => {
@@ -69,9 +111,107 @@ function Readme() {
     }, 1500)
   }, [])
 
+  const handleTocClick = useCallback((event, id) => {
+    event.preventDefault()
+    const target = document.getElementById(id)
+    if (target) {
+      const appBarHeight = 64
+      const rect = target.getBoundingClientRect()
+      const scrollTop = window.pageYOffset + rect.top - appBarHeight
+      window.scrollTo({ top: scrollTop, behavior: 'smooth' })
+    }
+  }, [])
+
+  const tocBaseSx = {
+    position: 'fixed',
+    top: '100px',
+    right: '32px',
+    width: '220px',
+    border: '1px solid',
+    borderColor: 'divider',
+    borderRadius: 2,
+    p: 2,
+    bgcolor: 'background.paper',
+    boxShadow: 2,
+    zIndex: 1000,
+    maxHeight: 'calc(100vh - 140px)',
+    overflowY: 'auto',
+    transition: 'width 0.2s ease, height 0.2s ease, padding 0.2s ease',
+    ...(!tocOpen && {
+      width: '44px',
+      height: '44px',
+      p: 0,
+      overflow: 'hidden',
+      cursor: 'pointer',
+    }),
+  }
+
   return (
     <Layout>
-      <Box sx={{mt: 2, mb: 4, maxWidth: '800px', mx: 'auto', userSelect: 'text'}}>
+      <Box sx={{mt: 2, mb: 4, maxWidth: '800px', mx: 'auto', userSelect: 'text', position: 'relative'}}>
+        <Box ref={tocRef} sx={tocBaseSx}>
+          <Fade in={showTocContent} unmountOnExit>
+            <Box>
+              <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', pb: 1, mb: 1, borderBottom: 1, borderColor: 'divider'}}>
+                <Typography variant="subtitle2" sx={{fontWeight: 700, fontFamily: '"Playfair Display", "EB Garamond", Georgia, serif', textAlign: 'left'}}>
+                  Contents
+                </Typography>
+                <IconButton
+                  size="small"
+                  onClick={() => setTocOpen(false)}
+                  sx={{width: 28, height: 28}}
+                >
+                  <span className="mdi mdi-chevron-right" style={{fontSize: '1.1rem'}} />
+                </IconButton>
+              </Box>
+              {tocItems.map((item) => (
+                <Box
+                  key={item.id}
+                  component="a"
+                  href={`#${item.id}`}
+                  onClick={(e) => handleTocClick(e, item.id)}
+                  sx={{
+                    display: 'block',
+                    color: 'text.primary',
+                    textDecoration: 'none',
+                    py: 0.75,
+                    px: 1,
+                    pl: item.level === 2 ? 3 : 1,
+                    borderRadius: 1,
+                    fontSize: '0.9rem',
+                    lineHeight: 1.5,
+                    cursor: 'pointer',
+                    fontFamily: '"EB Garamond", Georgia, serif',
+                    transition: 'background-color 150ms ease',
+                    '&:hover': {
+                      bgcolor: 'action.hover',
+                    },
+                  }}
+                >
+                  {item.text}
+                </Box>
+              ))}
+            </Box>
+          </Fade>
+          {!tocOpen && (
+            <Tooltip title="Contents">
+              <IconButton
+                onClick={() => setTocOpen(true)}
+                sx={{
+                  width: 44,
+                  height: 44,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  borderRadius: '50%',
+                }}
+              >
+                <span className="mdi mdi-format-list-bulleted" style={{fontSize: '1.3rem'}} />
+              </IconButton>
+            </Tooltip>
+          )}
+        </Box>
+
         <Typography variant="h4" sx={h1Sx}>
           Music Index Online
         </Typography>
@@ -82,7 +222,7 @@ function Readme() {
 
         <Divider sx={{my: 2}}/>
 
-        <Typography variant="h5" sx={h2Sx}>
+        <Typography variant="h5" id="introduction" sx={h2Sx}>
           Introduction
         </Typography>
 
@@ -122,11 +262,11 @@ function Readme() {
 
         <Divider sx={{my: 2}}/>
 
-        <Typography variant="h5" sx={h2Sx}>
+        <Typography variant="h5" id="features" sx={h2Sx}>
           Features
         </Typography>
 
-        <Typography variant="h6" sx={h3Sx}>
+        <Typography variant="h6" id="search-browse" sx={h3Sx}>
           Search &amp; Browse
         </Typography>
         <Box component="ul" sx={{pl: 3, my: 1, '& li': {mb: 0.5}}}>
@@ -157,7 +297,7 @@ function Readme() {
           </li>
         </Box>
 
-        <Typography variant="h6" sx={h3Sx}>
+        <Typography variant="h6" id="copy-clipboard" sx={h3Sx}>
           Copy &amp; Clipboard
         </Typography>
         <Box component="ul" sx={{pl: 3, my: 1, '& li': {mb: 0.5}}}>
@@ -195,7 +335,7 @@ function Readme() {
           </li>
         </Box>
 
-        <Typography variant="h6" sx={h3Sx}>
+        <Typography variant="h6" id="appearance-customization" sx={h3Sx}>
           Appearance &amp; Customization
         </Typography>
         <Box component="ul" sx={{pl: 3, my: 1, '& li': {mb: 0.5}}}>
@@ -216,7 +356,7 @@ function Readme() {
           </li>
         </Box>
 
-        <Typography variant="h6" sx={h3Sx}>
+        <Typography variant="h6" id="navigation-interaction" sx={h3Sx}>
           Navigation &amp; Interaction
         </Typography>
         <Box component="ul" sx={{pl: 3, my: 1, '& li': {mb: 0.5}}}>
@@ -242,7 +382,7 @@ function Readme() {
           </li>
         </Box>
 
-        <Typography variant="h6" sx={h3Sx}>
+        <Typography variant="h6" id="settings-support" sx={h3Sx}>
           Settings &amp; Support
         </Typography>
         <Box component="ul" sx={{pl: 3, my: 1, '& li': {mb: 0.5}}}>
@@ -273,7 +413,7 @@ function Readme() {
 
         <Divider sx={{my: 2}}/>
 
-        <Typography variant="h5" sx={h2Sx}>
+        <Typography variant="h5" id="feedback" sx={h2Sx}>
           Feedback
         </Typography>
 
@@ -294,7 +434,7 @@ function Readme() {
 
         <Divider sx={{my: 2}}/>
 
-        <Typography variant="h5" sx={h2Sx}>
+        <Typography variant="h5" id="license" sx={h2Sx}>
           License
         </Typography>
 
@@ -322,7 +462,7 @@ function Readme() {
 
         <Divider sx={{my: 2}}/>
 
-        <Typography variant="h5" sx={h2Sx}>
+        <Typography variant="h5" id="credits" sx={h2Sx}>
           Credits
         </Typography>
 

@@ -1,5 +1,149 @@
 [
   {
+    "composer": "Antonio Vivaldi",
+    "title": "Violin Concerto No. 1 in E Major, RV 269 'La primavera'",
+    "op": "RV 269",
+    "genre": "Concerto",
+    "period": "Baroque",
+    "movements": [
+      "I. Allegro",
+      "II. Largo e pianissimo sempre",
+      "III. Danza pastorale. Allegro"
+    ]
+  },
+  {
+    "composer": "Antonio Vivaldi",
+    "title": "Violin Concerto No. 2 in G Minor, RV 315 'L'estate'",
+    "op": "RV 315",
+    "genre": "Concerto",
+    "period": "Baroque",
+    "movements": [
+      "I. Allegro non molto",
+      "II. Adagio e piano - Presto e forte",
+      "III. Presto"
+    ]
+  },
+  {
+    "composer": "Antonio Vivaldi",
+    "title": "Violin Concerto No. 3 in F Major, RV 293 'L'autunno'",
+    "op": "RV 293",
+    "genre": "Concerto",
+    "period": "Baroque",
+    "movements": [
+      "I. Allegro",
+      "II. Adagio molto",
+      "III. Allegro"
+    ]
+  },
+  {
+    "composer": "Antonio Vivaldi",
+    "title": "Violin Concerto No. 4 in F Minor, RV 297 'L'inverno'",
+    "op": "RV 297",
+    "genre": "Concerto",
+    "period": "Baroque",
+    "movements": [
+      "I. Allegro non molto",
+      "II. Largo",
+      "III. Allegro"
+    ]
+  },
+  {
+    "composer": "Antonio Vivaldi",
+    "title": "Concerto No. 6 in A Minor, RV 356",
+    "op": "RV 356",
+    "genre": "Concerto",
+    "period": "Baroque",
+    "movements": [
+      "I. Allegro",
+      "II. Largo",
+      "III. Presto"
+    ]
+  },
+  {
+    "composer": "Antonio Vivaldi",
+    "title": "Concerto for Strings in G Major, RV 151 'Alla Rustica'",
+    "op": "RV 151",
+    "genre": "Concerto",
+    "period": "Baroque",
+    "movements": [
+      "I. Presto",
+      "II. Adagio",
+      "III. Allegro"
+    ]
+  },
+  {
+    "composer": "Antonio Vivaldi",
+    "title": "Concerto for Strings in C Major, RV 114",
+    "op": "RV 114",
+    "genre": "Concerto",
+    "period": "Baroque",
+    "movements": [
+      "I. Allegro",
+      "II. Adagio",
+      "III. Ciaccona. Allegro ma non troppo"
+    ]
+  },
+  {
+    "composer": "Antonio Vivaldi",
+    "title": "Concerto No. 10 in B Minor for 4 Violins and Cello, RV 580",
+    "op": "RV 580",
+    "genre": "Concerto",
+    "period": "Baroque",
+    "movements": [
+      "I. Allegro",
+      "II. Larghetto e spiccato",
+      "III. Allegro"
+    ]
+  },
+  {
+    "composer": "Antonio Vivaldi",
+    "title": "Concerto in F Major for 3 Violins, RV 551",
+    "op": "RV 551",
+    "genre": "Concerto",
+    "period": "Baroque",
+    "movements": [
+      "I. Allegro",
+      "II. Andante",
+      "III. Allegro"
+    ]
+  },
+  {
+    "composer": "Antonio Vivaldi",
+    "title": "Concerto for Oboe, Violin, Strings and Continuo in B-Flat Major, RV 548",
+    "op": "RV 548",
+    "genre": "Concerto",
+    "period": "Baroque",
+    "movements": [
+      "I. Allegro",
+      "II. Largo",
+      "III. Allegro"
+    ]
+  },
+  {
+    "composer": "Antonio Vivaldi",
+    "title": "Concerto for 2 Violins, Strings and Continuo in G Major, RV 516",
+    "op": "RV 516",
+    "genre": "Concerto",
+    "period": "Baroque",
+    "movements": [
+      "I. Allegro molto",
+      "II. Andante molto",
+      "III. Allegro"
+    ]
+  },
+  {
+    "composer": "Pietro Antonio Locatelli",
+    "title": "Violin Concerto in D Major, Op. 3 No. 12 'Il labirinto armonico'",
+    "op": "Op. 3 No. 12",
+    "genre": "Concerto",
+    "period": "Baroque",
+    "movements": [
+      "I. Allegro - Capriccio",
+      "II. Largo - Presto - Adagio",
+      "III. Allegro - Capriccio"
+    ]
+  },
+  {
     "composer": "Johann Sebastian Bach",
     "title": "Aria mit 30 Veränderungen, BWV 988 'Goldberg Variations'",
     "op": "BWV 988",
@@ -566,6 +710,108 @@
     "movements": []
   },
   {
+    "composer": "Franz Schubert",
+    "title": "Symphony No. 1 in D Major, D. 82",
+    "op": "D. 82",
+    "genre": "Symphony",
+    "period": "Romantic",
+    "movements": [
+      "I. Adagio - Allegro vivace",
+      "II. Andante",
+      "III. Menuetto. Allegretto - Trio",
+      "IV. Allegro vivace"
+    ]
+  },
+  {
+    "composer": "Franz Schubert",
+    "title": "Symphony No. 2 in B-Flat Major, D. 125",
+    "op": "D. 125",
+    "genre": "Symphony",
+    "period": "Romantic",
+    "movements": [
+      "I. Largo - Allegro vivace",
+      "II. Andante",
+      "III. Menuetto. Allegro vivace - Trio",
+      "IV. Presto vivace"
+    ]
+  },
+  {
+    "composer": "Franz Schubert",
+    "title": "Symphony No. 3 in D Major, D. 200",
+    "op": "D.200",
+    "genre": "Symphony",
+    "period": "Romantic",
+    "movements": [
+      "I. Adagio maestoso - Allegro con brio",
+      "II. Allegretto",
+      "III. Menuetto. Vivace - Trio",
+      "IV. Presto vivace"
+    ]
+  },
+  {
+    "composer": "Franz Schubert",
+    "title": "Symphony No. 4 in C Minor, D. 417 'Tragic'",
+    "op": "D. 417",
+    "genre": "Symphony",
+    "period": "Romantic",
+    "movements": [
+      "I. Adagio molto - Allegro vivace",
+      "II. Andante",
+      "III. Menuetto. Allegro vivace - Trio",
+      "IV. Allegro"
+    ]
+  },
+  {
+    "composer": "Franz Schubert",
+    "title": "Symphony No. 5 in B-Flat Major, D. 485",
+    "op": "D. 485",
+    "genre": "Symphony",
+    "period": "Romantic",
+    "movements": [
+      "I. Allegro",
+      "II. Andante con moto",
+      "III. Menuetto. Allegro molto - Trio",
+      "IV. Allegro vivace"
+    ]
+  },
+  {
+    "composer": "Franz Schubert",
+    "title": "Symphony No. 6 in C Major, D. 589 'The Little'",
+    "op": "D. 589",
+    "genre": "Symphony",
+    "period": "Romantic",
+    "movements": [
+      "I. Adagio - Allegro",
+      "II. Andante",
+      "III. Scherzo. Presto - Trio",
+      "IV. Allegro moderato"
+    ]
+  },
+  {
+    "composer": "Franz Schubert",
+    "title": "Symphony No. 8 in B Minor, D. 759 'Unfinished'",
+    "op": "D. 759",
+    "genre": "Symphony",
+    "period": "Romantic",
+    "movements": [
+      "I. Allegro moderato",
+      "II. Andante con moto"
+    ]
+  },
+  {
+    "composer": "Franz Schubert",
+    "title": "Symphony No. 9 in C Major, D. 944 'The Great'",
+    "op": "D. 944",
+    "genre": "Symphony",
+    "period": "Romantic",
+    "movements": [
+      "I. Andante - Allegro ma non troppo",
+      "II. Andante con moto",
+      "III. Scherzo. Allegro vivace - Trio",
+      "IV. Allegro vivace"
+    ]
+  },
+  {
     "composer": "Pyotr Ilyich Tchaikovsky",
     "title": "Symphony No. 1 in G Minor, Op. 13 'Winter Daydreams'",
     "op": "Op. 13",
@@ -642,6 +888,341 @@
       "II. Allegro con gracia",
       "III. Allegro molto vivace",
       "IV. Finale. Adagio lamentoso - Andante"
+    ]
+  },
+  {
+    "composer": "Pyotr Ilyich Tchaikovsky",
+    "title": "Piano Concerto No. 1 in B-Flat Minor, Op. 23",
+    "op": "Op. 23",
+    "genre": "Concerto",
+    "period": "Romantic",
+    "movements": [
+      "I. Allegro non troppo e molto maestoso - Allegro con spirito",
+      "II. Andantino semplice - Prestissimo - Tempo I",
+      "III. Allegro con fuoco"
+    ]
+  },
+  {
+    "composer": "Sergey Rachmaninov",
+    "title": "Piano Concerto No. 2 in C Minor, Op. 18",
+    "op": "Op. 18",
+    "genre": "Concerto",
+    "period": "Romantic",
+    "movements": [
+      "I. Moderato",
+      "II. Adagio sostenuto",
+      "III. Allegro scherzando"
+    ]
+  },
+  {
+    "composer": "Anton Bruckner",
+    "title": "Symphony No. 1 in C Minor, WAB 101",
+    "op": "WAB 101",
+    "genre": "Symphony",
+    "period": "Romantic",
+    "movements": [
+      "I. Allegro",
+      "II. Adagio",
+      "III. Scherzo. Schnell",
+      "IV. Finale. Bewegt, feurig"
+    ]
+  },
+  {
+    "composer": "Anton Bruckner",
+    "title": "Symphony No. 2 in C Minor, WAB 102",
+    "op": "WAB 102",
+    "genre": "Symphony",
+    "period": "Romantic",
+    "movements": [
+      "I. Moderato",
+      "II. Andante. Feierlich, etwas bewegt",
+      "III. Scherzo. Mäßig schnell",
+      "IV. Finale. Mehr schnell"
+    ]
+  },
+  {
+    "composer": "Anton Bruckner",
+    "title": "Symphony No. 3 in D Minor, WAB 103",
+    "op": "WAB 103",
+    "genre": "Symphony",
+    "period": "Romantic",
+    "movements": [
+      "I. Gemäßigt. Misterioso",
+      "II. Adagio. Feierlich",
+      "III. Scherzo. Ziemlich schnell - Trio. Gleiches Zeitmaß - Scherzo da capo",
+      "IV. Finale. Allegro - Etwas langsamer - Erstes Zeitmaß"
+    ]
+  },
+  {
+    "composer": "Anton Bruckner",
+    "title": "Symphony No. 4 in E-Flat Major, WAB 104 'Romantic'",
+    "op": "WAB 104",
+    "genre": "Symphony",
+    "period": "Romantic",
+    "movements": [
+      "I. Bewegt, nicht zu schnell",
+      "II. Andante quasi allegretto",
+      "III. Scherzo. Bewegt - Trio. Nicht zu schnell",
+      "IV. Finale. Bewegt, docht nicht zu schnell"
+    ]
+  },
+  {
+    "composer": "Anton Bruckner",
+    "title": "Symphony No. 5 in B-Flat Major, WAB 105",
+    "op": "WAB 105",
+    "genre": "Symphony",
+    "period": "Romantic",
+    "movements": [
+      "I. Introduction. Adagio - Allegro",
+      "II. Adagio. Sehr langsam",
+      "III. Scherzo. Molto vivace - Trio. Schnell",
+      "IV. Finale. Adagio - Allegro moderato"
+    ]
+  },
+  {
+    "composer": "Anton Bruckner",
+    "title": "Symphony No. 6 in A Major, WAB 106",
+    "op": "WAB 106",
+    "genre": "Symphony",
+    "period": "Romantic",
+    "movements": [
+      "I. Maestoso",
+      "II. Adagio. Sehr feierlich",
+      "III. Scherzo. Nicht schnell - Trio. Langsam",
+      "IV. Finale. Bewegt, doch nicht zu schnell"
+    ]
+  },
+  {
+    "composer": "Anton Bruckner",
+    "title": "Symphony No. 7 in E Major, WAB 107",
+    "op": "WAB 107",
+    "genre": "Symphony",
+    "period": "Romantic",
+    "movements": [
+      "I. Allegro moderato",
+      "II. Adagio. Sehr feierlich und sehr langsam",
+      "III. Scherzo. Sehr schnell - Trio. Etwas langsamer",
+      "IV. Finale. Bewegt, doch nicht schnell"
+    ]
+  },
+  {
+    "composer": "Anton Bruckner",
+    "title": "Symphony No. 8 in C Minor, WAB 108",
+    "op": "WAB 108",
+    "genre": "Symphony",
+    "period": "Romantic",
+    "movements": [
+      "I. Allegro moderato",
+      "II. Scherzo. Allegro moderato - Trio. Langsam",
+      "III. Adagio. Feierlich langsam, doch nicht schleppend",
+      "IV. Finale. Feierlich, nicht schnell"
+    ]
+  },
+  {
+    "composer": "Anton Bruckner",
+    "title": "Symphony No. 9 in D Minor, WAB 109",
+    "op": "WAB 109",
+    "genre": "Symphony",
+    "period": "Romantic",
+    "movements": [
+      "I. Feierlich, misterioso",
+      "II. Scherzo. Bewegt, lebhaft - Trio. Schnell",
+      "III. Adagio. Langsam, feierlich"
+    ]
+  },
+  {
+    "composer": "Jean Sibelius",
+    "title": "Symphony No. 1 in E Minor, Op. 39",
+    "op": "Op. 39",
+    "genre": "Symphony",
+    "period": "Romantic",
+    "movements": [
+      "I. Andante ma non troppo -  Allegro energico",
+      "II. Andante",
+      "III. Scherzo. Allegro",
+      "IV. Finale. Quasi una fantasia"
+    ]
+  },
+  {
+    "composer": "Jean Sibelius",
+    "title": "Symphony No. 2 in D Major, Op. 43",
+    "op": "Op. 43",
+    "genre": "Symphony",
+    "period": "Romantic",
+    "movements": [
+      "I. Allegretto",
+      "II. Tempo andante, ma rubato",
+      "III. Vivacissimo - Lento e suave",
+      "IV. Finale. Allegro moderato"
+    ]
+  },
+  {
+    "composer": "Jean Sibelius",
+    "title": "Symphony No. 3 in C Major, Op. 52",
+    "op": "Op. 52",
+    "genre": "Symphony",
+    "period": "Romantic",
+    "movements": [
+      "I. Allegro moderato",
+      "II. Andantino con moto, quasi allegretto",
+      "III. Moderato - Allegro ma non tanto"
+    ]
+  },
+  {
+    "composer": "Jean Sibelius",
+    "title": "Symphony No. 4 in A Minor, Op. 63",
+    "op": "Op. 63",
+    "genre": "Symphony",
+    "period": "Romantic",
+    "movements": [
+      "I. Tempo molto moderato, quasi adagio",
+      "II. Allegro molto vivace",
+      "III. Il tempo largo",
+      "IV. Allegro"
+    ]
+  },
+  {
+    "composer": "Jean Sibelius",
+    "title": "Symphony No. 5 in E-Flat Major, Op. 82",
+    "op": "Op. 82",
+    "genre": "Symphony",
+    "period": "Romantic",
+    "movements": [
+      "I. Tempo molto moderato - Allegro moderato - Presto",
+      "II. Andante mosso, quasi allegretto",
+      "III. Allegro molto"
+    ]
+  },
+  {
+    "composer": "Jean Sibelius",
+    "title": "Symphony No. 6 in D Minor, Op. 104",
+    "op": "Op. 104",
+    "genre": "Symphony",
+    "period": "Romantic",
+    "movements": [
+      "I. Allegro molto moderato",
+      "II. Allegretto moderato",
+      "III. Poco vivace",
+      "IV. Allegro molto"
+    ]
+  },
+  {
+    "composer": "Jean Sibelius",
+    "title": "Symphony No. 7 in C Major, Op. 105",
+    "op": "Op. 105",
+    "genre": "Symphony",
+    "period": "Romantic",
+    "movements": []
+  },
+  {
+    "composer": "Jean Sibelius",
+    "title": "En Saga, Op. 9",
+    "op": "Op. 9",
+    "genre": "Symphonic Poem",
+    "period": "Romantic",
+    "movements": []
+  },
+  {
+    "composer": "Jean Sibelius",
+    "title": "Nächtlicher Ritt und Sonnenaufgang, Op. 55",
+    "op": "Op. 55",
+    "genre": "Symphonic Poem",
+    "period": "Romantic",
+    "movements": []
+  },
+  {
+    "composer": "Jean Sibelius",
+    "title": "Valse triste, Op. 44",
+    "op": "Op. 44",
+    "genre": "Incidental Music",
+    "period": "Romantic",
+    "movements": []
+  },
+  {
+    "composer": "Jean Sibelius",
+    "title": "Finlandia, Op. 26",
+    "op": "Op. 26",
+    "genre": "Symphonic Poem",
+    "period": "Romantic",
+    "movements": []
+  },
+  {
+    "composer": "Jean Sibelius",
+    "title": "Luonnotar for Soprano and Orchestra, Op. 70",
+    "op": "Op. 70",
+    "genre": "Vocal",
+    "period": "Romantic",
+    "movements": []
+  },
+  {
+    "composer": "Jean Sibelius",
+    "title": "Pohjola's Daughter, Op. 49",
+    "op": "Op. 49",
+    "genre": "Symphonic Poem",
+    "period": "Romantic",
+    "movements": []
+  },
+  {
+    "composer": "Jean Sibelius",
+    "title": "Violin Concerto in D Minor, Op. 47",
+    "op": "Op. 47",
+    "genre": "Concerto",
+    "period": "Romantic",
+    "movements": [
+      "I. Allegro moderato",
+      "II. Adagio di molto",
+      "III. Allegro, ma non tanto"
+    ]
+  },
+  {
+    "composer": "Jean Sibelius",
+    "title": "Lemminkäinen Suite, Op. 22",
+    "op": "Op. 22",
+    "genre": "Symphonic Poem",
+    "period": "Romantic",
+    "movements": [
+      "I. Lemminkäinen and the Maidens of the Island",
+      "II. The Swan of Tuonela",
+      "III. Lemminkäinen in Tuonela",
+      "IV. Lemminkäinen's Return"
+    ]
+  },
+  {
+    "composer": "Bruch",
+    "title": "Violin Concerto No. 1 in G Minor, Op. 26",
+    "op": "Op. 26",
+    "genre": "Concerto",
+    "period": "Romantic",
+    "movements": [
+      "I. Prelude. Allegro moderato",
+      "II. Adagio",
+      "III. Finale. Allegro energico"
+    ]
+  },
+  {
+    "composer": "Grieg",
+    "title": "Peer Gynt Suite No. 1, Op. 46",
+    "op": "Op. 46",
+    "genre": "Suite",
+    "period": "Romantic",
+    "movements": [
+      "I. Morning Mood",
+      "II. Åse's Death",
+      "III. Anitra's Dance",
+      "IV. In the Hall of the Mountain King"
+    ]
+  },
+  {
+    "composer": "Grieg",
+    "title": "Peer Gynt Suite No. 2, Op. 55",
+    "op": "Op. 55",
+    "genre": "Suite",
+    "period": "Romantic",
+    "movements": [
+      "I. Ingrid's Lament",
+      "II. Arabian Dance",
+      "III. Peer Gynt's Homecoming",
+      "IV. Solveig's Song"
     ]
   },
   {
