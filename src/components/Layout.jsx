@@ -276,7 +276,7 @@ function Layout({children, searchTerm, onSearchChange, toolbarAction}) {
           )}
           {toolbarAction && (
             <Slide direction="left" in={true} mountOnEnter unmountOnExit timeout={250}>
-              <Box sx={{flexShrink: 0, ml: 1}}>
+              <Box sx={{ flexShrink: 0, ml: !showTitle ? 'auto' : 1 }}>
                 {toolbarAction}
               </Box>
             </Slide>
