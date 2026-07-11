@@ -6,8 +6,8 @@ const data = (musicData || []).map(work => ({
   composerShort: composerMap[work.composer] || work.composer,
 }))
 
-export { composerMap }
+export {composerMap}
 
 export default function useMusicData() {
-  return { data, loading: false, error: null }
+  return {data, loading: false, error: null}
 }

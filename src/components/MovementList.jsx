@@ -1,22 +1,22 @@
 import React from 'react'
-import { List, ListItem, ListItemText, Paper, Typography, Box } from '@mui/material'
+import {List, ListItem, ListItemText, Paper, Typography, Box} from '@mui/material'
 
-function MovementList({ movements, work, onCopyText, clickCopyEnabled, clickCopyRules, buildCopyText }) {
+function MovementList({movements, work, onCopyText, clickCopyEnabled, clickCopyRules, buildCopyText}) {
   if (!movements || movements.length === 0) {
     return (
-      <Typography variant="body2" color="text.secondary" sx={{ fontStyle: 'italic' }}>
+      <Typography variant="body2" color="text.secondary" sx={{fontStyle: 'italic'}}>
         No movement information
       </Typography>
     )
   }
 
   return (
-    <Paper variant="outlined" sx={{ p: 1, bgcolor: 'action.hover' }}>
+    <Paper variant="outlined" sx={{p: 1, bgcolor: 'action.hover'}}>
       <List dense disablePadding>
         {movements.map((movement, index) => {
           const handleClick = async (event) => {
             event.stopPropagation()
-            const text = buildCopyText(clickCopyRules && clickCopyRules.movementTitle, { work, movement })
+            const text = buildCopyText(clickCopyRules && clickCopyRules.movementTitle, {work, movement})
             if (!text) return
             try {
               if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -37,13 +37,18 @@ function MovementList({ movements, work, onCopyText, clickCopyEnabled, clickCopy
             }
           }
           return (
-            <ListItem key={index} divider={index < movements.length - 1} onClick={clickCopyEnabled ? handleClick : undefined}>
+            <ListItem key={index} divider={index < movements.length - 1}
+                      onClick={clickCopyEnabled ? handleClick : undefined}>
               <ListItemText
                 primary={movement}
                 primaryTypographyProps={{
                   variant: 'body1',
                   fontFamily: '"EB Garamond", "Times New Roman", Georgia, serif',
-                  sx: { cursor: clickCopyEnabled ? 'pointer' : 'default', transition: 'opacity 0.15s ease', '&:hover': clickCopyEnabled ? { opacity: 0.7 } : {} },
+                  sx: {
+                    cursor: clickCopyEnabled ? 'pointer' : 'default',
+                    transition: 'opacity 0.15s ease',
+                    '&:hover': clickCopyEnabled ? {opacity: 0.7} : {}
+                  },
                 }}
               />
             </ListItem>

@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, {useState} from 'react'
+import {useNavigate} from 'react-router-dom'
 import {
   Box,
   Typography,
@@ -17,23 +17,23 @@ import {
 } from '@mui/material'
 
 function FilterBar({
-  composers,
-  genres,
-  periods,
-  filters,
-  onFilterChange,
-  countText = '',
-}) {
+                     composers,
+                     genres,
+                     periods,
+                     filters,
+                     onFilterChange,
+                     countText = '',
+                   }) {
   const navigate = useNavigate()
   const [dialogOpen, setDialogOpen] = useState(false)
 
   const handleChange = (field) => (event) => {
-    const { value } = event.target
-    onFilterChange({ ...filters, [field]: typeof value === 'string' ? value.split(',') : value })
+    const {value} = event.target
+    onFilterChange({...filters, [field]: typeof value === 'string' ? value.split(',') : value})
   }
 
   const clearFilters = () => {
-    onFilterChange({ composer: [], genre: [], period: [] })
+    onFilterChange({composer: [], genre: [], period: []})
   }
 
   const activeFilterCount =
@@ -41,35 +41,36 @@ function FilterBar({
   const hasFilters = activeFilterCount > 0
 
   return (
-    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-      <Typography variant="h6" color="text.secondary" sx={{ flexShrink: 0, fontFamily: '"EB Garamond", serif', fontWeight: 500, fontSize: '1.05rem' }}>
+    <Box sx={{display: 'flex', alignItems: 'center', gap: 2}}>
+      <Typography variant="h6" color="text.secondary"
+                  sx={{flexShrink: 0, fontFamily: '"EB Garamond", serif', fontWeight: 500, fontSize: '1.05rem'}}>
         {countText}
       </Typography>
 
-      <Box sx={{ flex: 1 }} />
+      <Box sx={{flex: 1}}/>
 
       <Button
         variant="contained"
         color="primary"
         onClick={() => setDialogOpen(true)}
-        startIcon={<span className={`mdi ${hasFilters ? 'mdi-filter' : 'mdi-filter-outline'}`} />}
+        startIcon={<span className={`mdi ${hasFilters ? 'mdi-filter' : 'mdi-filter-outline'}`}/>}
         sx={{
           borderRadius: '6px',
-          py: { xs: 0, sm: 0.8 },
-          px: { xs: 0, sm: 1.5 },
-          minWidth: { xs: 40, sm: 'auto' },
-          width: { xs: 40, sm: 'auto' },
-          height: { xs: 40, sm: 'auto' },
+          py: {xs: 0, sm: 0.8},
+          px: {xs: 0, sm: 1.5},
+          minWidth: {xs: 40, sm: 'auto'},
+          width: {xs: 40, sm: 'auto'},
+          height: {xs: 40, sm: 'auto'},
           fontFamily: '"EB Garamond", serif',
           fontSize: '0.95rem',
           textTransform: 'none',
           whiteSpace: 'nowrap',
           boxShadow: 'none',
-          '&:hover': { boxShadow: 'none' },
-          '& .MuiButton-startIcon': { mr: { xs: 0, sm: 0.5 }, ml: { xs: 0, sm: -0.25 } },
+          '&:hover': {boxShadow: 'none'},
+          '& .MuiButton-startIcon': {mr: {xs: 0, sm: 0.5}, ml: {xs: 0, sm: -0.25}},
         }}
       >
-        <Box component="span" sx={{ display: { xs: 'none', sm: 'inline' } }}>
+        <Box component="span" sx={{display: {xs: 'none', sm: 'inline'}}}>
           Filter
           {hasFilters && (
             <Box
@@ -98,14 +99,14 @@ function FilterBar({
         variant="contained"
         color="secondary"
         onClick={() => navigate('/settings')}
-        startIcon={<span className="mdi mdi-cog-outline" />}
+        startIcon={<span className="mdi mdi-cog-outline"/>}
         sx={{
           borderRadius: '6px',
-          py: { xs: 0, sm: 0.8 },
-          px: { xs: 0, sm: 1.5 },
-          minWidth: { xs: 40, sm: 'auto' },
-          width: { xs: 40, sm: 'auto' },
-          height: { xs: 40, sm: 'auto' },
+          py: {xs: 0, sm: 0.8},
+          px: {xs: 0, sm: 1.5},
+          minWidth: {xs: 40, sm: 'auto'},
+          width: {xs: 40, sm: 'auto'},
+          height: {xs: 40, sm: 'auto'},
           fontFamily: '"EB Garamond", serif',
           fontSize: '0.95rem',
           textTransform: 'none',
@@ -113,15 +114,15 @@ function FilterBar({
           boxShadow: 'none',
           color: (t) => t.palette.primary.contrastText,
           '& .MuiButton-startIcon': {
-            mr: { xs: 0, sm: 0.5 },
-            ml: { xs: 0, sm: -0.25 },
+            mr: {xs: 0, sm: 0.5},
+            ml: {xs: 0, sm: -0.25},
             color: (t) => t.palette.primary.contrastText,
           },
-          '& .MuiButton-icon': { color: (t) => t.palette.primary.contrastText },
-          '&:hover': { boxShadow: 'none' },
+          '& .MuiButton-icon': {color: (t) => t.palette.primary.contrastText},
+          '&:hover': {boxShadow: 'none'},
         }}
       >
-        <Box component="span" sx={{ display: { xs: 'none', sm: 'inline' } }}>
+        <Box component="span" sx={{display: {xs: 'none', sm: 'inline'}}}>
           Settings
         </Box>
       </Button>
@@ -164,7 +165,7 @@ function FilterBar({
             onClick={clearFilters}
             disabled={!hasFilters}
             color="primary"
-            startIcon={<span className="mdi mdi-restore" style={{ fontSize: '1.1rem' }} />}
+            startIcon={<span className="mdi mdi-restore" style={{fontSize: '1.1rem'}}/>}
             sx={{
               fontFamily: '"EB Garamond", serif',
               textTransform: 'none',
@@ -175,10 +176,10 @@ function FilterBar({
             Reset
           </Button>
         </DialogTitle>
-        <Divider />
-        <DialogContent sx={{ pt: 2, flex: 1, overflowY: 'auto' }}>
-          <Box sx={{ minWidth: 300 }}>
-            <FormControl fullWidth size="small" sx={{ mb: 1.5 }}>
+        <Divider/>
+        <DialogContent sx={{pt: 2, flex: 1, overflowY: 'auto'}}>
+          <Box sx={{minWidth: 300}}>
+            <FormControl fullWidth size="small" sx={{mb: 1.5}}>
               <InputLabel id="composer-filter-label">Composer</InputLabel>
               <Select
                 labelId="composer-filter-label"
@@ -190,13 +191,13 @@ function FilterBar({
               >
                 {composers.map((c) => (
                   <MenuItem key={c} value={c}>
-                    <Checkbox checked={(filters.composer || []).includes(c)} />
+                    <Checkbox checked={(filters.composer || []).includes(c)}/>
                     {c}
                   </MenuItem>
                 ))}
               </Select>
             </FormControl>
-            <FormControl fullWidth size="small" sx={{ mb: 1.5 }}>
+            <FormControl fullWidth size="small" sx={{mb: 1.5}}>
               <InputLabel id="genre-filter-label">Genre</InputLabel>
               <Select
                 labelId="genre-filter-label"
@@ -208,7 +209,7 @@ function FilterBar({
               >
                 {genres.map((g) => (
                   <MenuItem key={g} value={g}>
-                    <Checkbox checked={(filters.genre || []).includes(g)} />
+                    <Checkbox checked={(filters.genre || []).includes(g)}/>
                     {g}
                   </MenuItem>
                 ))}
@@ -226,7 +227,7 @@ function FilterBar({
               >
                 {periods.map((p) => (
                   <MenuItem key={p} value={p}>
-                    <Checkbox checked={(filters.period || []).includes(p)} />
+                    <Checkbox checked={(filters.period || []).includes(p)}/>
                     {p}
                   </MenuItem>
                 ))}
@@ -234,13 +235,19 @@ function FilterBar({
             </FormControl>
           </Box>
         </DialogContent>
-        <Divider />
-        <DialogActions sx={{ px: 2, py: 1.5 }}>
+        <Divider/>
+        <DialogActions sx={{px: 2, py: 1.5}}>
           <Button
             onClick={() => setDialogOpen(false)}
             variant="contained"
             color="primary"
-            sx={{ fontFamily: '"EB Garamond", serif', textTransform: 'none', fontSize: '0.95rem', borderRadius: '6px', boxShadow: 'none' }}
+            sx={{
+              fontFamily: '"EB Garamond", serif',
+              textTransform: 'none',
+              fontSize: '0.95rem',
+              borderRadius: '6px',
+              boxShadow: 'none'
+            }}
           >
             Close
           </Button>

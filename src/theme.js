@@ -1,4 +1,4 @@
-import { createTheme } from '@mui/material/styles';
+import {createTheme} from '@mui/material/styles';
 
 const lightPalette = {
   mode: 'light',
@@ -63,19 +63,19 @@ const fontSans = '"Source Sans 3", "Helvetica Neue", Arial, sans-serif';
 const commonTypography = {
   fontFamily: fontSerif,
   fontSize: 15,
-  h1: { fontFamily: fontDisplay, fontWeight: 700, letterSpacing: '-0.01em' },
-  h2: { fontFamily: fontDisplay, fontWeight: 700, letterSpacing: '-0.01em' },
-  h3: { fontFamily: fontDisplay, fontWeight: 600 },
-  h4: { fontFamily: fontDisplay, fontWeight: 600 },
-  h5: { fontFamily: fontSerif, fontWeight: 700 },
-  h6: { fontFamily: fontSerif, fontWeight: 700 },
-  subtitle1: { fontFamily: fontSerif, fontWeight: 600 },
-  subtitle2: { fontFamily: fontSerif, fontWeight: 600 },
-  body1: { fontFamily: fontSerif, lineHeight: 1.7 },
-  body2: { fontFamily: fontSans, lineHeight: 1.6 },
-  button: { fontFamily: fontSerif, textTransform: 'none', letterSpacing: '0.01em' },
-  caption: { fontFamily: fontSans },
-  overline: { fontFamily: fontSans, letterSpacing: '0.08em' },
+  h1: {fontFamily: fontDisplay, fontWeight: 700, letterSpacing: '-0.01em'},
+  h2: {fontFamily: fontDisplay, fontWeight: 700, letterSpacing: '-0.01em'},
+  h3: {fontFamily: fontDisplay, fontWeight: 600},
+  h4: {fontFamily: fontDisplay, fontWeight: 600},
+  h5: {fontFamily: fontSerif, fontWeight: 700},
+  h6: {fontFamily: fontSerif, fontWeight: 700},
+  subtitle1: {fontFamily: fontSerif, fontWeight: 600},
+  subtitle2: {fontFamily: fontSerif, fontWeight: 600},
+  body1: {fontFamily: fontSerif, lineHeight: 1.7},
+  body2: {fontFamily: fontSans, lineHeight: 1.6},
+  button: {fontFamily: fontSerif, textTransform: 'none', letterSpacing: '0.01em'},
+  caption: {fontFamily: fontSans},
+  overline: {fontFamily: fontSans, letterSpacing: '0.08em'},
 };
 
 const commonComponents = {
@@ -115,6 +115,6 @@ export const darkTheme = createTheme({
   components: commonComponents,
 });
 
-export { fontSerif, fontDisplay, fontSans };
+export {fontSerif, fontDisplay, fontSans};
 
 export default lightTheme;

@@ -1,167 +1,178 @@
 // D:/MusicIndexOnline/src/hooks/useTheme.js
-import { useState, useEffect, useCallback } from 'react'
+import {useState, useEffect, useCallback} from 'react'
 
 export default function useTheme() {
-    const getInitialMode = () => {
-        try {
-            const saved = localStorage.getItem('siteTheme')
-            if (saved === 'light' || saved === 'dark') return saved
-        } catch (e) {}
-        if (typeof window !== 'undefined' && window.matchMedia) {
-            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-        }
-        return 'light'
+  const getInitialMode = () => {
+    try {
+      const saved = localStorage.getItem('siteTheme')
+      if (saved === 'light' || saved === 'dark') return saved
+    } catch (e) {
     }
-
-    const getInitialFontSizeScale = () => {
-        try {
-            const saved = localStorage.getItem('siteFontSizeScale')
-            if (saved) {
-                const parsed = parseFloat(saved)
-                if (!isNaN(parsed) && parsed >= 0.5 && parsed <= 2.0) return parsed
-            }
-        } catch (e) {}
-        return 1.0
+    if (typeof window !== 'undefined' && window.matchMedia) {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
     }
+    return 'light'
+  }
 
-    const getInitialClickCopyEnabled = () => {
-        try {
-            const saved = localStorage.getItem('siteClickCopyEnabled')
-            if (saved === 'true') return true
-            if (saved === 'false') return false
-        } catch (e) {}
-        return true
+  const getInitialFontSizeScale = () => {
+    try {
+      const saved = localStorage.getItem('siteFontSizeScale')
+      if (saved) {
+        const parsed = parseFloat(saved)
+        if (!isNaN(parsed) && parsed >= 0.5 && parsed <= 2.0) return parsed
+      }
+    } catch (e) {
     }
+    return 1.0
+  }
 
-    const getInitialItemsPerPage = () => {
-        try {
-            const saved = localStorage.getItem('siteItemsPerPage')
-            if (saved) {
-                const parsed = parseInt(saved, 10)
-                if (!isNaN(parsed) && parsed >= 5 && parsed <= 100) return parsed
-            }
-        } catch (e) {}
-        return 20
+  const getInitialClickCopyEnabled = () => {
+    try {
+      const saved = localStorage.getItem('siteClickCopyEnabled')
+      if (saved === 'true') return true
+      if (saved === 'false') return false
+    } catch (e) {
     }
+    return true
+  }
 
-    const getInitialClickCopyRules = () => {
-        const defaults = {
-            workTitle: 'workTitle',
-            composerTag: 'composer',
-            movementTitle: 'movementTitle',
-            copyButton: 'plainText',
-        }
-        try {
-            const saved = localStorage.getItem('siteClickCopyRules')
-            if (saved) {
-                const parsed = JSON.parse(saved)
-                if (parsed && typeof parsed === 'object') {
-                    return { ...defaults, ...parsed }
-                }
-            }
-        } catch (e) {}
-        return defaults
+  const getInitialItemsPerPage = () => {
+    try {
+      const saved = localStorage.getItem('siteItemsPerPage')
+      if (saved) {
+        const parsed = parseInt(saved, 10)
+        if (!isNaN(parsed) && parsed >= 5 && parsed <= 100) return parsed
+      }
+    } catch (e) {
     }
+    return 20
+  }
 
-    const [mode, setMode] = useState(getInitialMode)
-    const [fontSizeScale, setFontSizeScale] = useState(getInitialFontSizeScale)
-    const [clickCopyEnabled, setClickCopyEnabled] = useState(getInitialClickCopyEnabled)
-    const [clickCopyRules, setClickCopyRulesState] = useState(getInitialClickCopyRules)
-    const [itemsPerPage, setItemsPerPage] = useState(getInitialItemsPerPage)
-
-    useEffect(() => {
-        if (typeof document !== 'undefined') {
-            document.documentElement.setAttribute('data-theme', mode)
-        }
-    }, [mode])
-
-    useEffect(() => {
-        if (typeof document !== 'undefined') {
-            document.documentElement.style.fontSize = `${fontSizeScale * 100}%`
-        }
-        try {
-            localStorage.setItem('siteFontSizeScale', fontSizeScale)
-        } catch (e) {}
-    }, [fontSizeScale])
-
-    useEffect(() => {
-        try {
-            localStorage.setItem('siteClickCopyEnabled', clickCopyEnabled)
-        } catch (e) {}
-    }, [clickCopyEnabled])
-
-    useEffect(() => {
-        try {
-            localStorage.setItem('siteItemsPerPage', itemsPerPage)
-        } catch (e) {}
-    }, [itemsPerPage])
-
-    useEffect(() => {
-        if (typeof window === 'undefined' || !window.matchMedia) return
-        const media = window.matchMedia('(prefers-color-scheme: dark)')
-        const handler = (e) => {
-            try {
-                if (!localStorage.getItem('siteTheme')) {
-                    setMode(e.matches ? 'dark' : 'light')
-                }
-            } catch (err) {
-                setMode(e.matches ? 'dark' : 'light')
-            }
-        }
-        if (media.addEventListener) {
-            media.addEventListener('change', handler)
-            return () => media.removeEventListener('change', handler)
-        } else {
-            media.addListener(handler)
-            return () => media.removeListener(handler)
-        }
-    }, [])
-
-    useEffect(() => {
-        try {
-            localStorage.setItem('siteClickCopyRules', JSON.stringify(clickCopyRules))
-        } catch (e) {}
-    }, [clickCopyRules])
-
-    const setThemeMode = useCallback((next) => {
-        if (next !== 'light' && next !== 'dark') return
-        try {
-            localStorage.setItem('siteTheme', next)
-        } catch (e) {}
-        setMode(next)
-    }, [])
-
-    const toggleMode = useCallback(() => {
-        setMode((prev) => {
-            const next = prev === 'dark' ? 'light' : 'dark'
-            try {
-                localStorage.setItem('siteTheme', next)
-            } catch (e) {}
-            return next
-        })
-    }, [])
-
-    const setFontSize = useCallback((scale) => {
-        if (typeof scale !== 'number' || scale < 0.5 || scale > 2.0) return
-        setFontSizeScale(scale)
-    }, [])
-
-    const setClickCopyRules = useCallback((next) => {
-        if (!next || typeof next !== 'object') return
-        setClickCopyRulesState((prev) => ({ ...prev, ...next }))
-    }, [])
-
-    return {
-        mode,
-        toggleMode,
-        setMode: setThemeMode,
-        fontSizeScale,
-        setFontSizeScale: setFontSize,
-        clickCopyEnabled,
-        setClickCopyEnabled,
-        clickCopyRules,
-        setClickCopyRules,
-        itemsPerPage,
-        setItemsPerPage,
+  const getInitialClickCopyRules = () => {
+    const defaults = {
+      workTitle: 'workTitle',
+      composerTag: 'composer',
+      movementTitle: 'movementTitle',
+      copyButton: 'plainText',
     }
+    try {
+      const saved = localStorage.getItem('siteClickCopyRules')
+      if (saved) {
+        const parsed = JSON.parse(saved)
+        if (parsed && typeof parsed === 'object') {
+          return {...defaults, ...parsed}
+        }
+      }
+    } catch (e) {
+    }
+    return defaults
+  }
+
+  const [mode, setMode] = useState(getInitialMode)
+  const [fontSizeScale, setFontSizeScale] = useState(getInitialFontSizeScale)
+  const [clickCopyEnabled, setClickCopyEnabled] = useState(getInitialClickCopyEnabled)
+  const [clickCopyRules, setClickCopyRulesState] = useState(getInitialClickCopyRules)
+  const [itemsPerPage, setItemsPerPage] = useState(getInitialItemsPerPage)
+
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      document.documentElement.setAttribute('data-theme', mode)
+    }
+  }, [mode])
+
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      document.documentElement.style.fontSize = `${fontSizeScale * 100}%`
+    }
+    try {
+      localStorage.setItem('siteFontSizeScale', fontSizeScale)
+    } catch (e) {
+    }
+  }, [fontSizeScale])
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('siteClickCopyEnabled', clickCopyEnabled)
+    } catch (e) {
+    }
+  }, [clickCopyEnabled])
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('siteItemsPerPage', itemsPerPage)
+    } catch (e) {
+    }
+  }, [itemsPerPage])
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !window.matchMedia) return
+    const media = window.matchMedia('(prefers-color-scheme: dark)')
+    const handler = (e) => {
+      try {
+        if (!localStorage.getItem('siteTheme')) {
+          setMode(e.matches ? 'dark' : 'light')
+        }
+      } catch (err) {
+        setMode(e.matches ? 'dark' : 'light')
+      }
+    }
+    if (media.addEventListener) {
+      media.addEventListener('change', handler)
+      return () => media.removeEventListener('change', handler)
+    } else {
+      media.addListener(handler)
+      return () => media.removeListener(handler)
+    }
+  }, [])
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('siteClickCopyRules', JSON.stringify(clickCopyRules))
+    } catch (e) {
+    }
+  }, [clickCopyRules])
+
+  const setThemeMode = useCallback((next) => {
+    if (next !== 'light' && next !== 'dark') return
+    try {
+      localStorage.setItem('siteTheme', next)
+    } catch (e) {
+    }
+    setMode(next)
+  }, [])
+
+  const toggleMode = useCallback(() => {
+    setMode((prev) => {
+      const next = prev === 'dark' ? 'light' : 'dark'
+      try {
+        localStorage.setItem('siteTheme', next)
+      } catch (e) {
+      }
+      return next
+    })
+  }, [])
+
+  const setFontSize = useCallback((scale) => {
+    if (typeof scale !== 'number' || scale < 0.5 || scale > 2.0) return
+    setFontSizeScale(scale)
+  }, [])
+
+  const setClickCopyRules = useCallback((next) => {
+    if (!next || typeof next !== 'object') return
+    setClickCopyRulesState((prev) => ({...prev, ...next}))
+  }, [])
+
+  return {
+    mode,
+    toggleMode,
+    setMode: setThemeMode,
+    fontSizeScale,
+    setFontSizeScale: setFontSize,
+    clickCopyEnabled,
+    setClickCopyEnabled,
+    clickCopyRules,
+    setClickCopyRules,
+    itemsPerPage,
+    setItemsPerPage,
+  }
 }

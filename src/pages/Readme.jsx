@@ -1,5 +1,17 @@
 import React, {useState, useCallback, useRef, useEffect} from 'react'
-import {Box, Typography, Divider, Link, Collapse, Snackbar, IconButton, Tooltip, Fade, useMediaQuery} from '@mui/material'
+import {
+  Box,
+  Typography,
+  Divider,
+  Link,
+  Collapse,
+  Snackbar,
+  IconButton,
+  Tooltip,
+  Fade,
+  useMediaQuery,
+  useTheme
+} from '@mui/material'
 import Layout from '../components/Layout'
 import TextBrowser from '../components/TextBrowser'
 
@@ -37,16 +49,16 @@ const linkSx = {
 }
 
 const tocItems = [
-  { id: 'introduction', text: 'Introduction', level: 1 },
-  { id: 'features', text: 'Features', level: 1 },
-  { id: 'search-browse', text: 'Search & Browse', level: 2 },
-  { id: 'copy-clipboard', text: 'Copy & Clipboard', level: 2 },
-  { id: 'appearance-customization', text: 'Appearance & Customization', level: 2 },
-  { id: 'navigation-interaction', text: 'Navigation & Interaction', level: 2 },
-  { id: 'settings-support', text: 'Settings & Support', level: 2 },
-  { id: 'feedback', text: 'Feedback', level: 1 },
-  { id: 'license', text: 'License', level: 1 },
-  { id: 'credits', text: 'Credits', level: 1 },
+  {id: 'introduction', text: 'Introduction', level: 1},
+  {id: 'features', text: 'Features', level: 1},
+  {id: 'search-browse', text: 'Search & Browse', level: 2},
+  {id: 'copy-clipboard', text: 'Copy & Clipboard', level: 2},
+  {id: 'appearance-customization', text: 'Appearance & Customization', level: 2},
+  {id: 'navigation-interaction', text: 'Navigation & Interaction', level: 2},
+  {id: 'settings-support', text: 'Settings & Support', level: 2},
+  {id: 'feedback', text: 'Feedback', level: 1},
+  {id: 'license', text: 'License', level: 1},
+  {id: 'credits', text: 'Credits', level: 1},
 ]
 
 const mitLicense = `MIT License
@@ -62,23 +74,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 function Readme() {
   const [licenseOpen, setLicenseOpen] = useState(false)
   const [snackbarOpen, setSnackbarOpen] = useState(false)
-  const [tocOpen, setTocOpen] = useState(true)
-  const [showTocContent, setShowTocContent] = useState(true)
-  const isWideScreen = useMediaQuery('(min-width:1400px)')
+  const [tocOpen, setTocOpen] = useState(false)
+  const [showTocContent, setShowTocContent] = useState(false)
+  const theme = useTheme()
   const snackbarTimerRef = useRef(null)
-  const tocRef = useRef(null)
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (tocRef.current && !tocRef.current.contains(event.target)) {
-        setTocOpen(false)
-      }
-    }
-    if (tocOpen) {
-      document.addEventListener('mousedown', handleClickOutside)
-      return () => document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [tocOpen])
 
   useEffect(() => {
     if (tocOpen) {
@@ -88,10 +87,6 @@ function Readme() {
       setShowTocContent(false)
     }
   }, [tocOpen])
-
-  useEffect(() => {
-    setTocOpen(isWideScreen)
-  }, [isWideScreen])
 
   useEffect(() => {
     return () => {
@@ -119,23 +114,15 @@ function Readme() {
       const appBarHeight = 64
       const rect = target.getBoundingClientRect()
       const scrollTop = window.pageYOffset + rect.top - appBarHeight
-      window.scrollTo({ top: scrollTop, behavior: 'smooth' })
+      window.scrollTo({top: scrollTop, behavior: 'smooth'})
     }
   }, [])
 
   const tocBaseSx = {
     position: 'fixed',
     top: '100px',
-    right: {
-      xs: '8px',
-      sm: '16px',
-      md: '32px'
-    },
-    width: {
-      xs: 'calc(100vw - 16px)',
-      sm: '220px'
-    },
-    maxWidth: '220px',
+    right: '32px',
+    width: '220px',
     border: '1px solid',
     borderColor: 'divider',
     borderRadius: 2,
@@ -145,24 +132,41 @@ function Readme() {
     zIndex: 1000,
     maxHeight: 'calc(100vh - 140px)',
     overflowY: 'auto',
-    transition: 'width 0.2s ease, height 0.2s ease, padding 0.2s ease',
-    ...(!tocOpen && {
-      width: '44px',
-      height: '44px',
-      p: 0,
-      overflow: 'hidden',
-      cursor: 'pointer',
-    }),
   }
 
+  const toolbarAction = !tocOpen ? (
+    <IconButton
+      color="inherit"
+      onClick={() => setTocOpen(true)}
+      sx={{flexShrink: 0}}
+    >
+      <span
+        className="mdi mdi-format-list-bulleted"
+        style={{color: theme.palette.primary.contrastText, fontSize: '1.5rem'}}
+      />
+    </IconButton>
+  ) : null
+
   return (
-    <Layout>
-      <Box sx={{mt: 2, mb: 4, maxWidth: '800px', mx: 'auto', userSelect: 'text', position: 'relative'}}>
-        <Box ref={tocRef} sx={tocBaseSx}>
-          <Fade in={showTocContent} unmountOnExit>
+    <Layout toolbarAction={toolbarAction}>
+      {tocOpen && (
+        <Box sx={tocBaseSx}>
+          <Fade in={showTocContent}>
             <Box>
-              <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', pb: 1, mb: 1, borderBottom: 1, borderColor: 'divider'}}>
-                <Typography variant="subtitle2" sx={{fontWeight: 700, fontFamily: '"Playfair Display", "EB Garamond", Georgia, serif', textAlign: 'left'}}>
+              <Box sx={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                pb: 1,
+                mb: 1,
+                borderBottom: 1,
+                borderColor: 'divider'
+              }}>
+                <Typography variant="subtitle2" sx={{
+                  fontWeight: 700,
+                  fontFamily: '"Playfair Display", "EB Garamond", Georgia, serif',
+                  textAlign: 'left'
+                }}>
                   Contents
                 </Typography>
                 <IconButton
@@ -170,7 +174,7 @@ function Readme() {
                   onClick={() => setTocOpen(false)}
                   sx={{width: 28, height: 28}}
                 >
-                  <span className="mdi mdi-chevron-right" style={{fontSize: '1.1rem'}} />
+                  <span className="mdi mdi-close" style={{fontSize: '1.1rem'}}/>
                 </IconButton>
               </Box>
               {tocItems.map((item) => (
@@ -202,24 +206,9 @@ function Readme() {
               ))}
             </Box>
           </Fade>
-          {!tocOpen && (
-            <Tooltip title="Contents">
-              <IconButton
-                onClick={() => setTocOpen(true)}
-                sx={{
-                  width: 44,
-                  height: 44,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  borderRadius: '50%',
-                }}
-              >
-                <span className="mdi mdi-format-list-bulleted" style={{fontSize: '1.3rem'}} />
-              </IconButton>
-            </Tooltip>
-          )}
         </Box>
+      )}
+      <Box sx={{mt: 2, mb: 4, maxWidth: '800px', mx: 'auto', userSelect: 'text', position: 'relative'}}>
 
         <Typography variant="h4" sx={h1Sx}>
           Music Index Online
@@ -236,11 +225,14 @@ function Readme() {
         </Typography>
 
         <Typography variant="body1" sx={bodySx}>
-          Music Index Online is a searchable, open-source catalog of classical music works. It indexes compositions by composer, title, opus number, genre, and period, with detailed movement listings — all presented through an elegant, distraction-free interface.
+          Music Index Online is a searchable, open-source catalog of classical music works. It indexes compositions by
+          composer, title, opus number, genre, and period, with detailed movement listings — all presented through an
+          elegant, distraction-free interface.
         </Typography>
 
         <Typography variant="body1" sx={bodySx}>
-          Whether you're a performer checking a program, a listener discovering new repertoire, or a researcher cataloging works, Music Index Online makes it easy to find and copy the information you need.
+          Whether you're a performer checking a program, a listener discovering new repertoire, or a researcher
+          cataloging works, Music Index Online makes it easy to find and copy the information you need.
         </Typography>
 
         <Typography variant="body1" sx={bodySx}>
@@ -312,7 +304,8 @@ function Readme() {
         <Box component="ul" sx={{pl: 3, my: 1, '& li': {mb: 0.5}}}>
           <li>
             <Typography variant="body1" sx={bodySx}>
-              <strong>Click copy</strong> — tap titles, composer tags, genre tags, period tags, or movement titles to copy text to clipboard
+              <strong>Click copy</strong> — tap titles, composer tags, genre tags, period tags, or movement titles to
+              copy text to clipboard
             </Typography>
           </li>
           <li>
@@ -322,7 +315,8 @@ function Readme() {
             <Box component="ul" sx={{pl: 3, my: 1, '& li': {mb: 0.5}, listStyleType: 'disc'}}>
               <li>
                 <Typography variant="body1" sx={bodySx}>
-                  <strong>Work title clicked:</strong> Work title / Composer &amp; Work title / Composer (Short) &amp; Work title
+                  <strong>Work title clicked:</strong> Work title / Composer &amp; Work title / Composer
+                  (Short) &amp; Work title
                 </Typography>
               </li>
               <li>
@@ -332,7 +326,8 @@ function Readme() {
               </li>
               <li>
                 <Typography variant="body1" sx={bodySx}>
-                  <strong>Movement title clicked:</strong> Movement title / Work title &amp; Movement title / Composer, Work title &amp; Movement title / Composer (Short), Work title &amp; Movement title
+                  <strong>Movement title clicked:</strong> Movement title / Work title &amp; Movement title / Composer,
+                  Work title &amp; Movement title / Composer (Short), Work title &amp; Movement title
                 </Typography>
               </li>
               <li>
@@ -350,7 +345,8 @@ function Readme() {
         <Box component="ul" sx={{pl: 3, my: 1, '& li': {mb: 0.5}}}>
           <li>
             <Typography variant="body1" sx={bodySx}>
-              <strong>Dark &amp; light themes</strong> — automatically adapts to your system preference, with manual toggle
+              <strong>Dark &amp; light themes</strong> — automatically adapts to your system preference, with manual
+              toggle
             </Typography>
           </li>
           <li>
@@ -371,7 +367,8 @@ function Readme() {
         <Box component="ul" sx={{pl: 3, my: 1, '& li': {mb: 0.5}}}>
           <li>
             <Typography variant="body1" sx={bodySx}>
-              <strong>Click logo to scroll top</strong> — tap the logo in the navigation bar to smoothly return to the top of the page
+              <strong>Click logo to scroll top</strong> — tap the logo in the navigation bar to smoothly return to the
+              top of the page
             </Typography>
           </li>
           <li>
@@ -381,7 +378,8 @@ function Readme() {
           </li>
           <li>
             <Typography variant="body1" sx={bodySx}>
-              <strong>Smooth animations</strong> — polished transitions for search expansion, filtering, and card interactions
+              <strong>Smooth animations</strong> — polished transitions for search expansion, filtering, and card
+              interactions
             </Typography>
           </li>
           <li>
@@ -529,7 +527,7 @@ function Readme() {
           }
           setSnackbarOpen(false)
         }}
-        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        anchorOrigin={{vertical: 'top', horizontal: 'center'}}
       >
         <Box
           onClick={(e) => e.stopPropagation()}
@@ -545,8 +543,8 @@ function Readme() {
             boxShadow: 3,
           }}
         >
-          <Box component="span" className="mdi mdi-check-circle-outline" sx={{ fontSize: '1.25rem', lineHeight: 1 }} />
-          <Typography variant="body2" sx={{ fontWeight: 500 }}>Copied</Typography>
+          <Box component="span" className="mdi mdi-check-circle-outline" sx={{fontSize: '1.25rem', lineHeight: 1}}/>
+          <Typography variant="body2" sx={{fontWeight: 500}}>Copied</Typography>
         </Box>
       </Snackbar>
     </Layout>

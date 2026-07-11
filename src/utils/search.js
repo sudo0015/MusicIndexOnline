@@ -38,7 +38,7 @@ export function filterWorks(data, searchTerm, filters) {
 
     if (keywords.length > 0) {
       result = result
-        .map(work => ({ work, score: getMatchScore(work, keywords) }))
+        .map(work => ({work, score: getMatchScore(work, keywords)}))
         .filter(entry => entry.score > 0)
         .sort((a, b) => b.score - a.score)
         .map(entry => entry.work)

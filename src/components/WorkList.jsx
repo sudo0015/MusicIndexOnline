@@ -1,11 +1,22 @@
-import React, { useMemo, useEffect, useRef } from 'react'
-import { Box, Typography, Pagination } from '@mui/material'
+import React, {useMemo, useEffect, useRef} from 'react'
+import {Box, Typography, Pagination} from '@mui/material'
 import WorkCard from './WorkCard'
-import { filterWorks } from '../utils/search'
+import {filterWorks} from '../utils/search'
 
 const DEFAULT_ITEMS_PER_PAGE = 20
 
-function WorkList({ data, searchTerm, filters, page, onPageChange, itemsPerPage, onCopyText, clickCopyEnabled, clickCopyRules, buildCopyText }) {
+function WorkList({
+                    data,
+                    searchTerm,
+                    filters,
+                    page,
+                    onPageChange,
+                    itemsPerPage,
+                    onCopyText,
+                    clickCopyEnabled,
+                    clickCopyRules,
+                    buildCopyText
+                  }) {
   const localPage = page || 1
   const perPage = itemsPerPage || DEFAULT_ITEMS_PER_PAGE
   const prevPageRef = useRef(localPage)
@@ -13,7 +24,7 @@ function WorkList({ data, searchTerm, filters, page, onPageChange, itemsPerPage,
   useEffect(() => {
     if (prevPageRef.current !== localPage) {
       prevPageRef.current = localPage
-      window.scrollTo({ top: 0, behavior: 'smooth' })
+      window.scrollTo({top: 0, behavior: 'smooth'})
     }
   }, [localPage])
 
@@ -29,7 +40,7 @@ function WorkList({ data, searchTerm, filters, page, onPageChange, itemsPerPage,
 
   if (filteredData.length === 0) {
     return (
-      <Box sx={{ textAlign: 'center', mt: 6, py: 4 }}>
+      <Box sx={{textAlign: 'center', mt: 6, py: 4}}>
         <Typography variant="h6" color="text.secondary" gutterBottom>
           No work matched
         </Typography>
@@ -51,11 +62,12 @@ function WorkList({ data, searchTerm, filters, page, onPageChange, itemsPerPage,
       ))}
 
       {totalPages > 1 && (
-        <Box sx={{ display: 'flex', justifyContent: 'center', mt: 3 }}>
-          <Pagination 
+        <Box sx={{display: 'flex', justifyContent: 'center', mt: 3}}>
+          <Pagination
             count={totalPages}
             page={localPage}
-            onChange={(e, value) => (onPageChange || (() => {}))(value)}
+            onChange={(e, value) => (onPageChange || (() => {
+            }))(value)}
             color="primary"
             size="large"
           />

@@ -1,26 +1,26 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, {useState} from 'react'
+import {useNavigate} from 'react-router-dom'
 import {
-    Box,
-    Typography,
-    Card,
-    CardContent,
-    CardHeader,
-    Divider,
-    ToggleButton,
-    ToggleButtonGroup,
-    Select,
-    MenuItem,
-    FormControl,
-    Switch,
-    Button,
-    IconButton,
-    Dialog,
-    DialogTitle,
-    DialogContent,
-    DialogActions,
-    useMediaQuery,
-    useTheme,
+  Box,
+  Typography,
+  Card,
+  CardContent,
+  CardHeader,
+  Divider,
+  ToggleButton,
+  ToggleButtonGroup,
+  Select,
+  MenuItem,
+  FormControl,
+  Switch,
+  Button,
+  IconButton,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  useMediaQuery,
+  useTheme,
 } from '@mui/material'
 import Layout from '../components/Layout'
 import musicLogo from '../assets/icon.svg'
@@ -28,779 +28,793 @@ import paypalIcon from '../assets/paypal.svg'
 import alipayIcon from '../assets/alipay.svg'
 import alipayQrcode from '../assets/alipay_qrcode.svg'
 
-function Settings({ themeMode, onSetThemeMode, fontSizeScale, onSetFontSizeScale, clickCopyEnabled, onSetClickCopyEnabled, clickCopyRules, onSetClickCopyRules, itemsPerPage, onSetItemsPerPage }) {
-    const navigate = useNavigate()
-    const theme = useTheme()
-    const isCompact = useMediaQuery('(max-width:480px)')
-    const [donateDialogOpen, setDonateDialogOpen] = useState(false)
-    const [showAlipayQr, setShowAlipayQr] = useState(false)
-    const [clickCopyExpanded, setClickCopyExpanded] = useState(false)
-    const handleThemeChange = (event, next) => {
-        if (next && onSetThemeMode) {
-            onSetThemeMode(next)
-        }
+function Settings({
+                    themeMode,
+                    onSetThemeMode,
+                    fontSizeScale,
+                    onSetFontSizeScale,
+                    clickCopyEnabled,
+                    onSetClickCopyEnabled,
+                    clickCopyRules,
+                    onSetClickCopyRules,
+                    itemsPerPage,
+                    onSetItemsPerPage
+                  }) {
+  const navigate = useNavigate()
+  const theme = useTheme()
+  const isCompact = useMediaQuery('(max-width:480px)')
+  const [donateDialogOpen, setDonateDialogOpen] = useState(false)
+  const [showAlipayQr, setShowAlipayQr] = useState(false)
+  const [clickCopyExpanded, setClickCopyExpanded] = useState(false)
+  const handleThemeChange = (event, next) => {
+    if (next && onSetThemeMode) {
+      onSetThemeMode(next)
     }
+  }
 
-    const fontSizeOptions = [0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0]
+  const fontSizeOptions = [0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0]
 
-    const handleFontSizeChange = (event) => {
-        if (onSetFontSizeScale) {
-            onSetFontSizeScale(event.target.value)
-        }
+  const handleFontSizeChange = (event) => {
+    if (onSetFontSizeScale) {
+      onSetFontSizeScale(event.target.value)
     }
+  }
 
-    return (
-        <Layout>
-            <Box sx={{ mt: 2, mb: 4 }}>
+  return (
+    <Layout>
+      <Box sx={{mt: 2, mb: 4}}>
+        <Typography
+          variant="h4"
+          component="h1"
+          sx={{
+            fontFamily: '"Playfair Display", "EB Garamond", Georgia, serif',
+            fontWeight: 700,
+            mb: 3,
+          }}
+        >
+          Settings
+        </Typography>
+
+        <Card
+          elevation={0}
+          sx={{
+            borderRadius: 2,
+            border: 1,
+            borderColor: 'divider',
+            mb: 3,
+            overflow: 'hidden',
+          }}
+        >
+          <CardHeader
+            title={
+              <Box sx={{display: 'flex', alignItems: 'center', gap: 1.25}}>
+                <span
+                  className="mdi mdi-palette-outline"
+                  style={{fontSize: '1.5rem'}}
+                />
                 <Typography
-                    variant="h4"
-                    component="h1"
-                    sx={{
-                        fontFamily: '"Playfair Display", "EB Garamond", Georgia, serif',
-                        fontWeight: 700,
-                        mb: 3,
-                    }}
+                  variant="h6"
+                  sx={{
+                    fontFamily: '"EB Garamond", serif',
+                    fontWeight: 600,
+                  }}
                 >
-                    Settings
+                  Appearance
                 </Typography>
-
-                <Card
-                    elevation={0}
-                    sx={{
-                        borderRadius: 2,
-                        border: 1,
-                        borderColor: 'divider',
-                        mb: 3,
-                        overflow: 'hidden',
-                    }}
+              </Box>
+            }
+            sx={{pb: 1}}
+          />
+          <Divider/>
+          <CardContent>
+            <Box
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: 2,
+              }}
+            >
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  fontFamily: '"EB Garamond", Georgia, serif',
+                  fontWeight: 600,
+                  fontSize: '1.15rem',
+                  flexShrink: 0,
+                }}
+              >
+                Theme mode
+              </Typography>
+              <ToggleButtonGroup
+                value={themeMode}
+                exclusive
+                onChange={handleThemeChange}
+                aria-label="theme mode"
+                size="small"
+              >
+                <ToggleButton
+                  value="light"
+                  aria-label="light mode"
+                  sx={isCompact ? {minWidth: 40, minHeight: 40, p: 0} : {}}
                 >
-                    <CardHeader
-                        title={
-                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.25 }}>
-                <span
-                    className="mdi mdi-palette-outline"
-                    style={{ fontSize: '1.5rem' }}
-                />
-                                <Typography
-                                    variant="h6"
-                                    sx={{
-                                        fontFamily: '"EB Garamond", serif',
-                                        fontWeight: 600,
-                                    }}
-                                >
-                                    Appearance
-                                </Typography>
-                            </Box>
-                        }
-                        sx={{ pb: 1 }}
-                    />
-                    <Divider />
-                    <CardContent>
-                        <Box
-                            sx={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'space-between',
-                                gap: 2,
-                            }}
-                        >
-                            <Typography
-                                variant="subtitle1"
-                                sx={{
-                                    fontFamily: '"EB Garamond", Georgia, serif',
-                                    fontWeight: 600,
-                                    fontSize: '1.15rem',
-                                    flexShrink: 0,
-                                }}
-                            >
-                                Theme mode
-                            </Typography>
-                            <ToggleButtonGroup
-                                value={themeMode}
-                                exclusive
-                                onChange={handleThemeChange}
-                                aria-label="theme mode"
-                                size="small"
-                            >
-                                <ToggleButton
-                                    value="light"
-                                    aria-label="light mode"
-                                    sx={isCompact ? { minWidth: 40, minHeight: 40, p: 0 } : {}}
-                                >
-                                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, px: isCompact ? 0.5 : 1 }}>
-                                        <span className="mdi mdi-weather-sunny" />
-                                        {!isCompact && (
-                                            <Typography
-                                                sx={{
-                                                    fontFamily: '"EB Garamond", serif',
-                                                    textTransform: 'none',
-                                                    fontSize: '0.95rem',
-                                                }}
-                                            >
-                                                Light
-                                            </Typography>
-                                        )}
-                                    </Box>
-                                </ToggleButton>
-                                <ToggleButton
-                                    value="dark"
-                                    aria-label="dark mode"
-                                    sx={isCompact ? { minWidth: 40, minHeight: 40, p: 0 } : {}}
-                                >
-                                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, px: isCompact ? 0.5 : 1 }}>
-                                        <span className="mdi mdi-weather-night" />
-                                        {!isCompact && (
-                                            <Typography
-                                                sx={{
-                                                    fontFamily: '"EB Garamond", serif',
-                                                    textTransform: 'none',
-                                                    fontSize: '0.95rem',
-                                                }}
-                                            >
-                                                Dark
-                                            </Typography>
-                                        )}
-                                    </Box>
-                                </ToggleButton>
-                            </ToggleButtonGroup>
-                        </Box>
-                        <Box sx={{ mt: 3 }}>
-                            <Box
-                                sx={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'space-between',
-                                    gap: 2,
-                                }}
-                            >
-                                <Typography
-                                    variant="subtitle1"
-                                    sx={{
-                                        fontFamily: '"EB Garamond", Georgia, serif',
-                                        fontWeight: 600,
-                                        fontSize: '1.15rem',
-                                        flexShrink: 0,
-                                    }}
-                                >
-                                    Text size
-                                </Typography>
-                                <FormControl size="small" sx={{ minWidth: isCompact ? 90 : 180 }}>
-                                    <Select
-                                        value={fontSizeScale}
-                                        onChange={handleFontSizeChange}
-                                        aria-label="text size"
-                                    >
-                                        {fontSizeOptions.map((val) => (
-                                            <MenuItem key={val} value={val}>
-                                                {Math.round(val * 100)}%
-                                            </MenuItem>
-                                        ))}
-                                    </Select>
-                                </FormControl>
-                            </Box>
-                        </Box>
-                    </CardContent>
-                </Card>
-
-                <Card
-                    elevation={0}
-                    sx={{
-                        borderRadius: 2,
-                        border: 1,
-                        borderColor: 'divider',
-                        mb: 3,
-                        overflow: 'hidden',
-                    }}
-                >
-                    <CardHeader
-                        title={
-                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.25 }}>
-                <span
-                    className="mdi mdi-tune-variant"
-                    style={{ fontSize: '1.5rem' }}
-                />
-                                <Typography
-                                    variant="h6"
-                                    sx={{
-                                        fontFamily: '"EB Garamond", serif',
-                                        fontWeight: 600,
-                                    }}
-                                >
-                                    Features
-                                </Typography>
-                            </Box>
-                        }
-                        sx={{ pb: 1 }}
-                    />
-                    <Divider />
-                    <CardContent>
-                        <Box
-                            sx={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'space-between',
-                                gap: 2,
-                            }}
-                        >
-                            <Box sx={{ minWidth: 0, flex: 1 }}>
-                                <Typography
-                                    variant="subtitle1"
-                                    sx={{
-                                        fontFamily: '"EB Garamond", Georgia, serif',
-                                        fontWeight: 600,
-                                        fontSize: '1.15rem',
-                                    }}
-                                >
-                                    Works per page
-                                </Typography>
-                                <Typography
-                                    variant="body2"
-                                    color="text.secondary"
-                                    sx={{ fontFamily: '"EB Garamond", Georgia, serif', mt: 0.5 }}
-                                >
-                                    Number of works displayed per page
-                                </Typography>
-                            </Box>
-                            <Box
-                                sx={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    border: 1,
-                                    borderColor: 'divider',
-                                    borderRadius: 2,
-                                    overflow: 'hidden',
-                                    flexShrink: 0,
-                                    height: 46,
-                                }}
-                            >
-                                <IconButton
-                                    onClick={() => {
-                                        if (onSetItemsPerPage && itemsPerPage > 5) {
-                                            onSetItemsPerPage(itemsPerPage - 5)
-                                        }
-                                    }}
-                                    disabled={itemsPerPage <= 5}
-                                    size="small"
-                                    sx={{
-                                        borderRadius: 0,
-                                        borderRight: 1,
-                                        borderColor: 'divider',
-                                        '&:hover': { bgcolor: 'action.hover' },
-                                        height: '100%',
-                                        width: 46,
-                                    }}
-                                >
-                                    <span className="mdi mdi-minus" style={{ fontSize: '1rem' }} />
-                                </IconButton>
-                                <Box
-                                    sx={{
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        px: 1.5,
-                                        minWidth: 36,
-                                    }}
-                                >
-                                    <Typography
-                                        sx={{
-                                            fontFamily: '"EB Garamond", Georgia, serif',
-                                            fontSize: '0.95rem',
-                                            fontWeight: 600,
-                                            lineHeight: 1,
-                                        }}
-                                    >
-                                        {itemsPerPage}
-                                    </Typography>
-                                </Box>
-                                <IconButton
-                                    onClick={() => {
-                                        if (onSetItemsPerPage && itemsPerPage < 100) {
-                                            onSetItemsPerPage(itemsPerPage + 5)
-                                        }
-                                    }}
-                                    disabled={itemsPerPage >= 100}
-                                    size="small"
-                                    sx={{
-                                        borderRadius: 0,
-                                        borderLeft: 1,
-                                        borderColor: 'divider',
-                                        '&:hover': { bgcolor: 'action.hover' },
-                                        height: '100%',
-                                        width: 46,
-                                    }}
-                                >
-                                    <span className="mdi mdi-plus" style={{ fontSize: '1rem' }} />
-                                </IconButton>
-                            </Box>
-                        </Box>
-                        <Box
-                            sx={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'space-between',
-                                gap: 2,
-                                mt: 3,
-                            }}
-                        >
-                            <Box sx={{ minWidth: 0, flex: 1 }}>
-                                <Typography
-                                    variant="subtitle1"
-                                    sx={{
-                                        fontFamily: '"EB Garamond", Georgia, serif',
-                                        fontWeight: 600,
-                                        fontSize: '1.15rem',
-                                    }}
-                                >
-                                    Click copy
-                                </Typography>
-                                <Typography
-                                    variant="body2"
-                                    color="text.secondary"
-                                    sx={{ fontFamily: '"EB Garamond", Georgia, serif', mt: 0.5 }}
-                                >
-                                    Tap title or tags to copy text
-                                </Typography>
-                            </Box>
-                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexShrink: 0 }}>
-                                <Switch
-                                    checked={clickCopyEnabled}
-                                    onChange={(event) => {
-                                        if (onSetClickCopyEnabled) {
-                                            onSetClickCopyEnabled(event.target.checked)
-                                        }
-                                    }}
-                                    aria-label="click copy"
-                                />
-                              <IconButton
-                                size="small"
-                                onClick={() => setClickCopyExpanded((v) => !v)}
-                                aria-label={clickCopyExpanded ? 'collapse click copy rules' : 'expand click copy rules'}
-                                aria-expanded={clickCopyExpanded}
-                                sx={{ flexShrink: 0, ml: 1 }}
-                              >
-                                <Box
-                                  component="span"
-                                  className="mdi mdi-chevron-down"
-                                  sx={{
-                                    fontSize: '1.5rem',
-                                    display: 'inline-block',
-                                    transform: clickCopyExpanded ? 'rotate(180deg)' : 'rotate(0deg)',
-                                    transition: 'transform 0.3s ease'
-                                  }}
-                                />
-                              </IconButton>
-                            </Box>
-                        </Box>
-                      {clickCopyExpanded && (
-                        <Box sx={{ mt: 3, pt: 3, borderTop: 1, borderColor: 'divider' }}>
-                          {[
-                            {
-                              key: 'workTitle',
-                              label: 'Work title clicked',
-                              options: [
-                                { value: 'workTitle', label: 'Work title' },
-                                { value: 'composerWorkTitle', label: 'Composer & Work title' },
-                                { value: 'composerShortWorkTitle', label: 'Composer (Short) & Work title' },
-                              ],
-                            },
-                            {
-                              key: 'composerTag',
-                              label: 'Composer tag clicked',
-                              options: [
-                                { value: 'composer', label: 'Composer' },
-                                { value: 'composerShort', label: 'Composer (Short)' },
-                              ],
-                            },
-                            {
-                              key: 'movementTitle',
-                              label: 'Movement title clicked',
-                              options: [
-                                { value: 'movementTitle', label: 'Movement title' },
-                                { value: 'workTitleMovementTitle', label: 'Work title & Movement title' },
-                                { value: 'composerWorkTitleMovementTitle', label: 'Composer, Work title & Movement title' },
-                                { value: 'composerShortWorkTitleMovementTitle', label: 'Composer (Short), Work title & Movement title' },
-                              ],
-                            },
-                            {
-                              key: 'copyButton',
-                              label: 'Copy button clicked',
-                              options: [
-                                { value: 'plainText', label: 'Plain text' },
-                                { value: 'cueCode', label: 'Cue code' },
-                              ],
-                            },
-                          ].map((rule) => (
-                                    <Box
-                                        key={rule.key}
-                                        sx={{
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            justifyContent: 'space-between',
-                                            gap: 2,
-                                            mb: 2,
-                                            '&:last-child': { mb: 0 },
-                                        }}
-                                    >
-                                        <Typography
-                                            variant="body1"
-                                            sx={{
-                                                fontFamily: '"EB Garamond", Georgia, serif',
-                                                fontSize: '1rem',
-                                                minWidth: 0,
-                                                flexShrink: 0,
-                                            }}
-                                        >
-                                            {rule.label}
-                                        </Typography>
-                                        <FormControl
-                                            size="small"
-                                            disabled={!clickCopyEnabled}
-                                            sx={{ width: isCompact ? 90 : 180, flexShrink: 0 }}
-                                        >
-                                            <Select
-                                                value={clickCopyRules && clickCopyRules[rule.key] ? clickCopyRules[rule.key] : rule.options[0].value}
-                                                onChange={(event) => {
-                                                    if (onSetClickCopyRules) {
-                                                        onSetClickCopyRules({ [rule.key]: event.target.value })
-                                                    }
-                                                }}
-                                                aria-label={rule.label}
-                                                sx={{
-                                                    width: '100%',
-                                                    '& .MuiSelect-select': {
-                                                        overflow: 'hidden',
-                                                        textOverflow: 'ellipsis',
-                                                        whiteSpace: 'nowrap',
-                                                    },
-                                                }}
-                                            >
-                                                {rule.options.map((opt) => (
-                                                    <MenuItem key={opt.value} value={opt.value}>
-                                                        {opt.label}
-                                                    </MenuItem>
-                                                ))}
-                                            </Select>
-                                        </FormControl>
-                                    </Box>
-                                ))}
-                            </Box>
-                        )}
-                    </CardContent>
-                </Card>
-
-                <Card
-                    elevation={0}
-                    sx={{
-                        borderRadius: 2,
-                        border: 1,
-                        borderColor: 'divider',
-                        mb: 3,
-                        overflow: 'hidden',
-                    }}
-                >
-                    <CardHeader
-                        title={
-                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.25 }}>
-                <span
-                    className="mdi mdi-information-outline"
-                    style={{ fontSize: '1.5rem' }}
-                />
-                                <Typography
-                                    variant="h6"
-                                    sx={{
-                                        fontFamily: '"EB Garamond", serif',
-                                        fontWeight: 600,
-                                    }}
-                                >
-                                    About
-                                </Typography>
-                            </Box>
-                        }
-                        sx={{ pb: 1 }}
-                    />
-                    <Divider />
-                    <CardContent>
-                        <Box
-                            sx={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'space-between',
-                                gap: 2,
-                            }}
-                        >
-                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, flex: 1, minWidth: 0 }}>
-                                <Box
-                                    component="img"
-                                    src={musicLogo}
-                                    alt="Music Index Online"
-                                    sx={{
-                                        width: 48,
-                                        height: 48,
-                                        flexShrink: 0,
-                                        filter: theme.palette.mode === 'light' ? 'invert(1)' : 'none',
-                                    }}
-                                />
-                                <Box sx={{ minWidth: 0 }}>
-                                    <Typography
-                                        variant="subtitle1"
-                                        sx={{
-                                            fontFamily: '"Playfair Display", "EB Garamond", Georgia, serif',
-                                            fontWeight: 700,
-                                            fontSize: '1.1rem',
-                                        }}
-                                    >
-                                        Music Index Online
-                                    </Typography>
-                                    <Typography
-                                        variant="body2"
-                                        color="text.secondary"
-                                        sx={{ fontFamily: '"EB Garamond", Georgia, serif' }}
-                                    >
-                                        An open-source catalog of classical masterworks - search, browse and explore.
-                                    </Typography>
-                                </Box>
-                            </Box>
-                            <Button
-                                variant="outlined"
-                                size="small"
-                                startIcon={!isCompact ? <span className="mdi mdi-open-in-new" /> : undefined}
-                                onClick={() => navigate('/readme')}
-                                sx={{
-                                    fontFamily: '"EB Garamond", serif',
-                                    textTransform: 'none',
-                                    fontSize: '0.95rem',
-                                    borderRadius: 2,
-                                    width: isCompact ? 40 : 120,
-                                    ...(isCompact && {
-                                        aspectRatio: '1 / 1',
-                                        height: 40,
-                                        minWidth: 40,
-                                        p: 0,
-                                    }),
-                                }}
-                            >
-                                {isCompact ? (
-                                    <span className="mdi mdi-open-in-new" />
-                                ) : (
-                                    'README'
-                                )}
-                            </Button>
-                        </Box>
-                    </CardContent>
-                    <Divider />
-                    <CardContent>
-                        <Box
-                            sx={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'space-between',
-                                gap: 2,
-                            }}
-                        >
-                            <Box sx={{ minWidth: 0 }}>
-                                <Typography
-                                    variant="subtitle1"
-                                    sx={{
-                                        fontFamily: '"EB Garamond", Georgia, serif',
-                                        fontWeight: 600,
-                                        fontSize: '1.15rem',
-                                    }}
-                                >
-                                    Support
-                                </Typography>
-                                <Typography
-                                    variant="body2"
-                                    color="text.secondary"
-                                    sx={{ fontFamily: '"EB Garamond", Georgia, serif', mt: 0.5 }}
-                                >
-                                    Support the project and its growing database
-                                </Typography>
-                            </Box>
-                            <Button
-                                variant="outlined"
-                                size="small"
-                                startIcon={!isCompact ? <span className="mdi mdi-heart-outline" /> : undefined}
-                                onClick={() => setDonateDialogOpen(true)}
-                                sx={{
-                                    fontFamily: '"EB Garamond", serif',
-                                    textTransform: 'none',
-                                    fontSize: '0.95rem',
-                                    borderRadius: 2,
-                                    width: isCompact ? 40 : 120,
-                                    ...(isCompact && {
-                                        aspectRatio: '1 / 1',
-                                        height: 40,
-                                        minWidth: 40,
-                                        p: 0,
-                                    }),
-                                }}
-                            >
-                                {isCompact ? (
-                                    <span className="mdi mdi-heart-outline" />
-                                ) : (
-                                    'Donate'
-                                )}
-                            </Button>
-                        </Box>
-                    </CardContent>
-                </Card>
-
-                <Dialog
-                    open={donateDialogOpen}
-                    onClose={() => setDonateDialogOpen(false)}
-                    aria-labelledby="donate-dialog-title"
-                    sx={{
-                        backdropFilter: 'blur(8px)',
-                        '& .MuiBackdrop-root': {
-                            backgroundColor: 'rgba(0, 0, 0, 0.45)',
-                            backdropFilter: 'blur(8px)',
-                        },
-                    }}
-                    PaperProps={{
-                        sx: {
-                            width: 420,
-                            maxWidth: '100vw',
-                            maxHeight: '100vh',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            borderRadius: 2,
-                            overflow: 'hidden',
-                        },
-                    }}
-                >
-                    <DialogTitle
-                        id="donate-dialog-title"
+                  <Box sx={{display: 'flex', alignItems: 'center', gap: 1, px: isCompact ? 0.5 : 1}}>
+                    <span className="mdi mdi-weather-sunny"/>
+                    {!isCompact && (
+                      <Typography
                         sx={{
-                            pb: 1,
-                            fontFamily: '"EB Garamond", serif',
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: 2,
+                          fontFamily: '"EB Garamond", serif',
+                          textTransform: 'none',
+                          fontSize: '0.95rem',
                         }}
-                    >
-                        <Box component="span" sx={{ display: 'flex', alignItems: 'center', gap: 1.25 }}>
-                            <span className="mdi mdi-heart-outline" style={{ fontSize: '1.25rem' }} />
-                            Support
-                        </Box>
-                    </DialogTitle>
-                    <Divider />
-                    <DialogContent sx={{ pt: 3, pb: 3, flex: 1, overflowY: 'auto' }}>
-                        <Box
-                            sx={{
-                                display: 'flex',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                gap: 2,
-                                flexWrap: 'wrap',
-                            }}
-                        >
-                            <Button
-                                component="a"
-                                href="https://www.paypal.com/ncp/payment/NXS959MKBRYHG"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                variant="outlined"
-                                aria-label="Donate via PayPal"
-                                sx={{
-                                    width: 88,
-                                    height: 88,
-                                    minWidth: 0,
-                                    borderRadius: 3,
-                                    borderColor: 'divider',
-                                    overflow: 'hidden',
-                                    p: 0,
-                                    '&:hover': {
-                                        borderColor: 'primary.main',
-                                        bgcolor: 'action.hover',
-                                    },
-                                    '& .MuiButton-startIcon, & .MuiButton-endIcon': {
-                                        display: 'none',
-                                    },
-                                }}
-                            >
-                                <Box
-                                    component="img"
-                                    src={paypalIcon}
-                                    alt="PayPal"
-                                    sx={{
-                                        width: '100%',
-                                        height: '100%',
-                                        objectFit: 'cover',
-                                        display: 'block',
-                                    }}
-                                />
-                            </Button>
-                            <Button
-                                variant="outlined"
-                                aria-label={showAlipayQr ? 'Hide Alipay QR code' : 'Donate via Alipay'}
-                                onClick={() => setShowAlipayQr((v) => !v)}
-                                sx={{
-                                    width: 88,
-                                    height: 88,
-                                    minWidth: 0,
-                                    borderRadius: 3,
-                                    borderColor: 'divider',
-                                    overflow: 'hidden',
-                                    p: 0,
-                                    '&:hover': {
-                                        borderColor: 'primary.main',
-                                        bgcolor: 'action.hover',
-                                    },
-                                    '& .MuiButton-startIcon, & .MuiButton-endIcon': {
-                                        display: 'none',
-                                    },
-                                }}
-                            >
-                                <Box
-                                    component="img"
-                                    src={showAlipayQr ? alipayQrcode : alipayIcon}
-                                    alt={showAlipayQr ? 'Alipay QR code' : 'Alipay'}
-                                    sx={{
-                                        width: '100%',
-                                        height: '100%',
-                                        objectFit: 'cover',
-                                        display: 'block',
-                                    }}
-                                />
-                            </Button>
-                        </Box>
-                    </DialogContent>
-                    <Divider />
-                    <DialogActions sx={{ px: 2, py: 1.5, gap: 1, justifyContent: 'flex-end' }}>
-                        <Button
-                            onClick={() => navigate('/support')}
-                            variant="contained"
-                            color="primary"
-                            sx={{
-                                fontFamily: '"EB Garamond", serif',
-                                textTransform: 'none',
-                                fontSize: '0.95rem',
-                                borderRadius: '6px',
-                                boxShadow: 'none',
-                            }}
-                        >
-                            Supported
-                        </Button>
-                        <Button
-                            onClick={() => setDonateDialogOpen(false)}
-                            variant="contained"
-                            color="secondary"
-                            sx={{
-                                fontFamily: '"EB Garamond", serif',
-                                textTransform: 'none',
-                                fontSize: '0.95rem',
-                                borderRadius: '6px',
-                                boxShadow: 'none',
-                                color: '#fff !important',
-                            }}
-                        >
-                            Close
-                        </Button>
-                    </DialogActions>
-                </Dialog>
+                      >
+                        Light
+                      </Typography>
+                    )}
+                  </Box>
+                </ToggleButton>
+                <ToggleButton
+                  value="dark"
+                  aria-label="dark mode"
+                  sx={isCompact ? {minWidth: 40, minHeight: 40, p: 0} : {}}
+                >
+                  <Box sx={{display: 'flex', alignItems: 'center', gap: 1, px: isCompact ? 0.5 : 1}}>
+                    <span className="mdi mdi-weather-night"/>
+                    {!isCompact && (
+                      <Typography
+                        sx={{
+                          fontFamily: '"EB Garamond", serif',
+                          textTransform: 'none',
+                          fontSize: '0.95rem',
+                        }}
+                      >
+                        Dark
+                      </Typography>
+                    )}
+                  </Box>
+                </ToggleButton>
+              </ToggleButtonGroup>
             </Box>
-        </Layout>
-    )
+            <Box sx={{mt: 3}}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  gap: 2,
+                }}
+              >
+                <Typography
+                  variant="subtitle1"
+                  sx={{
+                    fontFamily: '"EB Garamond", Georgia, serif',
+                    fontWeight: 600,
+                    fontSize: '1.15rem',
+                    flexShrink: 0,
+                  }}
+                >
+                  Text size
+                </Typography>
+                <FormControl size="small" sx={{minWidth: isCompact ? 90 : 180}}>
+                  <Select
+                    value={fontSizeScale}
+                    onChange={handleFontSizeChange}
+                    aria-label="text size"
+                  >
+                    {fontSizeOptions.map((val) => (
+                      <MenuItem key={val} value={val}>
+                        {Math.round(val * 100)}%
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </Box>
+            </Box>
+          </CardContent>
+        </Card>
+
+        <Card
+          elevation={0}
+          sx={{
+            borderRadius: 2,
+            border: 1,
+            borderColor: 'divider',
+            mb: 3,
+            overflow: 'hidden',
+          }}
+        >
+          <CardHeader
+            title={
+              <Box sx={{display: 'flex', alignItems: 'center', gap: 1.25}}>
+                <span
+                  className="mdi mdi-tune-variant"
+                  style={{fontSize: '1.5rem'}}
+                />
+                <Typography
+                  variant="h6"
+                  sx={{
+                    fontFamily: '"EB Garamond", serif',
+                    fontWeight: 600,
+                  }}
+                >
+                  Features
+                </Typography>
+              </Box>
+            }
+            sx={{pb: 1}}
+          />
+          <Divider/>
+          <CardContent>
+            <Box
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: 2,
+              }}
+            >
+              <Box sx={{minWidth: 0, flex: 1}}>
+                <Typography
+                  variant="subtitle1"
+                  sx={{
+                    fontFamily: '"EB Garamond", Georgia, serif',
+                    fontWeight: 600,
+                    fontSize: '1.15rem',
+                  }}
+                >
+                  Works per page
+                </Typography>
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{fontFamily: '"EB Garamond", Georgia, serif', mt: 0.5}}
+                >
+                  Number of works displayed per page
+                </Typography>
+              </Box>
+              <Box
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  border: 1,
+                  borderColor: 'divider',
+                  borderRadius: 2,
+                  overflow: 'hidden',
+                  flexShrink: 0,
+                  height: 46,
+                }}
+              >
+                <IconButton
+                  onClick={() => {
+                    if (onSetItemsPerPage && itemsPerPage > 5) {
+                      onSetItemsPerPage(itemsPerPage - 5)
+                    }
+                  }}
+                  disabled={itemsPerPage <= 5}
+                  size="small"
+                  sx={{
+                    borderRadius: 0,
+                    borderRight: 1,
+                    borderColor: 'divider',
+                    '&:hover': {bgcolor: 'action.hover'},
+                    height: '100%',
+                    width: 46,
+                  }}
+                >
+                  <span className="mdi mdi-minus" style={{fontSize: '1rem'}}/>
+                </IconButton>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    px: 1.5,
+                    minWidth: 36,
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      fontFamily: '"EB Garamond", Georgia, serif',
+                      fontSize: '0.95rem',
+                      fontWeight: 600,
+                      lineHeight: 1,
+                    }}
+                  >
+                    {itemsPerPage}
+                  </Typography>
+                </Box>
+                <IconButton
+                  onClick={() => {
+                    if (onSetItemsPerPage && itemsPerPage < 100) {
+                      onSetItemsPerPage(itemsPerPage + 5)
+                    }
+                  }}
+                  disabled={itemsPerPage >= 100}
+                  size="small"
+                  sx={{
+                    borderRadius: 0,
+                    borderLeft: 1,
+                    borderColor: 'divider',
+                    '&:hover': {bgcolor: 'action.hover'},
+                    height: '100%',
+                    width: 46,
+                  }}
+                >
+                  <span className="mdi mdi-plus" style={{fontSize: '1rem'}}/>
+                </IconButton>
+              </Box>
+            </Box>
+            <Box
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: 2,
+                mt: 3,
+              }}
+            >
+              <Box sx={{minWidth: 0, flex: 1}}>
+                <Typography
+                  variant="subtitle1"
+                  sx={{
+                    fontFamily: '"EB Garamond", Georgia, serif',
+                    fontWeight: 600,
+                    fontSize: '1.15rem',
+                  }}
+                >
+                  Click copy
+                </Typography>
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{fontFamily: '"EB Garamond", Georgia, serif', mt: 0.5}}
+                >
+                  Tap title or tags to copy text
+                </Typography>
+              </Box>
+              <Box sx={{display: 'flex', alignItems: 'center', gap: 1, flexShrink: 0}}>
+                <Switch
+                  checked={clickCopyEnabled}
+                  onChange={(event) => {
+                    if (onSetClickCopyEnabled) {
+                      onSetClickCopyEnabled(event.target.checked)
+                    }
+                  }}
+                  aria-label="click copy"
+                />
+                <IconButton
+                  size="small"
+                  onClick={() => setClickCopyExpanded((v) => !v)}
+                  aria-label={clickCopyExpanded ? 'collapse click copy rules' : 'expand click copy rules'}
+                  aria-expanded={clickCopyExpanded}
+                  sx={{flexShrink: 0, ml: 1}}
+                >
+                  <Box
+                    component="span"
+                    className="mdi mdi-chevron-down"
+                    sx={{
+                      fontSize: '1.5rem',
+                      display: 'inline-block',
+                      transform: clickCopyExpanded ? 'rotate(180deg)' : 'rotate(0deg)',
+                      transition: 'transform 0.3s ease'
+                    }}
+                  />
+                </IconButton>
+              </Box>
+            </Box>
+            {clickCopyExpanded && (
+              <Box sx={{mt: 3, pt: 3, borderTop: 1, borderColor: 'divider'}}>
+                {[
+                  {
+                    key: 'workTitle',
+                    label: 'Work title clicked',
+                    options: [
+                      {value: 'workTitle', label: 'Work title'},
+                      {value: 'composerWorkTitle', label: 'Composer & Work title'},
+                      {value: 'composerShortWorkTitle', label: 'Composer (Short) & Work title'},
+                    ],
+                  },
+                  {
+                    key: 'composerTag',
+                    label: 'Composer tag clicked',
+                    options: [
+                      {value: 'composer', label: 'Composer'},
+                      {value: 'composerShort', label: 'Composer (Short)'},
+                    ],
+                  },
+                  {
+                    key: 'movementTitle',
+                    label: 'Movement title clicked',
+                    options: [
+                      {value: 'movementTitle', label: 'Movement title'},
+                      {value: 'workTitleMovementTitle', label: 'Work title & Movement title'},
+                      {value: 'composerWorkTitleMovementTitle', label: 'Composer, Work title & Movement title'},
+                      {
+                        value: 'composerShortWorkTitleMovementTitle',
+                        label: 'Composer (Short), Work title & Movement title'
+                      },
+                    ],
+                  },
+                  {
+                    key: 'copyButton',
+                    label: 'Copy button clicked',
+                    options: [
+                      {value: 'plainText', label: 'Plain text'},
+                      {value: 'cueCode', label: 'Cue code'},
+                    ],
+                  },
+                ].map((rule) => (
+                  <Box
+                    key={rule.key}
+                    sx={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      gap: 2,
+                      mb: 2,
+                      '&:last-child': {mb: 0},
+                    }}
+                  >
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        fontFamily: '"EB Garamond", Georgia, serif',
+                        fontSize: '1rem',
+                        minWidth: 0,
+                        flexShrink: 0,
+                      }}
+                    >
+                      {rule.label}
+                    </Typography>
+                    <FormControl
+                      size="small"
+                      disabled={!clickCopyEnabled}
+                      sx={{width: isCompact ? 90 : 180, flexShrink: 0}}
+                    >
+                      <Select
+                        value={clickCopyRules && clickCopyRules[rule.key] ? clickCopyRules[rule.key] : rule.options[0].value}
+                        onChange={(event) => {
+                          if (onSetClickCopyRules) {
+                            onSetClickCopyRules({[rule.key]: event.target.value})
+                          }
+                        }}
+                        aria-label={rule.label}
+                        sx={{
+                          width: '100%',
+                          '& .MuiSelect-select': {
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                          },
+                        }}
+                      >
+                        {rule.options.map((opt) => (
+                          <MenuItem key={opt.value} value={opt.value}>
+                            {opt.label}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </FormControl>
+                  </Box>
+                ))}
+              </Box>
+            )}
+          </CardContent>
+        </Card>
+
+        <Card
+          elevation={0}
+          sx={{
+            borderRadius: 2,
+            border: 1,
+            borderColor: 'divider',
+            mb: 3,
+            overflow: 'hidden',
+          }}
+        >
+          <CardHeader
+            title={
+              <Box sx={{display: 'flex', alignItems: 'center', gap: 1.25}}>
+                <span
+                  className="mdi mdi-information-outline"
+                  style={{fontSize: '1.5rem'}}
+                />
+                <Typography
+                  variant="h6"
+                  sx={{
+                    fontFamily: '"EB Garamond", serif',
+                    fontWeight: 600,
+                  }}
+                >
+                  About
+                </Typography>
+              </Box>
+            }
+            sx={{pb: 1}}
+          />
+          <Divider/>
+          <CardContent>
+            <Box
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: 2,
+              }}
+            >
+              <Box sx={{display: 'flex', alignItems: 'center', gap: 2, flex: 1, minWidth: 0}}>
+                <Box
+                  component="img"
+                  src={musicLogo}
+                  alt="Music Index Online"
+                  sx={{
+                    width: 48,
+                    height: 48,
+                    flexShrink: 0,
+                    filter: theme.palette.mode === 'light' ? 'invert(1)' : 'none',
+                  }}
+                />
+                <Box sx={{minWidth: 0}}>
+                  <Typography
+                    variant="subtitle1"
+                    sx={{
+                      fontFamily: '"Playfair Display", "EB Garamond", Georgia, serif',
+                      fontWeight: 700,
+                      fontSize: '1.1rem',
+                    }}
+                  >
+                    Music Index Online
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{fontFamily: '"EB Garamond", Georgia, serif'}}
+                  >
+                    An open-source catalog of classical masterworks - search, browse and explore.
+                  </Typography>
+                </Box>
+              </Box>
+              <Button
+                variant="outlined"
+                size="small"
+                startIcon={!isCompact ? <span className="mdi mdi-open-in-new"/> : undefined}
+                onClick={() => navigate('/readme')}
+                sx={{
+                  fontFamily: '"EB Garamond", serif',
+                  textTransform: 'none',
+                  fontSize: '0.95rem',
+                  borderRadius: 2,
+                  width: isCompact ? 40 : 120,
+                  ...(isCompact && {
+                    aspectRatio: '1 / 1',
+                    height: 40,
+                    minWidth: 40,
+                    p: 0,
+                  }),
+                }}
+              >
+                {isCompact ? (
+                  <span className="mdi mdi-open-in-new"/>
+                ) : (
+                  'README'
+                )}
+              </Button>
+            </Box>
+          </CardContent>
+          <Divider/>
+          <CardContent>
+            <Box
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: 2,
+              }}
+            >
+              <Box sx={{minWidth: 0}}>
+                <Typography
+                  variant="subtitle1"
+                  sx={{
+                    fontFamily: '"EB Garamond", Georgia, serif',
+                    fontWeight: 600,
+                    fontSize: '1.15rem',
+                  }}
+                >
+                  Support
+                </Typography>
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{fontFamily: '"EB Garamond", Georgia, serif', mt: 0.5}}
+                >
+                  Support the project and its growing database
+                </Typography>
+              </Box>
+              <Button
+                variant="outlined"
+                size="small"
+                startIcon={!isCompact ? <span className="mdi mdi-heart-outline"/> : undefined}
+                onClick={() => setDonateDialogOpen(true)}
+                sx={{
+                  fontFamily: '"EB Garamond", serif',
+                  textTransform: 'none',
+                  fontSize: '0.95rem',
+                  borderRadius: 2,
+                  width: isCompact ? 40 : 120,
+                  ...(isCompact && {
+                    aspectRatio: '1 / 1',
+                    height: 40,
+                    minWidth: 40,
+                    p: 0,
+                  }),
+                }}
+              >
+                {isCompact ? (
+                  <span className="mdi mdi-heart-outline"/>
+                ) : (
+                  'Donate'
+                )}
+              </Button>
+            </Box>
+          </CardContent>
+        </Card>
+
+        <Dialog
+          open={donateDialogOpen}
+          onClose={() => setDonateDialogOpen(false)}
+          aria-labelledby="donate-dialog-title"
+          sx={{
+            backdropFilter: 'blur(8px)',
+            '& .MuiBackdrop-root': {
+              backgroundColor: 'rgba(0, 0, 0, 0.45)',
+              backdropFilter: 'blur(8px)',
+            },
+          }}
+          PaperProps={{
+            sx: {
+              width: 420,
+              maxWidth: '100vw',
+              maxHeight: '100vh',
+              display: 'flex',
+              flexDirection: 'column',
+              borderRadius: 2,
+              overflow: 'hidden',
+            },
+          }}
+        >
+          <DialogTitle
+            id="donate-dialog-title"
+            sx={{
+              pb: 1,
+              fontFamily: '"EB Garamond", serif',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 2,
+            }}
+          >
+            <Box component="span" sx={{display: 'flex', alignItems: 'center', gap: 1.25}}>
+              <span className="mdi mdi-heart-outline" style={{fontSize: '1.25rem'}}/>
+              Support
+            </Box>
+          </DialogTitle>
+          <Divider/>
+          <DialogContent sx={{pt: 3, pb: 3, flex: 1, overflowY: 'auto'}}>
+            <Box
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                gap: 2,
+                flexWrap: 'wrap',
+              }}
+            >
+              <Button
+                component="a"
+                href="https://www.paypal.com/ncp/payment/NXS959MKBRYHG"
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="outlined"
+                aria-label="Donate via PayPal"
+                sx={{
+                  width: 88,
+                  height: 88,
+                  minWidth: 0,
+                  borderRadius: 3,
+                  borderColor: 'divider',
+                  overflow: 'hidden',
+                  p: 0,
+                  '&:hover': {
+                    borderColor: 'primary.main',
+                    bgcolor: 'action.hover',
+                  },
+                  '& .MuiButton-startIcon, & .MuiButton-endIcon': {
+                    display: 'none',
+                  },
+                }}
+              >
+                <Box
+                  component="img"
+                  src={paypalIcon}
+                  alt="PayPal"
+                  sx={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    display: 'block',
+                  }}
+                />
+              </Button>
+              <Button
+                variant="outlined"
+                aria-label={showAlipayQr ? 'Hide Alipay QR code' : 'Donate via Alipay'}
+                onClick={() => setShowAlipayQr((v) => !v)}
+                sx={{
+                  width: 88,
+                  height: 88,
+                  minWidth: 0,
+                  borderRadius: 3,
+                  borderColor: 'divider',
+                  overflow: 'hidden',
+                  p: 0,
+                  '&:hover': {
+                    borderColor: 'primary.main',
+                    bgcolor: 'action.hover',
+                  },
+                  '& .MuiButton-startIcon, & .MuiButton-endIcon': {
+                    display: 'none',
+                  },
+                }}
+              >
+                <Box
+                  component="img"
+                  src={showAlipayQr ? alipayQrcode : alipayIcon}
+                  alt={showAlipayQr ? 'Alipay QR code' : 'Alipay'}
+                  sx={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    display: 'block',
+                  }}
+                />
+              </Button>
+            </Box>
+          </DialogContent>
+          <Divider/>
+          <DialogActions sx={{px: 2, py: 1.5, gap: 1, justifyContent: 'flex-end'}}>
+            <Button
+              onClick={() => navigate('/support')}
+              variant="contained"
+              color="primary"
+              sx={{
+                fontFamily: '"EB Garamond", serif',
+                textTransform: 'none',
+                fontSize: '0.95rem',
+                borderRadius: '6px',
+                boxShadow: 'none',
+              }}
+            >
+              Supported
+            </Button>
+            <Button
+              onClick={() => setDonateDialogOpen(false)}
+              variant="contained"
+              color="secondary"
+              sx={{
+                fontFamily: '"EB Garamond", serif',
+                textTransform: 'none',
+                fontSize: '0.95rem',
+                borderRadius: '6px',
+                boxShadow: 'none',
+                color: '#fff !important',
+              }}
+            >
+              Close
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </Box>
+    </Layout>
+  )
 }
 
 export default Settings

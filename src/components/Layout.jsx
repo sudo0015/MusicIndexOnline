@@ -1,6 +1,19 @@
-import React, { useState, useRef, useEffect } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
-import { AppBar, Toolbar, Typography, Container, Box, TextField, InputAdornment, IconButton, Slide, Fade, useTheme, useMediaQuery } from '@mui/material'
+import React, {useState, useRef, useEffect} from 'react'
+import {useLocation, useNavigate} from 'react-router-dom'
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Container,
+  Box,
+  TextField,
+  InputAdornment,
+  IconButton,
+  Slide,
+  Fade,
+  useTheme,
+  useMediaQuery
+} from '@mui/material'
 import musicLogo from '../assets/icon.svg'
 
 const searchInputSx = (theme) => ({
@@ -33,7 +46,7 @@ const searchInputSx = (theme) => ({
   },
 })
 
-function Layout({ children, searchTerm, onSearchChange }) {
+function Layout({children, searchTerm, onSearchChange, toolbarAction}) {
   const navigate = useNavigate()
   const location = useLocation()
   const theme = useTheme()
@@ -51,7 +64,7 @@ function Layout({ children, searchTerm, onSearchChange }) {
   const onSettings = location.pathname === '/settings' || location.pathname === '/readme' || location.pathname === '/support'
 
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0 })
+    window.scrollTo({top: 0, left: 0})
   }, [location.pathname, location.search, location.hash])
 
   useEffect(() => {
@@ -107,13 +120,14 @@ function Layout({ children, searchTerm, onSearchChange }) {
   const showTitle = !isVeryCompact && (!isCompact || !showSearchInput) && !titleHidden
 
   const handleLogoClick = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    window.scrollTo({top: 0, behavior: 'smooth'})
   }
 
   return (
-    <Box sx={{ minHeight: '100vh' }}>
-      <AppBar position="fixed" sx={{ top: 0, zIndex: 1100, bgcolor: theme.palette.mode === 'dark' ? '#9E6B47' : '#8C5D3E' }}>
-        <Toolbar sx={{ overflow: 'hidden' }}>
+    <Box sx={{minHeight: '100vh'}}>
+      <AppBar position="fixed"
+              sx={{top: 0, zIndex: 1100, bgcolor: theme.palette.mode === 'dark' ? '#9E6B47' : '#8C5D3E'}}>
+        <Toolbar sx={{overflow: 'hidden'}}>
           <Slide direction="right" in={backButtonVisible} mountOnEnter unmountOnExit timeout={250}>
             <IconButton
               onClick={() => navigate('/')}
@@ -143,7 +157,7 @@ function Layout({ children, searchTerm, onSearchChange }) {
             >
               <span
                 className="mdi mdi-arrow-left"
-                style={{ color: theme.palette.primary.contrastText, fontSize: '1.5rem' }}
+                style={{color: theme.palette.primary.contrastText, fontSize: '1.5rem'}}
               />
             </IconButton>
           </Slide>
@@ -160,7 +174,7 @@ function Layout({ children, searchTerm, onSearchChange }) {
               src={musicLogo}
               alt="Music Logo"
               onClick={handleLogoClick}
-              style={{ width: '2.25rem', height: '2.25rem', display: 'block', cursor: 'pointer' }}
+              style={{width: '2.25rem', height: '2.25rem', display: 'block', cursor: 'pointer'}}
             />
           </Box>
 
@@ -185,20 +199,24 @@ function Layout({ children, searchTerm, onSearchChange }) {
           {isCompact ? (
             <>
               <Slide direction="left" in={!onSettings} mountOnEnter unmountOnExit timeout={250}>
-                <Box sx={{ display: 'flex', alignItems: 'center', flex: (showSearchInput || !showTitle) ? '1 1 auto' : '0 0 auto' }}>
+                <Box sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  flex: (showSearchInput || !showTitle) ? '1 1 auto' : '0 0 auto'
+                }}>
                   {showSearchButton && (
                     <>
-                      {!showTitle && <Box sx={{ flexGrow: 1 }} />}
-                      <IconButton color="inherit" onClick={handleSearchToggle} sx={{ flexShrink: 0 }}>
+                      {!showTitle && <Box sx={{flexGrow: 1}}/>}
+                      <IconButton color="inherit" onClick={handleSearchToggle} sx={{flexShrink: 0}}>
                         <span
                           className="mdi mdi-magnify"
-                          style={{ color: theme.palette.primary.contrastText, fontSize: '1.5rem' }}
+                          style={{color: theme.palette.primary.contrastText, fontSize: '1.5rem'}}
                         />
                       </IconButton>
                     </>
                   )}
                   <Slide direction="left" in={showSearchInput} mountOnEnter unmountOnExit onExited={handleSlideExited}>
-                    <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    <Box sx={{flexGrow: 1, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                       <TextField
                         placeholder="Search"
                         value={searchTerm}
@@ -214,9 +232,9 @@ function Layout({ children, searchTerm, onSearchChange }) {
                               <IconButton
                                 size="small"
                                 onClick={handleSearchToggle}
-                                sx={{ color: theme.palette.primary.contrastText, p: 0.5 }}
+                                sx={{color: theme.palette.primary.contrastText, p: 0.5}}
                               >
-                                <span className="mdi mdi-close" style={{ fontSize: '1.1rem' }} />
+                                <span className="mdi mdi-close" style={{fontSize: '1.1rem'}}/>
                               </IconButton>
                             </InputAdornment>
                           ),
@@ -224,7 +242,7 @@ function Layout({ children, searchTerm, onSearchChange }) {
                       />
                     </Box>
                   </Slide>
-                  {showSearchInput && <Box sx={{ width: 40, flexShrink: 0 }} />}
+                  {showSearchInput && <Box sx={{width: 40, flexShrink: 0}}/>}
                 </Box>
               </Slide>
             </>
@@ -236,7 +254,7 @@ function Layout({ children, searchTerm, onSearchChange }) {
                 onChange={(e) => onSearchChange(e.target.value)}
                 size="small"
                 sx={{
-                  width: { xs: '55%', sm: '40%', md: '320px' },
+                  width: {xs: '55%', sm: '40%', md: '320px'},
                   ...searchInputSx(theme),
                   flexShrink: 0,
                 }}
@@ -256,12 +274,19 @@ function Layout({ children, searchTerm, onSearchChange }) {
               />
             </Slide>
           )}
+          {toolbarAction && (
+            <Slide direction="left" in={true} mountOnEnter unmountOnExit timeout={250}>
+              <Box sx={{flexShrink: 0, ml: 1}}>
+                {toolbarAction}
+              </Box>
+            </Slide>
+          )}
         </Toolbar>
       </AppBar>
-      <Box sx={{ height: { xs: '56px', sm: '64px' } }} />
-      <Container component="main" maxWidth="lg" sx={{ py: 3 }}>
+      <Box sx={{height: {xs: '56px', sm: '64px'}}}/>
+      <Container component="main" maxWidth="lg" sx={{py: 3}}>
         {children}
-        <Box component="footer" sx={{ mt: 4, py: 3, textAlign: 'center', borderTop: 1, borderColor: 'divider' }}>
+        <Box component="footer" sx={{mt: 4, py: 3, textAlign: 'center', borderTop: 1, borderColor: 'divider'}}>
           <Typography variant="body2" color="text.secondary">
             © 2026 Music Index Online
           </Typography>

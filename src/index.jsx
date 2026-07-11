@@ -1,41 +1,58 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'
-import { ThemeProvider } from '@mui/material/styles'
+import {HashRouter, Routes, Route, Navigate} from 'react-router-dom'
+import {ThemeProvider} from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
 import App from './App'
 import Settings from './pages/Settings'
 import Readme from './pages/Readme'
 import Support from './pages/Support'
-import { lightTheme, darkTheme } from './theme'
+import {lightTheme, darkTheme} from './theme'
 import useTheme from './hooks/useTheme'
 import '@mdi/font/css/materialdesignicons.min.css'
 import './App.css'
 
 function Root() {
-    const { mode, toggleMode, setMode, fontSizeScale, setFontSizeScale, clickCopyEnabled, setClickCopyEnabled, clickCopyRules, setClickCopyRules, itemsPerPage, setItemsPerPage } = useTheme()
-    const theme = mode === 'dark' ? darkTheme : lightTheme
-    return (
-        <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <HashRouter>
-                <Routes>
-                    <Route path="/" element={<App onToggleTheme={toggleMode} themeMode={mode} clickCopyEnabled={clickCopyEnabled} clickCopyRules={clickCopyRules} itemsPerPage={itemsPerPage} />} />
-                    <Route
-                        path="/settings"
-                        element={<Settings themeMode={mode} onSetThemeMode={setMode} fontSizeScale={fontSizeScale} onSetFontSizeScale={setFontSizeScale} clickCopyEnabled={clickCopyEnabled} onSetClickCopyEnabled={setClickCopyEnabled} clickCopyRules={clickCopyRules} onSetClickCopyRules={setClickCopyRules} itemsPerPage={itemsPerPage} onSetItemsPerPage={setItemsPerPage} />}
-                    />
-                    <Route path="/readme" element={<Readme />} />
-                    <Route path="/support" element={<Support />} />
-                    <Route path="*" element={<Navigate to="/" replace />} />
-                </Routes>
-            </HashRouter>
-        </ThemeProvider>
-    )
+  const {
+    mode,
+    toggleMode,
+    setMode,
+    fontSizeScale,
+    setFontSizeScale,
+    clickCopyEnabled,
+    setClickCopyEnabled,
+    clickCopyRules,
+    setClickCopyRules,
+    itemsPerPage,
+    setItemsPerPage
+  } = useTheme()
+  const theme = mode === 'dark' ? darkTheme : lightTheme
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline/>
+      <HashRouter>
+        <Routes>
+          <Route path="/" element={<App onToggleTheme={toggleMode} themeMode={mode} clickCopyEnabled={clickCopyEnabled}
+                                        clickCopyRules={clickCopyRules} itemsPerPage={itemsPerPage}/>}/>
+          <Route
+            path="/settings"
+            element={<Settings themeMode={mode} onSetThemeMode={setMode} fontSizeScale={fontSizeScale}
+                               onSetFontSizeScale={setFontSizeScale} clickCopyEnabled={clickCopyEnabled}
+                               onSetClickCopyEnabled={setClickCopyEnabled} clickCopyRules={clickCopyRules}
+                               onSetClickCopyRules={setClickCopyRules} itemsPerPage={itemsPerPage}
+                               onSetItemsPerPage={setItemsPerPage}/>}
+          />
+          <Route path="/readme" element={<Readme/>}/>
+          <Route path="/support" element={<Support/>}/>
+          <Route path="*" element={<Navigate to="/" replace/>}/>
+        </Routes>
+      </HashRouter>
+    </ThemeProvider>
+  )
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <React.StrictMode>
-        <Root />
-    </React.StrictMode>
+  <React.StrictMode>
+    <Root/>
+  </React.StrictMode>
 )

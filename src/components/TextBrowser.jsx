@@ -1,7 +1,7 @@
 import React, {useCallback} from 'react'
 import {Box, Paper, Typography, IconButton} from '@mui/material'
 
-function TextBrowser({ title, content, onClose, onCopyText }) {
+function TextBrowser({title, content, onClose, onCopyText}) {
   const handleCopy = useCallback(async () => {
     try {
       if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -59,10 +59,10 @@ function TextBrowser({ title, content, onClose, onCopyText }) {
           {title}
         </Typography>
         <Box sx={{display: 'flex', alignItems: 'center', gap: 0.5}}>
-          <IconButton size="small" onClick={handleCopy} sx={{ width: 34, height: 34 }}>
+          <IconButton size="small" onClick={handleCopy} sx={{width: 34, height: 34}}>
             <span
               className="mdi mdi-content-copy"
-              style={{ fontSize: '0.9rem' }}
+              style={{fontSize: '0.9rem'}}
             />
           </IconButton>
           {onClose && (

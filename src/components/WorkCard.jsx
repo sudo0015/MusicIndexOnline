@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import { Card, CardContent, Typography, Box, Chip, IconButton, Collapse } from '@mui/material'
+import React, {useState} from 'react'
+import {Card, CardContent, Typography, Box, Chip, IconButton, Collapse} from '@mui/material'
 import MovementList from './MovementList'
 
-function WorkCard({ work, onCopyText, clickCopyEnabled, clickCopyRules, buildCopyText }) {
+function WorkCard({work, onCopyText, clickCopyEnabled, clickCopyRules, buildCopyText}) {
   const [expanded, setExpanded] = useState(false)
 
   const hasMovements = work.movements && work.movements.length > 0
@@ -51,44 +51,44 @@ function WorkCard({ work, onCopyText, clickCopyEnabled, clickCopyRules, buildCop
   }
 
   return (
-      <Card 
-        sx={{ 
-          mb: 2, 
-          userSelect: 'text',
-          cursor: hasMovements ? 'pointer' : 'default',
-          transition: 'box-shadow 0.2s ease',
-          '&:hover': hasMovements ? {
-            boxShadow: 3
-          } : {}
-        }}
-        onClick={handleToggle}
-      >
+    <Card
+      sx={{
+        mb: 2,
+        userSelect: 'text',
+        cursor: hasMovements ? 'pointer' : 'default',
+        transition: 'box-shadow 0.2s ease',
+        '&:hover': hasMovements ? {
+          boxShadow: 3
+        } : {}
+      }}
+      onClick={handleToggle}
+    >
       <CardContent>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Box sx={{ flex: 1 }}>
+        <Box sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+          <Box sx={{flex: 1}}>
             <Typography
               variant="h6"
               component="span"
-              onClick={clickCopyEnabled ? (e) => copyToClipboard(e, buildCopyText(clickCopyRules && clickCopyRules.workTitle, { work })) : undefined}
+              onClick={clickCopyEnabled ? (e) => copyToClipboard(e, buildCopyText(clickCopyRules && clickCopyRules.workTitle, {work})) : undefined}
               sx={{
                 display: 'inline-block',
                 fontWeight: 700,
                 fontFamily: '"Playfair Display", "EB Garamond", Georgia, serif',
                 cursor: clickCopyEnabled ? 'pointer' : 'default',
                 transition: 'opacity 0.15s ease',
-                '&:hover': clickCopyEnabled ? { opacity: 0.7 } : {},
+                '&:hover': clickCopyEnabled ? {opacity: 0.7} : {},
                 mb: 1,
               }}
             >
               {work.title}
             </Typography>
-            <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', mb: 1 }}>
+            <Box sx={{display: 'flex', gap: 1, flexWrap: 'wrap', mb: 1}}>
               <Chip
                 label={work.composer}
                 size="small"
                 color="primary"
-                onClick={clickCopyEnabled ? (e) => copyToClipboard(e, buildCopyText(clickCopyRules && clickCopyRules.composerTag, { work })) : undefined}
-                sx={{ cursor: clickCopyEnabled ? 'pointer' : 'default' }}
+                onClick={clickCopyEnabled ? (e) => copyToClipboard(e, buildCopyText(clickCopyRules && clickCopyRules.composerTag, {work})) : undefined}
+                sx={{cursor: clickCopyEnabled ? 'pointer' : 'default'}}
               />
               {work.genre && (
                 <Chip
@@ -97,7 +97,7 @@ function WorkCard({ work, onCopyText, clickCopyEnabled, clickCopyRules, buildCop
                   color="secondary"
                   variant="outlined"
                   onClick={clickCopyEnabled ? (e) => copyToClipboard(e, work.genre) : undefined}
-                  sx={{ cursor: clickCopyEnabled ? 'pointer' : 'default' }}
+                  sx={{cursor: clickCopyEnabled ? 'pointer' : 'default'}}
                 />
               )}
               {work.period && (
@@ -106,31 +106,34 @@ function WorkCard({ work, onCopyText, clickCopyEnabled, clickCopyRules, buildCop
                   size="small"
                   variant="outlined"
                   onClick={clickCopyEnabled ? (e) => copyToClipboard(e, work.period) : undefined}
-                  sx={{ cursor: clickCopyEnabled ? 'pointer' : 'default' }}
+                  sx={{cursor: clickCopyEnabled ? 'pointer' : 'default'}}
                 />
               )}
             </Box>
           </Box>
 
           {hasMovements && (
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, flexShrink: 0, ml: 1 }}>
+            <Box sx={{display: 'flex', alignItems: 'center', gap: 0.5, flexShrink: 0, ml: 1}}>
               {expanded && (
                 <IconButton
                   size="small"
                   onClick={(e) => copyToClipboard(e, buildCopyButtonText())}
-                  sx={{ width: 40, height: 40 }}
+                  sx={{width: 40, height: 40}}
                 >
                   <Box
                     component="span"
                     className="mdi mdi-content-copy"
-                    sx={{ fontSize: '1.1rem' }}
+                    sx={{fontSize: '1.1rem'}}
                   />
                 </IconButton>
               )}
               <IconButton
                 size="small"
-                onClick={(e) => { e.stopPropagation(); setExpanded(!expanded) }}
-                sx={{ width: 40, height: 40 }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setExpanded(!expanded)
+                }}
+                sx={{width: 40, height: 40}}
               >
                 <Box
                   component="span"
@@ -148,8 +151,10 @@ function WorkCard({ work, onCopyText, clickCopyEnabled, clickCopyRules, buildCop
         </Box>
       </CardContent>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent sx={{ pt: 0 }}>
-          <MovementList movements={work.movements} work={work} onCopyText={onCopyText} clickCopyEnabled={clickCopyEnabled} clickCopyRules={clickCopyRules} buildCopyText={buildCopyText} />
+        <CardContent sx={{pt: 0}}>
+          <MovementList movements={work.movements} work={work} onCopyText={onCopyText}
+                        clickCopyEnabled={clickCopyEnabled} clickCopyRules={clickCopyRules}
+                        buildCopyText={buildCopyText}/>
         </CardContent>
       </Collapse>
     </Card>
