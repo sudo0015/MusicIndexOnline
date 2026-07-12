@@ -738,7 +738,7 @@
   {
     "composer": "Franz Schubert",
     "title": "Symphony No. 3 in D Major, D. 200",
-    "op": "D.200",
+    "op": "D. 200",
     "genre": "Symphony",
     "period": "Romantic",
     "movements": [
@@ -963,7 +963,7 @@
       "I. Bewegt, nicht zu schnell",
       "II. Andante quasi allegretto",
       "III. Scherzo. Bewegt - Trio. Nicht zu schnell",
-      "IV. Finale. Bewegt, docht nicht zu schnell"
+      "IV. Finale. Bewegt, doch nicht zu schnell"
     ]
   },
   {
@@ -1535,7 +1535,7 @@
     "movements": [
       "I. Allegro",
       "II. Andante",
-      "III. Menuet",
+      "III. Menuetto",
       "IV. Allegro"
     ]
   },
@@ -1617,7 +1617,7 @@
   {
     "composer": "Wolfgang Amadeus Mozart",
     "title": "Symphony No. 47 in D Major, K. 97",
-    "op": "K. 47",
+    "op": "K. 97",
     "genre": "Symphony",
     "period": "Classical",
     "movements": [
@@ -1833,7 +1833,7 @@
   },
   {
     "composer": "Wolfgang Amadeus Mozart",
-    "title": "Symphonyy No. 27 in G Major, K. 199",
+    "title": "Symphony No. 27 in G Major, K. 199",
     "op": "K. 199",
     "genre": "Symphony",
     "period": "Classical",
