@@ -75,16 +75,19 @@ function Readme() {
   const [licenseOpen, setLicenseOpen] = useState(false)
   const [snackbarOpen, setSnackbarOpen] = useState(false)
   const [tocOpen, setTocOpen] = useState(false)
-  const [showTocContent, setShowTocContent] = useState(false)
   const theme = useTheme()
   const snackbarTimerRef = useRef(null)
+  const tocPanelRef = useRef(null)
 
   useEffect(() => {
     if (tocOpen) {
-      const timer = setTimeout(() => setShowTocContent(true), 200)
-      return () => clearTimeout(timer)
-    } else {
-      setShowTocContent(false)
+      const handleClickOutside = (event) => {
+        if (tocPanelRef.current && !tocPanelRef.current.contains(event.target)) {
+          setTocOpen(false)
+        }
+      }
+      document.addEventListener('mousedown', handleClickOutside)
+      return () => document.removeEventListener('mousedown', handleClickOutside)
     }
   }, [tocOpen])
 
@@ -150,8 +153,8 @@ function Readme() {
   return (
     <Layout toolbarAction={toolbarAction}>
       {tocOpen && (
-        <Box sx={tocBaseSx}>
-          <Fade in={showTocContent}>
+        <Box ref={tocPanelRef} sx={tocBaseSx}>
+          <Fade in={tocOpen}>
             <Box>
               <Box sx={{
                 display: 'flex',
@@ -283,17 +286,17 @@ function Readme() {
           </li>
           <li>
             <Typography variant="body1" sx={bodySx}>
+              <strong>Smart ordering</strong> — works are ordered by composer chronologically, and within each composer by opus/catalogue number
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body1" sx={bodySx}>
               <strong>Detailed movement listings</strong> — every work includes its full movement structure
             </Typography>
           </li>
           <li>
             <Typography variant="body1" sx={bodySx}>
               <strong>Pagination</strong> — works are displayed in pages for easy navigation
-            </Typography>
-          </li>
-          <li>
-            <Typography variant="body1" sx={bodySx}>
-              <strong>Expandable work cards</strong> — click to reveal/hide movement details
             </Typography>
           </li>
         </Box>

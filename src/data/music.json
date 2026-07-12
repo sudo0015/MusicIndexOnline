@@ -1188,7 +1188,7 @@
     ]
   },
   {
-    "composer": "Bruch",
+    "composer": "Max Christian Friedrich Bruch",
     "title": "Violin Concerto No. 1 in G Minor, Op. 26",
     "op": "Op. 26",
     "genre": "Concerto",
@@ -1200,7 +1200,7 @@
     ]
   },
   {
-    "composer": "Grieg",
+    "composer": "Edvard Grieg",
     "title": "Peer Gynt Suite No. 1, Op. 46",
     "op": "Op. 46",
     "genre": "Suite",
@@ -1213,7 +1213,7 @@
     ]
   },
   {
-    "composer": "Grieg",
+    "composer": "Edvard Grieg",
     "title": "Peer Gynt Suite No. 2, Op. 55",
     "op": "Op. 55",
     "genre": "Suite",
@@ -1424,6 +1424,608 @@
       "I. Allegro",
       "II. Andante",
       "III. Finale. Presto"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 1 in E-Flat Major, K. 16",
+    "op": "K. 16",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Molto allegro",
+      "II. Andante",
+      "III. Presto"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 4 in D Major, K. 19",
+    "op": "K. 19",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro",
+      "II. Andante",
+      "III. Presto"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 5 in B-Flat Major, K. 22",
+    "op": "K. 22",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro",
+      "II. Andante",
+      "III. Molto allegro"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 43 in F Major, K. 76",
+    "op": "K. 76",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro maestoso",
+      "II. Andante",
+      "III. Menuetto",
+      "IV. Allegro"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 6 in F Major, K. 43",
+    "op": "K. 43",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro",
+      "II. Andante",
+      "III. Menuetto",
+      "IV. Allegro"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 7 in D Major, K. 45",
+    "op": "K. 45",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Molto allegro",
+      "II. Andante",
+      "III. Menuetto",
+      "IV. Molto allegro"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 7a in G Major, K. 45a 'Alte Lambacher'",
+    "op": "K. 45a",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro maestoso",
+      "II. Andante",
+      "III. Presto"
+    ]
+  },
+  {
+    "composer": "Johann Georg Leopold Mozart",
+    "title": "Symphony in G Major, K. deest 'Neue Lambacher'",
+    "op": "K. deest",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro",
+      "II. Andante un poco allegretto",
+      "III. Menuetto",
+      "IV. Allegro"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 55 in B-Flat Major, K. 45b",
+    "op": "K. 45b",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro",
+      "II. Andante",
+      "III. Menuet",
+      "IV. Allegro"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 8 in D Major, K. 48",
+    "op": "K. 48",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro",
+      "II. Andante",
+      "III. Menuetto",
+      "IV. Molto allegro"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 9 in C Major, K. 73",
+    "op": "K. 73",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro",
+      "II. Andante",
+      "III. Menuetto",
+      "IV. Molto allegro"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 10 in G Major, K. 74",
+    "op": "K. 74",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro",
+      "II. Andante",
+      "III. Allegro"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 44 in D Major, K. 81",
+    "op": "K. 81",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro",
+      "II. Andante",
+      "III. Allegro molto"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 11 in D Major, K. 84",
+    "op": "K. 84",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro",
+      "II. Andante",
+      "III. Allegro"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 45 in D Major, K. 95",
+    "op": "K. 95",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro",
+      "II. Andante",
+      "III. Menuetto",
+      "IV. Allegro"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 47 in D Major, K. 97",
+    "op": "K. 47",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro",
+      "II. Andante",
+      "III. Menuetto",
+      "IV. Presto"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 42 in F Major, K. 75",
+    "op": "K. 75",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro",
+      "II. Andantino",
+      "III. Menuetto",
+      "IV. Allegro"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 12 in G Major, K. 110",
+    "op": "K. 110",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro",
+      "II. Andante",
+      "III. Menuetto",
+      "IV. Allegro"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 46 in C Major, K. 96",
+    "op": "K. 96",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro",
+      "II. Andante",
+      "III. Menuetto",
+      "IV. Molto allegro"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 13 in F Major, K. 112",
+    "op": "K. 112",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro",
+      "II. Andante",
+      "III. Menuetto",
+      "IV. Molto allegro"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 14 in A Major, K. 114",
+    "op": "K. 114",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro moderato",
+      "II. Andante",
+      "III. Menuetto",
+      "IV. Molto allegro"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 15 in G Major, K. 124",
+    "op": "K. 124",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro",
+      "II. Andante",
+      "III. Menuetto",
+      "IV. Presto"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 16 in C Major, K. 128",
+    "op": "K. 128",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro maestoso",
+      "II. Andante grazioso",
+      "III. Allegro"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 18 in F Major, K. 130",
+    "op": "K. 130",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro",
+      "II. Andante grazioso",
+      "III. Menuetto",
+      "IV. Molto allegro"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 17 in G Major, K. 129",
+    "op": "K. 129",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro",
+      "II. Andante",
+      "III. Allegro"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 19 in E-Flat Major, K. 132",
+    "op": "K. 132",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro",
+      "II. Andante",
+      "III. Menuetto",
+      "IV. Allegro",
+      "Addendum. Andantino grazioso"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 20 in D Major, K. 133",
+    "op": "K. 133",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro",
+      "II. Andante",
+      "III. Menuetto",
+      "IV. Allegro"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 21 in A Major, K. 134",
+    "op": "K. 134",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro",
+      "II. Andante",
+      "III. Menuetto",
+      "IV. Allegro"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 22 in C Major, K. 162",
+    "op": "K. 162",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro assai",
+      "II. Andantino grazioso",
+      "III. Presto assai"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 23 in D Major, K. 181",
+    "op": "K. 181",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro spirituoso",
+      "II. Andantino",
+      "III. Presto assai"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 24 in B-Flat Major, K. 182",
+    "op": "K. 182",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro spiritoso",
+      "II. Andantino grazioso",
+      "III. Allegro"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 25 in G Minor, K. 183",
+    "op": "K. 183",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro con brio",
+      "II. Andante",
+      "III. Menuetto",
+      "IV. Allegro"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphonyy No. 27 in G Major, K. 199",
+    "op": "K. 199",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro",
+      "II. Andantino grazioso",
+      "III. Presto"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 26 in E-Flat Major, K. 184",
+    "op": "K. 184",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Molto presto",
+      "II. Andante",
+      "III. Allegro"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 28 in C Major, K. 200",
+    "op": "K. 200",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro spiritoso",
+      "II. Andante",
+      "III. Menuetto. Allegretto",
+      "IV. Presto"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 29 in A Major, K. 201",
+    "op": "K. 201",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro moderato",
+      "II. Andante",
+      "III. Menuetto",
+      "IV. Allegro con spirito"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 30 in D Major, K. 202",
+    "op": "K. 202",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Molto allegro",
+      "II. Andantino con moto",
+      "III. Menuetto - Trio",
+      "IV. Presto"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 31 in D Major, K. 297 'Paris'",
+    "op": "K. 297",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro assai",
+      "II. Andante",
+      "III. Allegro"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 32 in G Major, K. 318 (Overture in G)",
+    "op": "K. 318",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro spiritoso",
+      "II. Andante",
+      "III. Tempo I"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 33 in B-Flat Major, K. 319",
+    "op": "K. 319",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro assai",
+      "II. Andante moderato",
+      "III. Menuetto",
+      "IV. Finale. Allegro assai"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 34 in C Major, K. 338",
+    "op": "K. 338",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro vivace",
+      "II. Andante di molto",
+      "III. Finale. Allegro vivace"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Minuet in C Major, K. 409",
+    "op": "K. 409",
+    "genre": "Minuet",
+    "period": "Classical",
+    "movements": []
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 35 in D Major, K. 385 'Haffner'",
+    "op": "K. 385",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro con spirito",
+      "II. Andante",
+      "III. Menuetto",
+      "IV. Finale. Presto"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 36 in C Major, K. 425 'Linz'",
+    "op": "K. 425",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Adagio - Allegro spiritoso",
+      "II. Andante",
+      "III. Menuetto",
+      "IV. Finale. Presto"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 38 in D Major, K. 504 'Prague'",
+    "op": "K. 504",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Adagio - Allegro",
+      "II. Andante",
+      "III. Finale. Presto"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 39 in E-Flat Major, K. 543",
+    "op": "K. 543",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Adagio - Allegro",
+      "II. Andante con moto",
+      "III. Menuetto. Allegretto",
+      "IV. Finale. Allegro"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 40 in G Minor, K. 550",
+    "op": "K. 550",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Molto allegro",
+      "II. Andante",
+      "III. Menuetto. Allegretto - Trio",
+      "IV. Finale. Allegro assai"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Symphony No. 41 in C Major, K. 551 'Jupiter'",
+    "op": "K. 551",
+    "genre": "Symphony",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro vivace",
+      "II. Andante cantabile",
+      "III. Menuetto. Allegretto - Trio",
+      "IV. Molto allegro"
     ]
   }
 ]

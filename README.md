@@ -18,9 +18,9 @@ Whether you're a performer checking a program, a listener discovering new repert
 
 - **Full-text search** — search across composers, titles, opus numbers, periods, and movements
 - **Multi-dimensional filtering** — filter by composer, genre, and period simultaneously
+- **Smart ordering** — works are ordered by composer chronologically, and within each composer by opus/catalogue number
 - **Detailed movement listings** — every work includes its full movement structure
 - **Pagination** — works are displayed in pages for easy navigation
-- **Expandable work cards** — click to reveal/hide movement details
 
 ### Copy & Clipboard
 

@@ -89,7 +89,7 @@ function App({onToggleTheme, themeMode, clickCopyEnabled, clickCopyRules, itemsP
     return parts.join(': ')
   }, [])
 
-  const allComposers = [...new Set(data.map(w => getComposerShort(w.composer)))].sort()
+  const allComposers = Object.values(composerMap)
   const allGenres = [...new Set(data.filter(w => w.genre).map(w => w.genre))].sort()
   const allPeriods = [...new Set(data.filter(w => w.period).map(w => w.period))].sort()
 
