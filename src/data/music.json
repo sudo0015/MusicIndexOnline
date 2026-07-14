@@ -2027,5 +2027,245 @@
       "III. Menuetto. Allegretto - Trio",
       "IV. Molto allegro"
     ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Violin Concerto No. 1 in B-Flat Major, K. 207",
+    "op": "K. 207",
+    "genre": "Concerto",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro moderato",
+      "II. Adagio",
+      "III. Presto"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Violin Concerto No. 2 in D Major, K. 211",
+    "op": "K. 211",
+    "genre": "Concerto",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro moderato",
+      "II. Andante",
+      "III. Rondeau. Allegro"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Violin Concerto No. 3 in G Major, K. 216",
+    "op": "K. 216",
+    "genre": "Concerto",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro",
+      "II. Adagio",
+      "III. Rondeau. Allegro"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Violin Concerto No. 4 in D Major, K. 218",
+    "op": "K. 218",
+    "genre": "Concerto",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro",
+      "II. Andante cantabile",
+      "III. Rondeau. Andante grazioso - Allegro ma non troppo"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Violin Concerto No. 5 in A Major, K. 219 'Turkish'",
+    "op": "K. 219",
+    "genre": "Concerto",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro aperto - Adagio - Allegro aperto",
+      "II. Adagio",
+      "III. Rondeau. Tempo di menuetto - Allegro - Tempo di menuetto"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Adagio for Violin and Orchestra in E Major, K. 261",
+    "op": "K. 261",
+    "genre": "Concerto",
+    "period": "Classical",
+    "movements": []
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Sinfonia Concertante for Violin, Viola & Orchestra in E-Flat Major, K. 364",
+    "op": "K. 364",
+    "genre": "Sinfonia Concertante",
+    "period": "Classical",
+    "movements": [
+      "I. Allegro maestoso",
+      "II. Andante",
+      "III. Presto"
+    ]
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Rondo for Violin and Orchestra in B-Flat Major, K. 269",
+    "op": "K. 269",
+    "genre": "Rondo",
+    "period": "Classical",
+    "movements": []
+  },
+  {
+    "composer": "Wolfgang Amadeus Mozart",
+    "title": "Rondo for Violin and Orchestra in C Major, K. 373",
+    "op": "K. 364",
+    "genre": "Rondo",
+    "period": "Classical",
+    "movements": []
+  },
+  {
+    "composer": "John Field",
+    "title": "Nocturne No. 1 in E-Flat Major, H. 24",
+    "op": "H. 24",
+    "genre": "Piano",
+    "period": "Romantic",
+    "movements": []
+  },
+  {
+    "composer": "John Field",
+    "title": "Nocturne No. 2 in C Minor, H. 25",
+    "op": "H. 25",
+    "genre": "Piano",
+    "period": "Romantic",
+    "movements": []
+  },
+  {
+    "composer": "John Field",
+    "title": "Nocturne No. 3 in A-Flat Major, H. 26",
+    "op": "H. 26",
+    "genre": "Piano",
+    "period": "Romantic",
+    "movements": []
+  },
+  {
+    "composer": "John Field",
+    "title": "Nocturne No. 4 in A Major, H. 36",
+    "op": "H. 36",
+    "genre": "Piano",
+    "period": "Romantic",
+    "movements": []
+  },
+  {
+    "composer": "John Field",
+    "title": "Nocturne No. 5 in B-Flat Major, H. 37",
+    "op": "H. 37",
+    "genre": "Piano",
+    "period": "Romantic",
+    "movements": []
+  },
+  {
+    "composer": "John Field",
+    "title": "Nocturne No. 6 in F Major, H. 40 'Cradle Song'",
+    "op": "H. 40",
+    "genre": "Piano",
+    "period": "Romantic",
+    "movements": []
+  },
+  {
+    "composer": "John Field",
+    "title": "Nocturne No. 7 in A Major, H. 14",
+    "op": "H. 14",
+    "genre": "Piano",
+    "period": "Romantic",
+    "movements": []
+  },
+  {
+    "composer": "John Field",
+    "title": "Nocturne No. 8 in E-Flat Major, H. 30",
+    "op": "H. 30",
+    "genre": "Piano",
+    "period": "Romantic",
+    "movements": []
+  },
+  {
+    "composer": "John Field",
+    "title": "Nocturne No. 9 in E Minor, H. 46",
+    "op": "H. 46",
+    "genre": "Piano",
+    "period": "Romantic",
+    "movements": []
+  },
+  {
+    "composer": "John Field",
+    "title": "Nocturne No. 10 in E Major, H. 54 'Nocturne Pastorale'",
+    "op": "H. 54",
+    "genre": "Piano",
+    "period": "Romantic",
+    "movements": []
+  },
+  {
+    "composer": "John Field",
+    "title": "Nocturne No. 11 in E-Flat Major, H. 56",
+    "op": "H. 56",
+    "genre": "Piano",
+    "period": "Romantic",
+    "movements": []
+  },
+  {
+    "composer": "John Field",
+    "title": "Nocturne No. 12 in E Major, H. 13 'Nocturne Caractéristique: Noontide'",
+    "op": "H. 13",
+    "genre": "Piano",
+    "period": "Romantic",
+    "movements": []
+  },
+  {
+    "composer": "John Field",
+    "title": "Nocturne No. 13 in C Major, H. 45 'Rêverie-Nocturne'",
+    "op": "H. 45",
+    "genre": "Piano",
+    "period": "Romantic",
+    "movements": []
+  },
+  {
+    "composer": "John Field",
+    "title": "Nocturne No. 14 in G Major, H. 58",
+    "op": "H. 58",
+    "genre": "Piano",
+    "period": "Romantic",
+    "movements": []
+  },
+  {
+    "composer": "John Field",
+    "title": "Nocturne No. 15 in D Minor, H. 59 'Song Without Words'",
+    "op": "H. 59",
+    "genre": "Piano",
+    "period": "Romantic",
+    "movements": []
+  },
+  {
+    "composer": "John Field",
+    "title": "Nocturne No. 16 in C Major, H. 60",
+    "op": "H. 60",
+    "genre": "Piano",
+    "period": "Romantic",
+    "movements": []
+  },
+  {
+    "composer": "John Field",
+    "title": "Nocturne No. 17 in C Major, H. 61",
+    "op": "H. 61",
+    "genre": "Piano",
+    "period": "Romantic",
+    "movements": []
+  },
+  {
+    "composer": "John Field",
+    "title": "Nocturne No. 18 in F Major, H. 62",
+    "op": "H. 62",
+    "genre": "Piano",
+    "period": "Romantic",
+    "movements": []
   }
 ]
