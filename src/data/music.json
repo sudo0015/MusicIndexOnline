@@ -186,6 +186,91 @@
   },
   {
     "composer": "Johann Sebastian Bach",
+    "title": "Violin Partita No. 3 in E Major, BWV 1006",
+    "op": "BWV 1006",
+    "genre": "Violin",
+    "period": "Baroque",
+    "movements": [
+      "I. Preludio",
+      "II. Loure",
+      "III. Gavotte en Rondeau",
+      "IV. Menuet I - Menuet II",
+      "V. Bourrée",
+      "VI. Gigue"
+    ]
+  },
+  {
+    "composer": "Johann Sebastian Bach",
+    "title": "Violin Sonata No. 3 in C Major, BWV 1005",
+    "op": "BWV 1005",
+    "genre": "Violin",
+    "period": "Baroque",
+    "movements": [
+      "I. Adagio",
+      "II. Fuga",
+      "III. Largo",
+      "IV. Allegro assai"
+    ]
+  },
+  {
+    "composer": "Johann Sebastian Bach",
+    "title": "Violin Sonata No. 2 in A Minor, BWV 1003",
+    "op": "BWV ",
+    "genre": "Violin",
+    "period": "Baroque",
+    "movements": [
+      "I. Grave",
+      "II. Fuga",
+      "III. Andante",
+      "IV. Allegro"
+    ]
+  },
+  {
+    "composer": "Johann Sebastian Bach",
+    "title": "Violin Sonata No. 1 in G Minor, BWV 1001",
+    "op": "BWV 1001",
+    "genre": "Violin",
+    "period": "Baroque",
+    "movements": [
+      "I. Adagio",
+      "II. Fuga",
+      "III. Siciliana",
+      "IV. Presto"
+    ]
+  },
+  {
+    "composer": "Johann Sebastian Bach",
+    "title": "Violin Partita No. 1 in B Minor, BWV 1002",
+    "op": "BWV 1002",
+    "genre": "Violin",
+    "period": "Baroque",
+    "movements": [
+      "I. Allemanda",
+      "II. Double",
+      "III. Corrente",
+      "IV. Double",
+      "V. Sarabande",
+      "VI. Double",
+      "VII. Tempo di Borea",
+      "VIII. Double"
+    ]
+  },
+  {
+    "composer": "Johann Sebastian Bach",
+    "title": "Violin Partita No. 2 in D Minor, BWV 1004",
+    "op": "BWV 1004",
+    "genre": "Violin",
+    "period": "Baroque",
+    "movements": [
+      "I. Allemanda",
+      "II. Corrente",
+      "III. Sarabanda",
+      "IV. Giga",
+      "V. Ciaccona"
+    ]
+  },
+  {
+    "composer": "Johann Sebastian Bach",
     "title": "Violin Concerto No. 1 in A Minor, BWV 1041",
     "op": "BWV 1041",
     "genre": "Concerto",
