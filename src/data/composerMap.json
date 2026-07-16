@@ -7,7 +7,10 @@
   "Wolfgang Amadeus Mozart": "Mozart",
   "Ludwig van Beethoven": "Beethoven",
   "John Field": "Field",
+  "Niccolò Paganini": "Paganini",
   "Franz Schubert": "Schubert",
+  "Felix Mendelssohn": "Mendelssohn",
+  "Franz Liszt": "Liszt",
   "Anton Bruckner": "Bruckner",
   "Johannes Brahms": "Brahms",
   "Max Christian Friedrich Bruch": "Bruch",
@@ -15,5 +18,6 @@
   "Edvard Grieg": "Grieg",
   "Gustav Mahler": "Mahler",
   "Jean Sibelius": "Sibelius",
-  "Sergey Rachmaninov": "Rachmaninov"
+  "Sergey Rachmaninov": "Rachmaninov",
+  "Leonard Bernstein": "Bernstein"
 }

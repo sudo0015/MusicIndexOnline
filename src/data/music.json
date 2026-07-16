@@ -452,6 +452,21 @@
     ]
   },
   {
+    "composer": "Gustav Mahler",
+    "title": "Das Lied von der Erde",
+    "op": "GMW 49",
+    "genre": "Symphony",
+    "period": "Romantic",
+    "movements": [
+      "I. Das Trinklied vom Jammer der Erde",
+      "II. Der Einsame im Herbst",
+      "III. Von der Jugend",
+      "IV. Von der Schönheit",
+      "V. Der Trunkene im Frühling",
+      "VI. Der Abschied"
+    ]
+  },
+  {
     "composer": "Ludwig van Beethoven",
     "title": "Symphony No. 1 in C Major, Op. 21",
     "op": "Op. 21",
@@ -710,6 +725,25 @@
     "movements": []
   },
   {
+    "composer": "Johannes Brahms",
+    "title": "Variations on a theme by Haydn, Op. 56a 'St. Anthony Variations'",
+    "op": "Op. 56a",
+    "genre": "Orchestral",
+    "period": "Romantic",
+    "movements": [
+      "Theme. 'Chorale St. Antoni'",
+      "Variation I. Poco più animato",
+      "Variation II. Più vivace",
+      "Variation III. Con moto",
+      "Variation IV. Andante con moto",
+      "Variation V. Vivace",
+      "Variation VI. Vivace",
+      "Variation VII. Grazioso",
+      "Variation VIII. Presto non troppo",
+      "Finale. Andante"
+    ]
+  },
+  {
     "composer": "Franz Schubert",
     "title": "Symphony No. 1 in D Major, D. 82",
     "op": "D. 82",
@@ -912,6 +946,105 @@
       "I. Moderato",
       "II. Adagio sostenuto",
       "III. Allegro scherzando"
+    ]
+  },
+  {
+    "composer": "Niccolò Paganini",
+    "title": "Violin Concerto No. 1 in D Major, Op. 6",
+    "op": "Op. 6",
+    "genre": "Concerto",
+    "period": "Romantic",
+    "movements": [
+      "I. Allegro maestoso",
+      "II. Adagio",
+      "III. Allegro spiritoso"
+    ]
+  },
+  {
+    "composer": "Felix Mendelssohn",
+    "title": "Symphony No. 4 in A Major, Op. 90 'Italian'",
+    "op": "Op. 90",
+    "genre": "Symphony",
+    "period": "Romantic",
+    "movements": [
+      "I. Allegro vivace",
+      "II. Andante con moto",
+      "III. Con moto moderato",
+      "IV. Saltarello. Presto"
+    ]
+  },
+  {
+    "composer": "Felix Mendelssohn",
+    "title": "Symphony No. 5 in D Major, Op. 107 'Reformation'",
+    "op": "Op. 107",
+    "genre": "Symphony",
+    "period": "Romantic",
+    "movements": [
+      "I. Andante - Allegro con fuoco",
+      "II. Allegro vivace",
+      "III. Andante",
+      "IV. Chorale. Andante con moto - Allegro vivace"
+    ]
+  },
+  {
+    "composer": "Felix Mendelssohn",
+    "title": "Octet in E-Flat Major, Op. 20",
+    "op": "Op. 20",
+    "genre": "Octet",
+    "period": "Romantic",
+    "movements": [
+      "I. Allegro moderato ma con fuoco",
+      "II. Andante",
+      "III. Scherzo. Allegro leggierissimo",
+      "IV. Presto"
+    ]
+  },
+  {
+    "composer": "Franz Liszt",
+    "title": "Symphonic Poem No. 3 'Les Préludes', S. 97",
+    "op": "S. 97",
+    "genre": "Symphonic Poem",
+    "period": "Romantic",
+    "movements": []
+  },
+  {
+    "composer": "Franz Liszt",
+    "title": "Mephisto Waltz No. 1, S. 514",
+    "op": "S. 514",
+    "genre": "Piano",
+    "period": "Romantic",
+    "movements": []
+  },
+  {
+    "composer": "Franz Liszt",
+    "title": "Études de concert, S. 145",
+    "op": "S. 145",
+    "genre": "Piano",
+    "period": "Romantic",
+    "movements": [
+      "No. 1 'Waldesrauschen'",
+      "No. 2 'Gnomenreigen'"
+    ]
+  },
+  {
+    "composer": "Franz Liszt",
+    "title": "Études d'exécution transcendante, S. 139",
+    "op": "S. 139",
+    "genre": "Piano",
+    "period": "Romantic",
+    "movements": [
+      "No. 1 in C Major 'Preludio'",
+      "No. 2 in A Minor 'Fusees'",
+      "No. 3 in F Major 'Paysage'",
+      "No. 4 in D Minor 'Mazeppa'",
+      "No. 5 in B-Flat Major 'Feux-follets'",
+      "No. 6 in G Minor 'Vision'",
+      "No. 7 in E-Flat Major 'Eroica'",
+      "No. 8 in C Minor 'Wilde Jagd'",
+      "No. 9 in A-Flat Major 'Ricordanza'",
+      "No. 10 in F Minor 'Appassionata'",
+      "No. 11 in D-Flat Major 'Harmonies du soir'",
+      "No. 12 in B-Flat Minor 'Chasse-neige'"
     ]
   },
   {
@@ -2267,5 +2400,32 @@
     "genre": "Piano",
     "period": "Romantic",
     "movements": []
+  },
+  {
+    "composer": "Leonard Bernstein",
+    "title": "Symphony No. 1, 'Jeremiah'",
+    "op": "",
+    "genre": "Symphony",
+    "period": "Modernist",
+    "movements": [
+      "I. Prophecy",
+      "II. Profanation",
+      "III. Lamentation"
+    ]
+  },
+  {
+    "composer": "Leonard Bernstein",
+    "title": "Symphony No. 2, 'The Age of Anxiety'",
+    "op": "",
+    "genre": "Symphony",
+    "period": "Modernist",
+    "movements": [
+      "I. Part I: The Prologue. Lento moderato",
+      "II. Part I: The Seven Ages. Variations I-VII",
+      "III. Part I: The Seven Stages. Variations VIII-XIV",
+      "IV. Part II: The Dirge. Largo",
+      "V. Part II: The Masque. Molto vivace",
+      "VI. Part II: The Epilogue. L'istesso tempo"
+    ]
   }
 ]
